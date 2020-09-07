@@ -139,7 +139,27 @@ public class Rent {
         this.form = form;
     }
 
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result += id*6 + host_id*9;
+        return result;
+    }
 
-
-
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Rent)){
+            return false;
+        }else{
+            Rent robj = (Rent)obj;
+            if(this==robj){
+                return true;
+            }
+            if(robj.id==(this.id)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 }
