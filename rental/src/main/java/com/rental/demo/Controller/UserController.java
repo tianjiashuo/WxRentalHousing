@@ -1,6 +1,5 @@
 package com.rental.demo.Controller;
 
-import com.rental.demo.Repository.entity.User;
 import com.rental.demo.Service.UserBo;
 import com.rental.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
