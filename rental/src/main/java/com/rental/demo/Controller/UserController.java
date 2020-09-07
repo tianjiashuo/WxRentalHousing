@@ -1,5 +1,6 @@
 package com.rental.demo.Controller;
 
+import com.rental.demo.Service.RentService;
 import com.rental.demo.Service.UserBo;
 import com.rental.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+
+
+
+
 
     @GetMapping("/userInfo/{id}")
     UserBo getUserById(@PathVariable int id){
