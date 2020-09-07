@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class UserVo {
     private int id;
-    private String head;
+//    private String head;
     private String nickname;
     private String introduction;
     private String phone;
@@ -16,12 +16,12 @@ public class UserVo {
     public void setId(int id) {
         this.id = id;
     }
-    public String getHead(){
-        return head;
-    }
-    public void setHead(String head){
-        this.head = head;
-    }
+//    public String getHead(){
+//        return head;
+//    }
+//    public void setHead(String head){
+//        this.head = head;
+//    }
     public String getNickname(){
         return nickname;
     }
@@ -49,7 +49,7 @@ public class UserVo {
 
     UserVo( int id,String head,String nickname,String introduction,String phone,boolean gender){
         this.id = id;
-        this.head = head;
+//        this.head = head;
         this.nickname = nickname;
         this.introduction = introduction;
         this.phone = phone;
