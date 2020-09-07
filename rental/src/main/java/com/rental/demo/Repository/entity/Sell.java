@@ -3,7 +3,7 @@ package com.rental.demo.Repository.entity;
 
 public class Sell{
     private int id;
-    private int host_id;
+    private int hostId;
     private int area;
     private int price;
     private  int floor;
@@ -12,8 +12,8 @@ public class Sell{
     private String type;
     private String orientation;
     private boolean property;
-    private boolean is_elevator;
-    private boolean is_renovation;
+    private boolean isElevator;
+    private boolean isRenovation;
     private boolean state;
 
 
@@ -25,12 +25,12 @@ public class Sell{
         this.id = id;
     }
 
-    public int getHost_id() {
-        return host_id;
+    public int getHostId() {
+        return hostId;
     }
 
-    public void setHost_id(int host_id) {
-        this.host_id = host_id;
+    public void setHostId(int hostId) {
+        this.hostId = hostId;
     }
 
     public int getArea() {
@@ -89,7 +89,7 @@ public class Sell{
         this.orientation = orientation;
     }
 
-    public boolean isProperty() {
+    public boolean getIsProperty() {
         return property;
     }
 
@@ -97,28 +97,27 @@ public class Sell{
         this.property = property;
     }
 
-    public boolean isIs_elevator() {
-        return is_elevator;
+    public boolean getIsElevator() {
+        return isElevator;
     }
 
-    public void setIs_elevator(boolean is_elevator) {
-        this.is_elevator = is_elevator;
+    public void setIsElevator(boolean elevator) {
+        isElevator = elevator;
     }
 
-    public boolean isIs_renovation() {
-        return is_renovation;
+    public boolean getIsRenovation() {
+        return isRenovation;
     }
 
-    public void setIs_renovation(boolean is_renovation) {
-        this.is_renovation = is_renovation;
+    public void setIsRenovation(boolean renovation) {
+        isRenovation = renovation;
     }
 
-    public boolean isState() {
+    public boolean getIsState() {
         return state;
     }
 
     public void setState(boolean state) {
         this.state = state;
     }
-    
 }

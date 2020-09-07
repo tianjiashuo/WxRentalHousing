@@ -5,6 +5,8 @@ import com.rental.demo.Service.CollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
+
 @RestController
 public class CollectionController {
     @Autowired
@@ -18,5 +20,10 @@ public class CollectionController {
     @DeleteMapping("/cancelCollection/{id}")
     public void cancelCollection(@PathVariable int id){
         collectService.cancelCollection(id);
+    }
+
+    @PostMapping("/getCollection/{id}")
+    public HashSet getCollection(@PathVariable int id){
+        return collectService.getConnectionByUserId(id);
     }
 }

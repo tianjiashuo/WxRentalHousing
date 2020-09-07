@@ -13,15 +13,15 @@ public class RentRowMapper implements RowMapper<Rent>{
         public Rent mapRow(ResultSet rs, int i) throws SQLException {
             Rent rent = new Rent();
             rent.setId(rs.getInt("id"));
-            rent.setHost_id(rs.getInt("host_id"));
+            rent.setHostId(rs.getInt("host_id"));
             rent.setTitle(rs.getString("title"));
             rent.setAddress(rs.getString("address"));
             rent.setType(rs.getString("type"));
             rent.setOrientation(rs.getString("orientation"));
             rent.setFloor(rs.getInt("floor"));
-            rent.setIs_elevator(rs.getBoolean("is_elevator"));
-            rent.setIs_pet(rs.getBoolean("is_pet"));
-            rent.setShortest_lease(rs.getInt("shortest_lease"));
+            rent.setIsElevator(rs.getBoolean("is_elevator"));
+            rent.setIsPet(rs.getBoolean("is_pet"));
+            rent.setShortestLease(rs.getInt("shortest_lease"));
             rent.setArea(rs.getInt("area"));
             rent.setFurniture(rs.getString("furniture"));
             rent.setPrice(rs.getInt("price"));
