@@ -15,7 +15,14 @@ public class UserService {
     public UserBo getUserById(int id){
         User user = userDao.queryUserById(id);
         UserBo userBo = new UserBo(id,user.getHead(),user.getNickname(),
-                user.getIntroduction(),user.getPhone(),user.getGender());
+                user.getIntroduction(),user.getPhone(),user.getGender(),user.getIDnumber());
         return userBo;
+    }
+
+    public int initUserInfo(UserBo user) {
+        return userDao.insertUserInfo(user);
+    }
+    public int editUserInfo(int id,UserBo userBo){
+        return userDao.editUserInfo(id,userBo);
     }
 }

@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserRowMapper implements RowMapper<User>{
-    //mao增加了user新增属性的封装
-
         @Override
         public User mapRow(ResultSet rs, int i) throws SQLException {
             User user = new User();

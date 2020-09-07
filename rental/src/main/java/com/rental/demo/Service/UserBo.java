@@ -7,6 +7,7 @@ public class UserBo {
     private String introduction;
     private String phone;
     private boolean gender;
+    private String idNumber;
 
     public int getId() {
         return id;
@@ -44,18 +45,19 @@ public class UserBo {
     public void setGender(boolean gender){
         this.gender = gender;
     }
-//    public String getIDnumber(){
-//        return IDnumber;
-//    }
-//    public void setIDnumber(String IDnumber){
-//        this.IDnumber = IDnumber;
-//    }
-    UserBo( int id,String head,String nickname,String introduction,String phone,boolean gender){
+    public String getIdNumber(){
+        return idNumber;
+    }
+    public void setIdNumber(String idNumber){
+        this.idNumber = idNumber;
+    }
+    UserBo( int id,String head,String nickname,String introduction,String phone,boolean gender,String idNumber){
         this.id = id;
         this.head = head;
         this.nickname = nickname;
         this.introduction = introduction;
         this.phone = phone;
         this.gender = gender;
+        this.idNumber = idNumber;
     }
 }
