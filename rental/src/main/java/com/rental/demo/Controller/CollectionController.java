@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 
 @RestController
 public class CollectionController {
@@ -26,4 +27,10 @@ public class CollectionController {
     public HashSet getCollection(@PathVariable int id){
         return collectService.getConnectionByUserId(id);
     }
+
+    @PostMapping("/getUsersId")
+    public List<Integer> getAllUsersId(@RequestBody CollectionVo collectionVo){
+        return collectService.getAllUsersId(collectionVo.getHouseId(),collectionVo.getHouseType());
+    }
+
 }

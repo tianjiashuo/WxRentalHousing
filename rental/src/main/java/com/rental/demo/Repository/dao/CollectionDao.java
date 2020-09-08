@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository("collectionDao")
@@ -40,5 +41,10 @@ public class CollectionDao {
         String sql = "SELECT * FROM collection WHERE user_id = ?";
         List<Collection> lc= jdbcTemplate.query(sql, new CollectionRowMapper(),userId);
         return lc;
+    }
+    public List<Collection> getAllUsersId(int houseId,int houseType){
+        String sql = "SELECT * FROM collection WHERE house_id = ? AND house_type = ?";
+        List<Collection> ids = jdbcTemplate.query(sql,new CollectionRowMapper(),houseId,houseType);
+        return ids;
     }
 }
