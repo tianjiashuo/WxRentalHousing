@@ -34,5 +34,14 @@ public class SellDao {
         return ans;
     }
 
-
+    /***
+     * 按照id获取信息
+     * @author tian
+     * @return
+     */
+    public Sell queryById(int id){
+        String sql = "SELECT * FROM sell WHERE id = ?";
+        Sell sell = jdbcTemplate.queryForObject(sql,new SellRowMapper(),id);
+        return sell;
+    }
 }

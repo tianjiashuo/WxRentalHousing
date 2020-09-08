@@ -1,10 +1,10 @@
 package com.rental.demo.Service;
-import com.rental.demo.Repository.dao.RentDao;
+import com.rental.demo.Repository.dao.ImageDao;
 import com.rental.demo.Repository.dao.SellDao;
-import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -14,6 +14,8 @@ public class SellService {
 
     @Autowired
     private SellDao sellDao;
+    @Autowired
+    private ImageDao imageDao;
     //租房筛选房源
     public Set<Sell> selectSell(Map<String,String> condition){
         Set<Sell> ans = new HashSet<Sell>();
@@ -31,5 +33,12 @@ public class SellService {
             ans.addAll(sellDao.queryByCondt(entry.getKey(),entry.getValue()));
         }
         return ans;
+    }
+    public SellBo getSellById(int id) {
+        Sell sell = sellDao.queryById(id);
+        String image = imageDao.getFirstImageById(id, 1);
+        SellBo sellBo = new SellBo(sell.getId(), sell.getArea(), sell.getPrice(), sell.getAddress(),
+                sell.getTitle(), sell.getType(), sell.getIsRenovation(), image);
+        return sellBo;
     }
 }

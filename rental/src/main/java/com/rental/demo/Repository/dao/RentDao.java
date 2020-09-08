@@ -37,5 +37,16 @@ public class RentDao {
     }
 
 
+    /***
+     * 按照id获取信息
+     * @author tian
+     * @return
+     */
+    public Rent queryById(int id){
+        String sql = "SELECT * FROM rent WHERE id = ?";
+        Rent rent = jdbcTemplate.queryForObject(sql,new RentRowMapper(),id);
+        return rent;
+    }
+
 
 }

@@ -3,8 +3,8 @@ package com.rental.demo.Repository.entity;
 
 public class Rent {
     private int id;
-    private int host_id;
-    private int shortest_lease;
+    private int hostId;
+    private int shortestLease;
     private int area;
     private int price;
     private  int floor;
@@ -13,11 +13,10 @@ public class Rent {
     private String type;
     private String orientation;
     private String furniture;
-    private boolean is_elevator;
-    private boolean is_pet;
+    private boolean isElevator;
+    private boolean isPet;
     private boolean state;
     private boolean form ;
-
 
     public int getId() {
         return id;
@@ -27,20 +26,20 @@ public class Rent {
         this.id = id;
     }
 
-    public int getHost_id() {
-        return host_id;
+    public int getHostId() {
+        return hostId;
     }
 
-    public void setHost_id(int host_id) {
-        this.host_id = host_id;
+    public void setHostId(int hostId) {
+        this.hostId = hostId;
     }
 
-    public int getShortest_lease() {
-        return shortest_lease;
+    public int getShortestLease() {
+        return shortestLease;
     }
 
-    public void setShortest_lease(int shortest_lease) {
-        this.shortest_lease = shortest_lease;
+    public void setShortestLease(int shortestLease) {
+        this.shortestLease = shortestLease;
     }
 
     public int getArea() {
@@ -107,23 +106,23 @@ public class Rent {
         this.furniture = furniture;
     }
 
-    public boolean isIs_elevator() {
-        return is_elevator;
+    public boolean getIsElevator() {
+        return isElevator;
     }
 
-    public void setIs_elevator(boolean is_elevator) {
-        this.is_elevator = is_elevator;
+    public void setIsElevator(boolean elevator) {
+        isElevator = elevator;
     }
 
-    public boolean isIs_pet() {
-        return is_pet;
+    public boolean getIsPet() {
+        return isPet;
     }
 
-    public void setIs_pet(boolean is_pet) {
-        this.is_pet = is_pet;
+    public void setIsPet(boolean pet) {
+        isPet = pet;
     }
 
-    public boolean isState() {
+    public boolean getIsState() {
         return state;
     }
 
@@ -131,18 +130,17 @@ public class Rent {
         this.state = state;
     }
 
-    public boolean isForm() {
+    public boolean getIsForm() {
         return form;
     }
 
     public void setForm(boolean form) {
         this.form = form;
     }
-
     @Override
     public int hashCode() {
         int result = title.hashCode();
-        result += id*6 + host_id*9;
+        result += id*6 + hostId*9;
         return result;
     }
 
