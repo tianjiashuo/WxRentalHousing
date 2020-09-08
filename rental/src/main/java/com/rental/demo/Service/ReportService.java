@@ -12,8 +12,11 @@ import java.util.*;
 public class ReportService {
     private static final String INIT_RESULT = "0" ;
     private static final String  RESOLVE_RESULT = "1";
+    private static final String REPORT_VESOLVED_MSG = "您的举报信息管理员已处理";
     @Autowired
     private ReportDao reportDao;
+    @Autowired
+    private NewsService newsService;
 
     /**
      * 增加举报
@@ -46,12 +49,14 @@ public class ReportService {
     }
 
     /***
-     * 审批举报
+     * 审批举报并加入举报处理信息
      * @param report
      * @return
      */
     public boolean  checkReport(Report report) {
-      return  reportDao.updateReportState(RESOLVE_RESULT,String.valueOf(report.getId()));
+       boolean flag1 = reportDao.updateReportState(RESOLVE_RESULT,String.valueOf(report.getId()));
+       boolean flag2 = newsService.addNews(report.getUser_id(),REPORT_VESOLVED_MSG);
+       return (flag1&&flag2);
     }
 
     /**

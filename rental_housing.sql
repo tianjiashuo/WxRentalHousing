@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80019
 File Encoding         : 65001
 
-Date: 2020-09-08 11:14:22
+Date: 2020-09-08 14:51:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -81,18 +81,16 @@ INSERT INTO `image` VALUES ('7', '3', 'https://z1.muscache.cn/im/pictures/d94088
 -- ----------------------------
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of news
 -- ----------------------------
-INSERT INTO `news` VALUES ('1', '1', '您好，请您关注发布的房产信息  ——管理员');
-INSERT INTO `news` VALUES ('2', '2', '您好，请您关注收藏的的房产信息  ——管理员');
-INSERT INTO `news` VALUES ('3', '3', '您好，您收藏的房产信息有变更 ——管理员');
+INSERT INTO `news` VALUES ('1', '0', '您的举报信息管理员已处理');
 
 -- ----------------------------
 -- Table structure for `rent`
@@ -143,7 +141,7 @@ CREATE TABLE `report` (
 -- ----------------------------
 INSERT INTO `report` VALUES ('1', '1', '1', '涉黄', '6', '1');
 INSERT INTO `report` VALUES ('2', '2', '2', '涉爆', '1', '2');
-INSERT INTO `report` VALUES ('3', '1', '1', '涉黑', '0', '1');
+INSERT INTO `report` VALUES ('3', '1', '1', '涉黑', '1', '1');
 INSERT INTO `report` VALUES ('4', '2', '3', '涉恶', '0', '2');
 INSERT INTO `report` VALUES ('5', '6', '6', '测试用', '0', '2');
 INSERT INTO `report` VALUES ('6', '6', '6', '测试用', '0', '2');
