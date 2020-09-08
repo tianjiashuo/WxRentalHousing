@@ -10,8 +10,11 @@ import java.util.*;
 
 @Service("ReportService")
 public class ReportService {
+    private static final String INIT_RESULT = "0" ;
+    private static final String  RESOLVE_RESULT = "1";
     @Autowired
     private ReportDao reportDao;
+
     /**
      * 增加举报
      * @param report
@@ -29,7 +32,7 @@ public class ReportService {
                 if(field[i].getName()!="id"){
                     keys.add(field[i].getName());
                     if(field[i].getName()=="result") {
-                        values.add("0");
+                        values.add(INIT_RESULT);
                     }else{
                         values.add(field[i].get(report).toString());
                     }
@@ -42,5 +45,29 @@ public class ReportService {
         return reportDao.addReport(keys,values);
     }
 
+    /***
+     * 审批举报
+     * @param report
+     * @return
+     */
+    public boolean  checkReport(Report report) {
+      return  reportDao.updateReportState(RESOLVE_RESULT,String.valueOf(report.getId()));
+    }
 
+    /**
+     * 查询没有解决的举报
+     * @return
+     */
+    public List<Report> showUnDealReport(){
+        return reportDao.getReportByResult(INIT_RESULT);
+    }
+
+    /**
+     * 更具id 查询举报详细信息
+     * @param reportId
+     * @return
+     */
+    public Report getAReport(String reportId){
+        return  reportDao.getReportById(reportId);
+    }
 }

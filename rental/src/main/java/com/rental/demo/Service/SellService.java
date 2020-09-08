@@ -16,7 +16,12 @@ public class SellService {
     private SellDao sellDao;
     @Autowired
     private ImageDao imageDao;
-    //租房筛选房源
+
+    /**
+     * 买房筛选房源
+     * @param condition
+     * @return
+     */
     public Set<Sell> selectSell(Map<String,String> condition){
         Set<Sell> ans = new HashSet<Sell>();
         //关键字筛选范围
@@ -34,6 +39,7 @@ public class SellService {
         }
         return ans;
     }
+
     public SellBo getSellById(int id) {
         Sell sell = sellDao.queryById(id);
         String image = imageDao.getFirstImageById(id, 1);

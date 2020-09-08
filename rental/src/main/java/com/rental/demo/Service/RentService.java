@@ -18,7 +18,11 @@ public class RentService {
     @Autowired
     private ImageDao imageDao;
 
-    //租房筛选房源
+    /***
+     * 租房筛选房源
+     * @param condition
+     * @return
+     */
     public Set<Rent> selectRent(Map<String,String> condition){
         Set<Rent> ans = new HashSet<Rent>();
         //关键字筛选范围

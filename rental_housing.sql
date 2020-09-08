@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : localhost_3306
 Source Server Version : 80019
 Source Host           : localhost:3306
-Source Database       : rental_houseing
+Source Database       : rental_housing
 
 Target Server Type    : MYSQL
 Target Server Version : 80019
 File Encoding         : 65001
 
-Date: 2020-09-06 21:41:55
+Date: 2020-09-08 11:14:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -136,13 +136,18 @@ CREATE TABLE `report` (
   `result` tinyint NOT NULL,
   `house_type` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of report
 -- ----------------------------
-INSERT INTO `report` VALUES ('1', '1', '1', '涉黄', '0', '1');
+INSERT INTO `report` VALUES ('1', '1', '1', '涉黄', '6', '1');
 INSERT INTO `report` VALUES ('2', '2', '2', '涉爆', '1', '2');
+INSERT INTO `report` VALUES ('3', '1', '1', '涉黑', '0', '1');
+INSERT INTO `report` VALUES ('4', '2', '3', '涉恶', '0', '2');
+INSERT INTO `report` VALUES ('5', '6', '6', '测试用', '0', '2');
+INSERT INTO `report` VALUES ('6', '6', '6', '测试用', '0', '2');
+INSERT INTO `report` VALUES ('7', '6', '6', '测试用', '0', '2');
 
 -- ----------------------------
 -- Table structure for `roommates_info`
