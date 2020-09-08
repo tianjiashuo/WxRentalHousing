@@ -20,7 +20,7 @@ public class SellDao {
     关键字查询
      */
     public List<Sell> queryByKWords(String field, String keywords){
-        String sql = "SELECT * FROM sell WHERE state =1 AND  "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
+        String sql = "SELECT * FROM sell WHERE state = 0 AND  "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
         List<Sell> ans = jdbcTemplate.query(sql , new SellRowMapper());
         return ans;
     };
@@ -29,7 +29,7 @@ public class SellDao {
     条件查询
      */
     public List<Sell> queryByCondt(String key,String value){
-        String sql = "SELECT * FROM sell WHERE state =1 AND "+ key + "= ?";
+        String sql = "SELECT * FROM sell WHERE state = 0  AND "+ key + "= ?";
         List<Sell> ans = jdbcTemplate.query(sql , new SellRowMapper(),value);
         return ans;
     }

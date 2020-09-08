@@ -1,0 +1,20 @@
+<template name="fang">
+    <view class="recommend">
+        <navigator class="recommend-list" open-type="navigate" url="/pages/fang/fang?id={{ id }}">
+            <view>
+            <image src="{{ pic_url }}" />
+            </view>
+            <view class="recommend-list-item">
+                <view class="recommend-list-item-title">{{ fang_name }}</view>
+                <view class="recommend-list-item-spec">{{ fang_build_area }}平米 | {{ fang_shi }}室{{ fang_ting }}厅</view>
+                <view class="recommend-list-item-tag">
+                    <wu-rent status="{{ fang_status }}" />
+                </view>
+                <view class="recommend-list-item-price">
+                    <text>{{ fang_rent }}</text>
+                    元/月
+                </view>
+            </view>
+        </navigator>
+    </view>
+</template>

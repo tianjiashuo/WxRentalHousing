@@ -120,4 +120,28 @@ public class Sell{
     public void setState(boolean state) {
         this.state = state;
     }
+
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result += id*6 + hostId*9;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Rent)){
+            return false;
+        }else{
+            Sell sobj = (Sell)obj;
+            if(this==sobj){
+                return true;
+            }
+            if(sobj.id==(this.id)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 }
