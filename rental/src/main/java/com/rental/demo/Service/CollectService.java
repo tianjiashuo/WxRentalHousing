@@ -51,4 +51,20 @@ public class CollectService {
         }
         return result;
     }
+
+    /***
+     * 根据房屋id获得收藏了该房屋的所有用户id
+     * @author tian
+     * @return
+     */
+    public ArrayList<Integer> getAllUsersId(int houseId ,int houseType){
+        ArrayList<Integer> ids = new ArrayList<>();
+        List<Collection> collections = collectionDao.getAllUsersId(houseId,houseType);
+        Iterator<Collection> iter = collections.iterator();
+        while (iter.hasNext()) {
+            Collection collection = iter.next();
+            ids.add(collection.getUserId());
+        }
+        return ids;
+    }
 }
