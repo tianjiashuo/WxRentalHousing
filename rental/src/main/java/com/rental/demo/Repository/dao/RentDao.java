@@ -67,4 +67,11 @@ public class RentDao {
         ,1,rent.getIsForm());
     }
 
+    //房源状态修改
+    public int changeState(int id){
+        String sql = "UPDATE rent set state=0 WHERE id=? ";
+        return jdbcTemplate.update(sql,id);
+    }
+
+
 }

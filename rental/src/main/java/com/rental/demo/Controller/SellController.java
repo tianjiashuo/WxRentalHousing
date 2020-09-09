@@ -3,6 +3,7 @@ package com.rental.demo.Controller;
 import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
 import com.rental.demo.Service.RentService;
+import com.rental.demo.Service.SellBo;
 import com.rental.demo.Service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,4 +31,11 @@ public class SellController {
     public int insertSellHouse(@RequestBody Sell sell){
         return sellService.insertSellHouse(sell);
     }
+
+    @GetMapping("/sellinfo/{id}")
+    SellBo getSellById(@PathVariable int id){return sellService.getSellById(id);}
+
+    @PostMapping("/changeRentState/{id}")
+    int changeSellState(@PathVariable int id){return sellService.changeState(id);}
+
 }

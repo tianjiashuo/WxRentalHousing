@@ -2,6 +2,7 @@ package com.rental.demo.Service;
 
 import com.rental.demo.Repository.dao.ImageDao;
 import com.rental.demo.Repository.dao.RentDao;
+import com.rental.demo.Repository.dao.RoommatesDao;
 import com.rental.demo.Repository.dao.UserDao;
 import com.rental.demo.Repository.entity.Image;
 import com.rental.demo.Repository.entity.Rent;
@@ -15,6 +16,8 @@ public class RentService {
     private RentDao rentDao;
     @Autowired
     private ImageDao imageDao;
+    @Autowired
+    private RoommatesDao roommatesDao;
 
     private static final String ILLEGAL_STATE  ="-1";
     private static final String URENT_STATE  ="1";
@@ -65,5 +68,22 @@ public class RentService {
     public int insertRentHouse(Rent rent){
         return rentDao.insertRentHouse(rent);
     }
+
+    //提交租房申请
+    public int addApplication(RoommatesBo roommatesBo){
+        return roommatesDao.addApplication(roommatesBo);
+    }
+
+
+    //房东通过租房申请
+    public int admitApplication(int id){
+        return roommatesDao.admitApplication(id);
+    }
+
+    //租满了
+    public int changeState(int id){
+        return rentDao.changeState(id);
+    }
+
 
 }

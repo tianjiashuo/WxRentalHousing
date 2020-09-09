@@ -52,6 +52,10 @@ public class SellService {
         return sellBo;
     }
 
+    //卖出去了
+    public int changeState(int id) {
+        return sellDao.changeState(id);
+    }
 
     /***
      * 删除房源（更改房源状态）

@@ -1,4 +1,18 @@
 package com.rental.demo.Repository.mappers;
 
-public class RoommatesRowMapper {
+import com.rental.demo.Repository.entity.Roommates;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class RoommatesRowMapper implements RowMapper<Roommates> {
+    @Override
+    public Roommates mapRow(ResultSet rs, int i) throws SQLException {
+        Roommates roommates = new Roommates();
+        roommates.setId(rs.getInt("id"));
+        roommates.setHouseId(rs.getInt("house_id"));
+        roommates.setUserId(rs.getInt("user_id"));
+        roommates.setState(rs.getInt("state"));
+        return roommates;
+    }
 }

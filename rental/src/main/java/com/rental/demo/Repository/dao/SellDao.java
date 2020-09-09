@@ -60,4 +60,9 @@ public class SellDao {
         return jdbcTemplate.update(sql,sell.getHostId(),sell.getTitle(),sell.getAddress(),sell.getIsProperty(),sell.getType(),sell.getOrientation(),
                 sell.getFloor(),sell.getIsRenovation(),sell.getIsElevator(),sell.getArea(),sell.getPrice(),1);
     }
+    //房源状态修改
+    public int changeState(int id) {
+        String sql = "UPDATE sell set state=0 WHERE id=? ";
+        return jdbcTemplate.update(sql, id);
+    }
 }

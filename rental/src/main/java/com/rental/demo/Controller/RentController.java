@@ -1,7 +1,9 @@
 package com.rental.demo.Controller;
 
 import com.rental.demo.Repository.entity.Rent;
+import com.rental.demo.Service.RentBo;
 import com.rental.demo.Service.RentService;
+import com.rental.demo.Service.RoommatesBo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,4 +29,22 @@ public class RentController {
     public int insertRentHouse(@RequestBody Rent rent){
         return rentService.insertRentHouse(rent);
     }
+
+    @GetMapping ("/rentinfo/{id}")
+    RentBo getRentById (@PathVariable int id){
+        return  rentService.getRentById(id);
+    }
+
+    @GetMapping ("/roommatesinfo/{id}")
+    RoommatesBo getRoomatesById(@PathVariable int id){return  rentService.getRoomatesById(id);}
+
+    @PostMapping ("/addApplocation")
+    int addApplocation(@RequestBody RoommatesBo roommatesBo){return rentService.addApplication(roommatesBo);}
+
+    @PostMapping("/admitApplication/{id}")
+    int admitApplication(@PathVariable int id){return rentService.admitApplication(id);}
+
+    @PostMapping("/changeRentState/{id}")
+    int changeRentState(@PathVariable int id){return rentService.changeState(id);}
+
 }
