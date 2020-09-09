@@ -1,0 +1,28 @@
+/**index.wxss**/
+/* .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+/* .button{
+  width: 1000rpx;
+  height: 120rpx;
+  background-color: #008489;
+  color: white;
+  text-align: center;
+  line-height: 120rpx;
+  font-size: 28rpx;
+} */
+ .login{
+  width: 40px;
+  height: 40px;
+}
+.head{
+ height: 600rpx;
+ width: 700rpx;
+ justify-content: center; /** flex 属性， 水平居中**/
+}
+.button-sp-area{
+  margin: 0 auto;
+  width: 100%;
+}

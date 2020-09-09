@@ -1,18 +1,21 @@
-// pages/mypage/mypage.js
+// pages/my/my.js
+let app = getApp()
 Page({
-  
+
   /**
    * 页面的初始数据
    */
   data: {
-   
+    hasUserInfo: app.globalData.hasUserInfo,
+    userName: app.globalData.userName,
+    userImgUrl: app.globalData.userImgUrl
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+
   },
 
   /**
@@ -26,7 +29,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.setData({
+      hasUserInfo: app.globalData.hasUserInfo,
+      userName: app.globalData.userName,
+      userImgUrl: app.globalData.userImgUrl
+    })
   },
 
   /**
@@ -62,5 +69,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getUserInfo: function (e) {
+    console.log(e);
+    app.globalData.hasUserInfo = true;
+    app.globalData.userName = e.detail.userInfo.nickName;
+    app.globalData.userImgUrl = e.detail.userInfo.avatarUrl;
+    // wx.navigateBack({
+    //   url: '../my/my'
+    // })
   }
 })
+
+
