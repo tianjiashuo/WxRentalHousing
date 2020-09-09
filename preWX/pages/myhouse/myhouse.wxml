@@ -4,6 +4,11 @@
     <text class="iconfont icon-approve"></text>
     <text>请发布最真实的房源信息</text>
   </view>
+  <view>
+  <label>发布类型</label>
+  <select prop-array='{{selectArray}}'></select>
+  </view>
+  
   <form bindsubmit="dopost">
     <view>
       <label>房屋描述</label>
@@ -41,7 +46,9 @@
       <label>预估价格</label>
       <input name="price" value="{{ rentinfo.is_price}}" placeholder=" 预估价格" />
     </view>
-    <view class="tip-msg">
+  </form>
+
+  <view class="tip-msg">
       请添加房屋图片
       <text>(不少于一张)</text>
     </view>
@@ -58,7 +65,5 @@
       提交信息
       <button type="primary" form-type="submit">提交信息</button>
     </view>
-  
-  </form>
 
 </view>

@@ -7,8 +7,6 @@ import com.rental.demo.Repository.entity.Image;
 import com.rental.demo.Repository.entity.Rent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.security.PrivateKey;
 import java.util.*;
 
 @Service("RentService")
@@ -18,6 +16,9 @@ public class RentService {
     @Autowired
     private ImageDao imageDao;
 
+    private static final String ILLEGAL_STATE  ="-1";
+    private static final String URENT_STATE  ="1";
+    private static final String RENT_STATE  ="0";
     /***
      * 租房筛选房源
      * @param condition
@@ -49,6 +50,15 @@ public class RentService {
         RentBo rentBo = new RentBo(rent.getId(),rent.getArea(),rent.getPrice(),rent.getAddress(),
                 rent.getTitle(),rent.getType(),rent.getFurniture(),image);
         return rentBo;
+    }
+
+    /***
+     * 删除租房信息（更改房源状态为非法）
+     * @param houseId
+     * @return
+     */
+    public boolean deleteRentInfo(String houseId){
+        return rentDao.updateRentState(houseId,ILLEGAL_STATE);
     }
 
 }

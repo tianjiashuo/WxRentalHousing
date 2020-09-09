@@ -17,6 +17,10 @@ public class SellService {
     @Autowired
     private ImageDao imageDao;
 
+    private static final String ILLEGAL_STATE  ="-1";
+    private static final String USELL_STATE  ="1";
+    private static final String SELL_STATE  ="0";
+
     /**
      * 买房筛选房源
      * @param condition
@@ -46,5 +50,14 @@ public class SellService {
         SellBo sellBo = new SellBo(sell.getId(), sell.getArea(), sell.getPrice(), sell.getAddress(),
                 sell.getTitle(), sell.getType(), sell.getIsRenovation(), image);
         return sellBo;
+    }
+
+    /***
+     * 删除房源（更改房源状态）
+     * @param sellId
+     * @return
+     */
+    public boolean deleteSellInfo(String sellId){
+        return sellDao.updateSellState(sellId,ILLEGAL_STATE);
     }
 }

@@ -22,4 +22,8 @@ public class SellController {
     Set<Sell> selectSell(@RequestBody Map<String,String> condition){
         return sellService.selectSell(condition);
     }
+    @PostMapping("/sell/delete")
+    boolean deleteSellInfo(@RequestBody Map<String,String> id){
+        return sellService.deleteSellInfo(id.get("id"));
+    }
 }

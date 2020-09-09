@@ -34,6 +34,15 @@ public class SellDao {
         return ans;
     }
 
+    /*
+     * 更改state
+     */
+    public boolean updateSellState(String sellId, String stateCode){
+        String sql = "UPDATE sell set state = "+ stateCode + " WHERE id = ?";
+        int flag = jdbcTemplate.update(sql,sellId);
+        return ( flag==1);
+    }
+
     /***
      * 按照id获取信息
      * @author tian

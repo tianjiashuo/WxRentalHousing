@@ -17,4 +17,8 @@ public class RentController {
      Set<Rent> selectRent(@RequestBody Map<String,String> condition){
         return rentService.selectRent(condition);
     }
+    @PostMapping("rent/delete")
+     boolean deleteRentinfo(@RequestBody Map<String,String> id){
+        return rentService.deleteRentInfo(id.get("id"));
+    }
 }

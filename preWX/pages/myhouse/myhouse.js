@@ -18,7 +18,15 @@ Page({
       area:"",
       prive:"",
       state:""
-     }
+     },
+     selectArray: [{
+      "id": "0",
+      "text": "租房"
+  }, {
+      "id": "1",
+      "text": "买房"
+  }]
+
   },
   // close: function () {
   //   this.setData({
