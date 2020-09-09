@@ -1,0 +1,34 @@
+<!--pages/myhouse/myhouse.wxml-->
+<view>
+  <view class="tip">
+    <text class="iconfont icon-approve"></text>
+    <text>信守承诺，发送真实房源信息</text>
+  </view>
+  <form bindsubmit="dopost">
+    <view>
+      <label>房屋描述</label>
+      <input name="title" value="{{ rentinfo.title }}" placeholder="房屋标题" />
+    </view>
+    <view>
+      <label>地址</label>
+      <input name="address" value="{{ rentinfo.address }}" placeholder="地址" />
+    </view>
+    <view class="tip-msg">
+      请添加房屋图片
+      <text>(不少于一张)</text>
+    </view>
+    <view class="uppic" bind:tap="upfile">
+      <input maxlength="{{ 500 }}" value="{{ userinfo.card_img }}" name="card_img" type="text" hidden="{{ true }}" />
+      <text class="iconfont icon-jiahao"></text>
+    </view>
+    <view class="imgbox">
+      <block wx:for="{{ userinfo.img_list }}" wx:key="imgList">
+        <image src="{{ item }}" />
+      </block>
+    </view>
+    <view class="sendbtn">
+      提交信息
+      <button type="primary" form-type="submit">提交信息</button>
+    </view>
+  </form>
+</view>

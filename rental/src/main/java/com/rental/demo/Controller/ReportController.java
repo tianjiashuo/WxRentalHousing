@@ -24,7 +24,7 @@ public class ReportController {
     public boolean checkReport(@RequestBody Report report){
         return reportService.checkReport(report);
     }
-    @GetMapping("/unDealreport")
+    @GetMapping("/unDealReport")
     public List<Report> showUndealReport(){
         return reportService.showUnDealReport();
     }

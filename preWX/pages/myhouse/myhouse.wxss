@@ -1,0 +1,85 @@
+page {
+  background-color: #fff;
+  font-size: medium;
+}
+.tip {
+  background-color: #fff3cd;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 14px;
+  color: #fb6951;
+  padding-left: 10rpx;
+}
+.tip text:nth-of-type(1) {
+  margin-right: 10rpx;
+}
+form view {
+  padding: 30rpx;
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #eeeeee;
+}
+form view:nth-last-of-type(1){
+  border: none;
+}
+form view label {
+  margin-right: 30rpx;
+}
+form view input {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.tip-msg{
+  color: #a4a4a4;
+}
+.tip-msg text{
+  margin-left: 10rpx;
+  font-size: 12px;
+}
+.uppic{
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px dashed #a4a4a4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sendbtn{
+  position: fixed;
+  bottom: 0px;
+  width: 750rpx;
+  height: 100rpx;
+  background:#2aa515;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+
+.sendbtn button {
+  width: 100%;
+  height: 100rpx;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  border-radius: 15rpx;
+}
+
+.imgbox{
+  height: 200rpx;
+  display: flex;
+  justify-content: space-between
+}
+.imgbox image{
+  width: 160rpx;
+  height: 160rpx;
+}

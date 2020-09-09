@@ -1,0 +1,7 @@
+.rent_tag3 {
+    padding: 10rpx;
+    background: #cde6fe;
+    color: #5aabfd;
+    font-size: 12px;
+    border-radius: 5px;
+}

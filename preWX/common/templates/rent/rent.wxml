@@ -1,0 +1,1 @@
+<text class="rent_tag3">{{ str[status] }}</text>

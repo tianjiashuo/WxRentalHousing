@@ -22,7 +22,7 @@ public class RentDao {
     关键字查询
      */
     public List<Rent> queryByKWords(String field, String keywords){
-        String sql = "SELECT * FROM rent WHERE state = 1 AND "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
+        String sql = "SELECT * FROM rent WHERE state = 0 AND "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
         List<Rent> ans = jdbcTemplate.query(sql, new RentRowMapper());
         return ans;
     };
@@ -31,7 +31,7 @@ public class RentDao {
     条件查询
      */
     public List<Rent> queryByCondt(String key,String value){
-        String sql = "SELECT * FROM rent WHERE state =1 AND "+ key + "= ?";
+        String sql = "SELECT * FROM rent WHERE state = 0 AND "+ key + "= ?";
         List<Rent> ans = jdbcTemplate.query(sql, new RentRowMapper(),value);
         return ans;
     }
