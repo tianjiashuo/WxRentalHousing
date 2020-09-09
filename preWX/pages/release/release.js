@@ -1,33 +1,13 @@
-// pages/renthouse/renthouse.js
+// pages/release/release.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    selectArray: [{
-      "id": "1",
-      "text": "是"
-  }, {
-      "id": "0",
-      "text": "否"
-  }],
-  showActionsheet: false,
-  groups: [
-      { text: '示例菜单', value: 1 },
-      { text: '示例菜单', value: 2 },
-      { text: '负向菜单', type: 'warn', value: 3 }
-  ]
+
   },
-  close: function () {
-    this.setData({
-        showActionsheet: false
-    })
-},
-btnClick(e) {
-    console.log(e)
-    this.close()
-},
+
   /**
    * 生命周期函数--监听页面加载
    */

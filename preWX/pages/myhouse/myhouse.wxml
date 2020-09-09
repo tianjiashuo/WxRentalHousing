@@ -2,7 +2,7 @@
 <view>
   <view class="tip">
     <text class="iconfont icon-approve"></text>
-    <text>信守承诺，发送真实房源信息</text>
+    <text>请发布最真实的房源信息</text>
   </view>
   <form bindsubmit="dopost">
     <view>
@@ -10,8 +10,36 @@
       <input name="title" value="{{ rentinfo.title }}" placeholder="房屋标题" />
     </view>
     <view>
-      <label>地址</label>
+      <label>房屋地址</label>
       <input name="address" value="{{ rentinfo.address }}" placeholder="地址" />
+    </view>
+    <view>
+      <label>有无产权</label>
+      <switch name= " property"></switch>
+    </view>
+    <view>
+      <label>房屋户型</label>
+      <input name="type" value="{{ rentinfo.type}}" placeholder=" * 室 * 厅" />
+    </view>
+    <view>
+      <label>房屋方向</label>
+      <input name="orientation" value="{{ rentinfo.orientation}}" placeholder=" * * 朝 向" />
+    </view>
+    <view>
+      <label>有无装修</label>
+      <switch name= " is_renovation"></switch>
+    </view>
+    <view>
+      <label>有无电梯</label>
+      <switch name="is_elevator "></switch>
+    </view>
+    <view>
+      <label>房屋面积</label>
+      <input name="area" value="{{ rentinfo.is_area}}" placeholder=" 房屋面积" />
+    </view>
+    <view>
+      <label>预估价格</label>
+      <input name="price" value="{{ rentinfo.is_price}}" placeholder=" 预估价格" />
     </view>
     <view class="tip-msg">
       请添加房屋图片
@@ -30,5 +58,7 @@
       提交信息
       <button type="primary" form-type="submit">提交信息</button>
     </view>
+  
   </form>
+
 </view>

@@ -1,48 +1,56 @@
 {
-  "pages":[
-    "pages/myhouse/myhouse",
+  "pages": [
+    "pages/release/release",
     "pages/renthouse/renthouse",
     "pages/search/search",
-    "pages/buyhouse/buyhouse",
-    "pages/mypage/mypage",
-    "pages/logs/logs"
+    "pages/myhouse/myhouse",
+    "pages/logs/logs",
+     "pages/mypage/mypage",
+    "pages/buyhouse/buyhouse"
+    
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#0000",
     "navigationBarTitleText": "深入理解房屋买卖",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#8a8a8a",
     "selectedColor": "#2aa515",
     "backgroundColor": "#ffffff",
-    "list": [{
-      "pagePath": "pages/renthouse/renthouse",
-      "text": "我要租房",
-      "iconPath": "icons/_renthouse.png",
-      "selectedIconPath": "icons/renthouse.png"
-    },
-    {
-      "pagePath": "pages/buyhouse/buyhouse",
-      "text": "我要买房",
-      "iconPath": "icons/_buyhouse.png",
-      "selectedIconPath": "icons/buyhouse.png"
-    },
-    {
-      "pagePath": "pages/myhouse/myhouse",
-      "text": "我要发布",
-      "iconPath": "icons/_myhouse.png",
-      "selectedIconPath": "icons/myhouse.png"
-    },
-    {
-      "pagePath": "pages/mypage/mypage",
-      "text": "我的主页",
-      "iconPath": "icons/_mypage.png",
-      "selectedIconPath": "icons/mypage.png"
-    }
-  ]},
+    "list": 
+    [
+      {
+        "pagePath": "pages/renthouse/renthouse",
+        "text": "我要租房",
+        "iconPath": "icons/_renthouse.png",
+        "selectedIconPath": "icons/renthouse.png"
+      },
+      {
+        "pagePath": "pages/buyhouse/buyhouse",
+        "text": "我要买房",
+        "iconPath": "icons/_buyhouse.png",
+        "selectedIconPath": "icons/buyhouse.png"
+      },
+      {
+        "pagePath": "pages/release/release",
+        "text": "我要发布",
+        "iconPath": "icons/_myhouse.png",
+        "selectedIconPath": "icons/myhouse.png"
+      },
+      {
+        "pagePath": "pages/mypage/mypage",
+        "text": "我的主页",
+        "iconPath": "icons/_mypage.png",
+        "selectedIconPath": "icons/mypage.png"
+      }
+    ]
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

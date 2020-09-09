@@ -13,6 +13,7 @@ page {
 .tip text:nth-of-type(1) {
   margin-right: 10rpx;
 }
+
 form view {
   padding: 30rpx;
   display: flex;
@@ -20,15 +21,22 @@ form view {
   line-height: 80rpx;
   border-bottom: 1px solid #eeeeee;
 }
-form view:nth-last-of-type(1){
+ /* form view:nth-last-of-type(1){
   border: none;
-}
+}  */
 form view label {
   margin-right: 30rpx;
 }
 form view input {
   height: 80rpx;
   line-height: 80rpx;
+}
+form view mp-actionSheet{
+ display: inline;
+}
+form view switch{
+  position: absolute;
+  right: 15rpx;
 }
 .tip-msg{
   color: #a4a4a4;
