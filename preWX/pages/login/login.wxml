@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<!-- <view class="container"> -->
+ <image class="head" src='../../icons/login/loginHead3.png' mode='aspectFill'></image>
+<button type="primary" >使用微信账号登陆</button>
+ 
+
+  <view class="userinfo">
+    <button class="button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 使用微信账号登录 </button>
+  </view>
+
+
+<!-- </view> -->

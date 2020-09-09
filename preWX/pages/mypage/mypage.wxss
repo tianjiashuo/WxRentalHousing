@@ -1,1 +1,159 @@
-/* pages/mypage/mypage.wxss */
+/* pages/mine/mine.wxss */
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav-top {
+  position: relative;
+  width: 100%;
+  height: 160rpx;
+  border-bottom: 2rpx solid #c3c3c3;
+}
+
+.nav-top-l {
+  position: absolute;
+  top: 45rpx;
+  left: 35rpx;
+  color: green;
+  width: 200rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  border: 2rpx solid green;
+  border-radius: 10rpx;
+}
+
+.bg-color {
+  background-color: #d9e9e8;
+}
+
+.nav-top-r {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  position: absolute;
+  top: 42rpx;
+  left: 620rpx;
+}
+
+.main {
+  width: 100%;
+  height: 800rpx;
+}
+
+swiper {
+  width: 100%;
+  height: 550rpx;
+}
+
+swiper swiper-item {
+  width: 100%;
+  height: 550rpx;
+}
+
+swiper-item image {
+  width: 100%;
+  height: 550rpx;
+}
+
+.nav-bottom {
+  position: fixed;
+  bottom: 50rpx;
+  right: 50rpx;
+  border-radius: 5rpx;
+  border: 1rpx solid black;
+  width: 140rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 28rpx;
+}
+
+.container1 {
+  width: 86vw;
+  height: 90vh;
+  margin: 7%;
+  margin-top: 0;
+}
+
+.top-nav {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6%;
+}
+
+.userName {
+  width: 300rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 50rpx;
+  font-weight: bolder;
+}
+.main-word{
+  width: 300rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 40rpx;
+  font-weight: bolder;
+}
+
+.userImg {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+}
+
+.main1 {
+  width: 100%;
+  /* height: 72vh; */
+}
+
+.main1>view {
+  width: 100%;
+  /* height: 24vh; */
+}
+
+.main1-word {
+  width: 100%;
+  height: 42rpx;
+}
+
+.main1-item {
+  width: 100%;
+  height: 150rpx;
+  border-bottom: 2rpx solid gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.main1-item>view{
+  width: 25%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.main1-item>view>image{
+  width: 50%;
+  height: 80rpx;
+  margin-top: 24rpx;
+  margin-left: 37rpx;
+}
+.main1-item>view>view{
+  width: 100%;
+  height: 40rpx;
+  text-align: center;
+}
+
+.button{
+  width: 88%;
+  height: 120rpx;
+  background-color: #008489;
+  color: white;
+  text-align: center;
+  line-height: 120rpx;
+  font-size: 28rpx;
+}

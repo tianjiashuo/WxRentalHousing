@@ -1,2 +1,42 @@
-<!--pages/mypage/mypage.wxml-->
-<text>pages/mypage/mypage.wxml</text>
+
+<block wx:if="{{!hasUserInfo}}">
+  <!-- <view class="container"> -->
+    <view class="nav-top">
+      <navigator open-type="navigate" url='../login/login'>
+        <view class="nav-top-l" hover-class='bg-color'>注册或登录</view>
+      </navigator>
+      <image class="nav-top-r" src='https://z1.muscache.cn/defaults/user_pic-50x50.png?v=3'></image>
+    </view>
+
+</block>
+<block wx:else>
+  
+</block>
+<view class="container1">
+    <view class="top-nav">
+      <view class="userName">{{userName}}</view>
+      <image class="userImg" src='{{userImgUrl}}'></image>
+    </view>
+    <view class="main1">
+      <view>
+        <view class="main-word">个人信息:</view>
+        <view class="main1-item">
+          <view class="gender">性别:</view>
+        </view>
+        <view class="main1-item">
+          <view class="phone">手机号：</view>
+        </view>
+        <view class="main1-item">
+          <view class="IDnumber">身份证号：</view>
+        </view>
+      </view>
+       <view class="main-word">我的:</view>
+        <view class="main1-item">
+          <view class="IDnumber">我的房源：</view>
+        </view>
+        <view class="main1-item">
+          <view class="IDnumber">我的收藏：</view>
+        </view>
+    </view>
+
+  </view>
