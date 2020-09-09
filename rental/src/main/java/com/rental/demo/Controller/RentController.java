@@ -14,11 +14,17 @@ public class RentController {
     private RentService rentService;
 
     @PostMapping ("/rent/select")
-     Set<Rent> selectRent(@RequestBody Map<String,String> condition){
+    public Set<Rent> selectRent(@RequestBody Map<String,String> condition){
         return rentService.selectRent(condition);
     }
+
     @PostMapping("rent/delete")
-     boolean deleteRentinfo(@RequestBody Map<String,String> id){
+     boolean deleteRentinfo(@RequestBody Map<String,String> id) {
         return rentService.deleteRentInfo(id.get("id"));
+    }
+
+    @PostMapping("/insertRentHouse")
+    public int insertRentHouse(@RequestBody Rent rent){
+        return rentService.insertRentHouse(rent);
     }
 }

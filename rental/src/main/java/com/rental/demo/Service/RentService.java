@@ -52,13 +52,18 @@ public class RentService {
         return rentBo;
     }
 
+
     /***
      * 删除租房信息（更改房源状态为非法）
      * @param houseId
      * @return
      */
-    public boolean deleteRentInfo(String houseId){
-        return rentDao.updateRentState(houseId,ILLEGAL_STATE);
+    public boolean deleteRentInfo(String houseId) {
+        return rentDao.updateRentState(houseId, ILLEGAL_STATE);
+    }
+    //发布房源
+    public int insertRentHouse(Rent rent){
+        return rentDao.insertRentHouse(rent);
     }
 
 }

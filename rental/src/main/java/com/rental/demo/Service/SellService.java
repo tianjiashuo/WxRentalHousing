@@ -52,12 +52,18 @@ public class SellService {
         return sellBo;
     }
 
+
     /***
      * 删除房源（更改房源状态）
      * @param sellId
      * @return
      */
-    public boolean deleteSellInfo(String sellId){
-        return sellDao.updateSellState(sellId,ILLEGAL_STATE);
+    public boolean deleteSellInfo(String sellId) {
+        return sellDao.updateSellState(sellId, ILLEGAL_STATE);
+    }
+
+    public int insertSellHouse(Sell sell){
+        return sellDao.insertSellHouse(sell);
+
     }
 }

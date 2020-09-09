@@ -35,5 +35,21 @@ public class UserDao {
                 userBo.getGender(),userBo.getIdNumber(),id);
     }
 
+    public boolean checkUserRealName(int userId){
+        String sql = "SELECT * FROM user WHERE id = ?";
+        User user = jdbcTemplate.queryForObject(sql,new UserRowMapper(),userId);
+        if(user.getIDnumber().equals("")){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public int insertUserRealName(int id,UserBo userBo){
+        String sql = "UPDATE user set IDnumber=? WHERE id=? ";
+        return jdbcTemplate.update(sql,userBo.getIdNumber(),id);
+
+    }
 }
 
