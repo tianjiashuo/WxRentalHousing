@@ -6,6 +6,7 @@ import com.rental.demo.Repository.dao.RoommatesDao;
 import com.rental.demo.Repository.dao.UserDao;
 import com.rental.demo.Repository.entity.Image;
 import com.rental.demo.Repository.entity.Rent;
+import com.rental.demo.Repository.entity.Roommates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -85,5 +86,12 @@ public class RentService {
         return rentDao.changeState(id);
     }
 
+    //获取合租信息
+    public RoommatesBo getRoomatesById(int id){
+        Roommates roommates = roommatesDao.queryById(id);
+        RoommatesBo roommatesBo = new RoommatesBo(roommates.getId(),roommates.getUserId(),
+                roommates.getHouseId(),roommates.getState());
+        return roommatesBo;
+    }
 
 }
