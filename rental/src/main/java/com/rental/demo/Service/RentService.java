@@ -51,4 +51,9 @@ public class RentService {
         return rentBo;
     }
 
+    //发布房源
+    public int insertRentHouse(Rent rent){
+        return rentDao.insertRentHouse(rent);
+    }
+
 }

@@ -14,7 +14,12 @@ public class RentController {
     private RentService rentService;
 
     @PostMapping ("/rent/select")
-     Set<Rent> selectRent(@RequestBody Map<String,String> condition){
+    public Set<Rent> selectRent(@RequestBody Map<String,String> condition){
         return rentService.selectRent(condition);
+    }
+
+    @PostMapping("/insertRentHouse")
+    public int insertRentHouse(@RequestBody Rent rent){
+        return rentService.insertRentHouse(rent);
     }
 }

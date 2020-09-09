@@ -20,7 +20,7 @@ public class SellDao {
     关键字查询
      */
     public List<Sell> queryByKWords(String field, String keywords){
-        String sql = "SELECT * FROM sell WHERE state = 0 AND  "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
+        String sql = "SELECT * FROM sell WHERE state = 1 AND  "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
         List<Sell> ans = jdbcTemplate.query(sql , new SellRowMapper());
         return ans;
     };
@@ -29,7 +29,7 @@ public class SellDao {
     条件查询
      */
     public List<Sell> queryByCondt(String key,String value){
-        String sql = "SELECT * FROM sell WHERE state = 0  AND "+ key + "= ?";
+        String sql = "SELECT * FROM sell WHERE state = 1  AND "+ key + "= ?";
         List<Sell> ans = jdbcTemplate.query(sql , new SellRowMapper(),value);
         return ans;
     }
@@ -43,5 +43,12 @@ public class SellDao {
         String sql = "SELECT * FROM sell WHERE id = ?";
         Sell sell = jdbcTemplate.queryForObject(sql,new SellRowMapper(),id);
         return sell;
+    }
+    public int insertSellHouse(Sell sell){
+        String sql = "INSERT INTO sell (host_id,title,address,property,type,orientation" +
+                ",floor,is_renovation,is_elevator,area,price,state) " +
+                "VALUES(?, ? ,?, ?, ?, ? , ? , ? , ? , ? , ? , ? )";
+        return jdbcTemplate.update(sql,sell.getHostId(),sell.getTitle(),sell.getAddress(),sell.getIsProperty(),sell.getType(),sell.getOrientation(),
+                sell.getFloor(),sell.getIsRenovation(),sell.getIsElevator(),sell.getArea(),sell.getPrice(),1);
     }
 }

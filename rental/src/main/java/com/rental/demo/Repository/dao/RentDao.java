@@ -22,7 +22,7 @@ public class RentDao {
     关键字查询
      */
     public List<Rent> queryByKWords(String field, String keywords){
-        String sql = "SELECT * FROM rent WHERE state = 0 AND "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
+        String sql = "SELECT * FROM rent WHERE state = 1 AND "+ field + " LIKE  \"%" + keywords+ "%\"  " ;
         List<Rent> ans = jdbcTemplate.query(sql, new RentRowMapper());
         return ans;
     };
@@ -31,7 +31,7 @@ public class RentDao {
     条件查询
      */
     public List<Rent> queryByCondt(String key,String value){
-        String sql = "SELECT * FROM rent WHERE state = 0 AND "+ key + "= ?";
+        String sql = "SELECT * FROM rent WHERE state = 1 AND "+ key + "= ?";
         List<Rent> ans = jdbcTemplate.query(sql, new RentRowMapper(),value);
         return ans;
     }
@@ -48,5 +48,14 @@ public class RentDao {
         return rent;
     }
 
+    public int insertRentHouse(Rent rent){
+        String sql = "INSERT INTO rent (host_id,address,title,type,orientation,floor,is_elevator," +
+                "is_pet,shortest_lease,area,furniture,price,state,form) " +
+                "VALUES(?, ? ,?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? ,?)";
+        return jdbcTemplate.update(sql,rent.getHostId(),rent.getAddress(),rent.getTitle(),rent.getType()
+                ,rent.getOrientation(),rent.getFloor(),rent.getIsElevator(),rent.getIsPet(),
+                rent.getShortestLease(),rent.getArea(),rent.getFurniture(),rent.getPrice()
+        ,1,rent.getIsForm());
+    }
 
 }

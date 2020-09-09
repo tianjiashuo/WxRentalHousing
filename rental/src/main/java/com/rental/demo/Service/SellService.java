@@ -47,4 +47,8 @@ public class SellService {
                 sell.getTitle(), sell.getType(), sell.getIsRenovation(), image);
         return sellBo;
     }
+
+    public int insertSellHouse(Sell sell){
+        return sellDao.insertSellHouse(sell);
+    }
 }

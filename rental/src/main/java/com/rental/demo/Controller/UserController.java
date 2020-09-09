@@ -1,5 +1,6 @@
 package com.rental.demo.Controller;
 
+import com.rental.demo.Service.CheckIdNumber;
 import com.rental.demo.Service.RentService;
 import com.rental.demo.Service.UserBo;
 import com.rental.demo.Service.UserService;
@@ -27,5 +28,19 @@ public class UserController {
         return userService.editUserInfo(id,userBo);
     }
 
+    @PostMapping("/checkUserRealName/{id}")
+    boolean checkUserRealName(@PathVariable int id){
+        return userService.checkUserRealName(id);
+    }
+    @PostMapping("/insertUserRealName/{id}")
+    int insertUserRealName(@PathVariable int id,@RequestBody UserBo userBo){
+        if (CheckIdNumber.isIDNumber(userBo.getIdNumber())){
+            return userService.insertUserRealName(id,userBo);
+        }
+        else{
+            return -1;
+        }
+
+    }
 
 }

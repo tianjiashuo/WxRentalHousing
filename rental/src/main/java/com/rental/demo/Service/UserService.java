@@ -25,4 +25,12 @@ public class UserService {
     public int editUserInfo(int id,UserBo userBo){
         return userDao.editUserInfo(id,userBo);
     }
+
+    public boolean checkUserRealName(int userId){
+        return userDao.checkUserRealName(userId);
+    }
+
+    public int insertUserRealName(int id,UserBo userBo){
+        return userDao.insertUserRealName(id,userBo);
+    }
 }

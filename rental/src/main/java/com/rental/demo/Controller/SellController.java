@@ -22,4 +22,9 @@ public class SellController {
     Set<Sell> selectSell(@RequestBody Map<String,String> condition){
         return sellService.selectSell(condition);
     }
+
+    @PostMapping("/insertSellHouse")
+    public int insertSellHouse(@RequestBody Sell sell){
+        return sellService.insertSellHouse(sell);
+    }
 }
