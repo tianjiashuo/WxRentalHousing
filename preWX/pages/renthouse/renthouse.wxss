@@ -1,1 +1,5 @@
 /* pages/renthouse/renthouse.wxss */
+mp-actionSheet{
+  height: 30rpx;
+  width: 30rpx;
+}

@@ -1,0 +1,9 @@
+<!--pages/release/release.wxml-->
+<view class="main">
+    <view class="word1">我要发布</view>
+    <view class="word2">请先完善实名 再发布房源信息</view>
+    <image class="bg-img" mode="widthFix" src='../../images/message-bgimg.jpg'></image>
+      <navigator url="../myhouse/myhouse">
+    <view class="button"hover-class="bg-color">开始探索</view>
+     </navigator>
+</view>
