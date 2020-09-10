@@ -51,5 +51,11 @@ public class UserDao {
         return jdbcTemplate.update(sql,userBo.getIdNumber(),id);
 
     }
+
+    public String getPassword(int id){
+        String sql = "SELECT * FROM user WHERE id = ?";
+        System.out.println(jdbcTemplate.queryForObject(sql,new UserRowMapper(),id));
+        return jdbcTemplate.queryForObject(sql,new UserRowMapper(),id).getPassword();
+    }
 }
 

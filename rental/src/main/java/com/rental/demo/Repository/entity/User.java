@@ -39,13 +39,13 @@ public class User {
         return password;
     }
     public void setPassword(String password){
-        this.password = this.password;
+        this.password = password;
     }
     public String getPhone(){
         return phone;
     }
     public void setPhone(String phone){
-        this.phone= this.phone;
+        this.phone= phone;
     }
     public boolean getGender(){
         return gender;
