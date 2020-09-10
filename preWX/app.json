@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/myhouse/myhouse",
+   
     "pages/release/release",
+    "pages/myhouse/myhouse",
     "pages/renthouse/renthouse",
     "pages/search/search",
     "pages/logs/logs",
