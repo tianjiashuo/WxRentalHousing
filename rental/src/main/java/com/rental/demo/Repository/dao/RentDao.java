@@ -61,6 +61,9 @@ public class RentDao {
         String sql = "INSERT INTO rent (host_id,address,title,type,orientation,floor,is_elevator," +
                 "is_pet,shortest_lease,area,furniture,price,state,form) " +
                 "VALUES(?, ? ,?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? ,?)";
+
+        System.out.println(rent.getAddress()+"----------");
+        System.out.println(rent.getHostId()+"----------");
         return jdbcTemplate.update(sql,rent.getHostId(),rent.getAddress(),rent.getTitle(),rent.getType()
                 ,rent.getOrientation(),rent.getFloor(),rent.getIsElevator(),rent.getIsPet(),
                 rent.getShortestLease(),rent.getArea(),rent.getFurniture(),rent.getPrice()
