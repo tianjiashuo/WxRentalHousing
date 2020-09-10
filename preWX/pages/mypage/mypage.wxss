@@ -169,7 +169,7 @@ swiper-item image {
   margin-left: 3rem;
 }
 .apply{
-  width: 80rpx;
+  width: 2.5rem;
   height: 3rem;
   margin-left: 3rem;
 }
@@ -178,6 +178,13 @@ swiper-item image {
   display: flex;
   justify-content: center;
 }
+.icons{
+  width: 3rem;
+}
 .mine{
   margin-top: 1rem;
+}
+.edit{
+  width:1.2rem;
+  height: 1.2rem;
 }
