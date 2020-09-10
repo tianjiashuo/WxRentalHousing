@@ -1,6 +1,7 @@
 package com.rental.demo.Repository.dao;
 
 import com.rental.demo.Repository.entity.Collection;
+import com.rental.demo.Repository.entity.Image;
 import com.rental.demo.Repository.mappers.CollectionRowMapper;
 import com.rental.demo.Repository.mappers.ImageRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,11 @@ public class ImageDao {
             String sql = "SELECT * FROM image WHERE house_id = ? AND house_type=? LIMIT 1";
             String image= jdbcTemplate.queryForObject(sql, new ImageRowMapper(),houseId,houseType).getImageUrl();
             return image;
+    }
+        //查询所有图片
+    public List<Image> getAllImageById(int houseId, int houseType){
+        String sql = "SELECT * FROM image WHERE house_id = ? AND house_type=?";
+        List<Image> images= jdbcTemplate.query(sql, new ImageRowMapper(),houseId,houseType);
+        return images;
     }
 }

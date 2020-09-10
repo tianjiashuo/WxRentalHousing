@@ -33,7 +33,12 @@ public class SellController {
     @GetMapping("/sellinfo/{id}")
     SellBo getSellById(@PathVariable int id){return sellService.getSellById(id);}
 
-    @PostMapping("/changeRentState/{id}")
+    @GetMapping ("/sellAllInfo/{id}")
+    Map<String,Object>getRentAllById(@PathVariable int id){
+        return sellService.getSellAllById(id);
+    }
+
+    @PostMapping("/changeSellState/{id}")
     int changeSellState(@PathVariable int id){return sellService.changeState(id);}
 
 }

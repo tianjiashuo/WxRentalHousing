@@ -26,9 +26,9 @@ public class RoommatesDao {
     //用户申请
 
     public int  addApplication(RoommatesBo roommatesBo){
-        String sql = "INSERT INTO roommates_info (id,house_id,user_id,state) VALUES(?, ? ,?,?)";
-        return jdbcTemplate.update(sql,roommatesBo.getId(),roommatesBo.getHouseId(),
-                roommatesBo.getUserId(),roommatesBo.getState(),true);
+        String sql = "INSERT INTO roommates_info (house_id,user_id,state) VALUES(? ,?,'0')";
+        return jdbcTemplate.update(sql,roommatesBo.getHouseId(),
+                roommatesBo.getUserId());
     }
 
     //房东同意

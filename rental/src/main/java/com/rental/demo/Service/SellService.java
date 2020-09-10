@@ -1,13 +1,13 @@
 package com.rental.demo.Service;
 import com.rental.demo.Repository.dao.ImageDao;
 import com.rental.demo.Repository.dao.SellDao;
+import com.rental.demo.Repository.entity.Image;
+import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service("SellService")
 public class SellService {
@@ -20,6 +20,7 @@ public class SellService {
     private static final String ILLEGAL_STATE  ="-1";
     private static final String USELL_STATE  ="1";
     private static final String SELL_STATE  ="0";
+    private static final String HOUSE_TYPE_SELL = "1";
 
     /**
      * 买房筛选房源
@@ -44,12 +45,29 @@ public class SellService {
         return ans;
     }
 
+    /**
+     * 查询首页信息
+     */
     public SellBo getSellById(int id) {
         Sell sell = sellDao.queryById(id);
         String image = imageDao.getFirstImageById(id, 1);
         SellBo sellBo = new SellBo(sell.getId(), sell.getArea(), sell.getPrice(), sell.getAddress(),
                 sell.getTitle(), sell.getType(), sell.getIsRenovation(), image);
         return sellBo;
+    }
+
+    /**
+     * 查询商品的详细信息
+     * @param id
+     * @return
+     */
+    public Map<String,Object>getSellAllById(int id){
+        Map<String,Object>map = new HashMap<String, Object>();
+        Sell sell = sellDao.queryById(id);
+        map.put("sellInfo",sell);
+        List<Image> images = imageDao.getAllImageById(sell.getId(), Integer.parseInt(HOUSE_TYPE_SELL));
+        map.put("imageList",images);
+        return map;
     }
 
     //卖出去了
