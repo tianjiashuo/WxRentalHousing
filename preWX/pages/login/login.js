@@ -15,7 +15,7 @@ Page({
     app.globalData.userName = e.detail.userInfo.nickName;
     app.globalData.userImgUrl = e.detail.userInfo.avatarUrl;
     wx.navigateBack({
-      url: '../my/my'
+      url: '../mypage/mypage'
     })
   }
 })
