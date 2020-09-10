@@ -157,3 +157,27 @@ swiper-item image {
   line-height: 120rpx;
   font-size: 28rpx;
 }
+
+.collection{
+  width: 3rem;
+  height: 3rem;
+}
+
+.myhouse{
+  width: 3rem;
+  height: 3rem;
+  margin-left: 3rem;
+}
+.apply{
+  width: 80rpx;
+  height: 3rem;
+  margin-left: 3rem;
+}
+.my-icon{
+  margin-top:2rem;
+  display: flex;
+  justify-content: center;
+}
+.mine{
+  margin-top: 1rem;
+}

@@ -44,7 +44,7 @@ public class RentController {
     @PostMapping("/admitApplication/{id}")
     int admitApplication(@PathVariable int id){return rentService.admitApplication(id);}
 
-    @PostMapping("/changeRentState/{id}")
-    int changeRentState(@PathVariable int id){return rentService.changeState(id);}
+//    @PostMapping("/changeRentState/{id}")
+//    int changeRentState(@PathVariable int id){return rentService.changeState(id);}
 
 }

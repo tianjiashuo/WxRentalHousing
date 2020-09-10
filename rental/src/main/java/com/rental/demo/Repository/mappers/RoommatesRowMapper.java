@@ -1,6 +1,7 @@
 package com.rental.demo.Repository.mappers;
 
 import com.rental.demo.Repository.entity.Roommates;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

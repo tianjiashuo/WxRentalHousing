@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/mypage/mypage",
     "pages/myhouse/myhouse",
     "pages/release/release",
     "pages/renthouse/renthouse",
     "pages/search/search",
     "pages/logs/logs",
-     "pages/mypage/mypage",
+    "pages/login/login",
     "pages/buyhouse/buyhouse"
-    
   ],
   "window": {
     "backgroundTextStyle": "dark",
