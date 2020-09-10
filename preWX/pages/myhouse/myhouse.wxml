@@ -1,38 +1,36 @@
 <!--pages/myhouse/myhouse.wxml-->
 <view>
+<view class='mask' hidden='{{maskFlag}}'></view>
+
   <view class="tip">
     <text class="iconfont icon-approve"></text>
     <text>请发布最真实的房源信息</text>
   </view>
  <view id = "type">
   <label> 发布类型</label>
-  <select  prop-array='{{selectArray}}' bind:myget='getDate'></select>
+  <select  prop-array='{{selectArray}}' bind:myget='wetherRentSellDate'></select>
  </view>
   
   <form bindsubmit="dopost">
     <view>
       <label>房屋描述</label>
-      <input name="title" value="{{ rentinfo.title }}" placeholder="房屋标题" />
+      <input name="title" value="{{title }}" placeholder=" 房屋标题" />
     </view>
     <view>
       <label>房屋地址</label>
-      <input name="address" value="{{ rentinfo.address }}" placeholder="地址" />
-    </view>
-    <view>
-      <label>有无产权</label>
-      <switch name= " property"></switch>
+      <input name="address" value="{{ address }}" placeholder=" 地址" />
     </view>
     <view>
       <label>房屋户型</label>
-      <input name="type" value="{{ rentinfo.type}}" placeholder=" * 室 * 厅" />
+      <input name="type" value="{{type}}" placeholder=" * 室 * 厅" />
     </view>
     <view>
       <label>房屋方向</label>
-      <input name="orientation" value="{{ rentinfo.orientation}}" placeholder=" * * 朝 向" />
+      <input name="orientation" value="{{orientation}}" placeholder=" * * 朝 向" />
     </view>
     <view>
-      <label>有无装修</label>
-      <switch name= " is_renovation"></switch>
+      <label>房屋楼层</label>
+      <input name="floor" value="{{floor}}" placeholder=" * * 朝 向" />
     </view>
     <view>
       <label>有无电梯</label>
@@ -40,15 +38,40 @@
     </view>
     <view>
       <label>房屋面积</label>
-      <input name="area" value="{{ rentinfo.is_area}}" placeholder=" 房屋面积" />
+      <input name="area" value="{{area}}" placeholder=" 房屋面积" />
+    </view>
+
+    <view wx:if="{{wether_rent_sell==0}}">
+      <label>允许宠物</label>
+      <switch name="rentinfo.is_pet"></switch>
+    </view>
+    <view wx:if="{{wether_rent_sell==0}}">
+      <label>最短租期</label>
+      <input name="shortest_lease" value="{{rentinfo.shortest_lease}}" placeholder="最短租期" />
+      <text>月</text>
+    </view>
+    <view wx:if="{{wether_rent_sell==0}}">
+      <label>家具描述</label>
+      <input name="furniture" value="{{ rentinfo.furniture}}" placeholder=" 精装/简装/寝具等信息"></input>
+    </view>
+    <view wx:if="{{wether_rent_sell==0}}">
+      <label>允许合租</label>
+      <switch name="form"></switch>
+    </view>
+    <view wx:if="{{wether_rent_sell==1}}">
+      <label>有无产权</label>
+      <switch name= " property"></switch>
+    </view>
+    <view wx:if="{{wether_rent_sell==1}}">
+      <label>有无装修</label>
+      <switch name= " is_renovation"></switch>
     </view>
     <view>
       <label>预估价格</label>
       <input name="price" value="{{ rentinfo.is_price}}" placeholder=" 预估价格" />
     </view>
-  </form>
 
-  <view class="tip-msg">
+    <view class="tip-msg">
       请添加房屋图片
       <text>(不少于一张)</text>
     </view>
@@ -65,5 +88,8 @@
       提交信息
       <button type="primary" form-type="submit">提交信息</button>
     </view>
+  </form>
+
+ 
 
 </view>

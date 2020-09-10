@@ -5,38 +5,140 @@ Page({
   /**
    * 页面的初始数据
    */
+ 
   data: {
+    maskFlag:true,
+    //公共表单
+    wether_rent_sell:"-1",
+    title:"",
+    address:"",
+    type:"",
+    orientation:"",
+    floor:"",
+    is_elevator:"",
+    area:"",
+    price:"",
+    //区别表单
     rentinfo:{
-      title:"",
-      addr:"",
+     is_pet:"",
+     shortrst_lease:"",
+     furniture:"",
+     form:""
+     },
+     sellinfo:{
       property:"",
-      type:"",
-      orientation:"",
-      floor:"",
-      is_renovation:"",
-      is_elevator:"",
-      area:"",
-      prive:"",
-      state:""
+      is_renovation:""
      },
      selectArray: [{
       "id": "0",
-      "text": "我要租房"
-  }, {
+      "text": "我要发布租房信息"
+    }, {
       "id": "1",
-      "text": "我要买房"
-  }]
-
-  },
-  // close: function () {
-  //   this.setData({
-  //       showActionsheet: false
-  //   })
-  // },
-  // btnClick(e) {
-  //   console.log(showActionsheet)
-  //   this.close()
-  // },
+      "text": "我要发布买房信息"
+    }]
+   },
+   //获取发布类型
+   wetherRentSellDate:function(e){
+    this.setData({
+     'wether_rent_sell':e.detail.id
+    })
+   },
+   dopost:function(e){
+    console.log("form 发生了 submit",e.detail.value)
+   if( this.data.wether_rent_sell==0){
+     this.dopostRent(e);
+   }else if(this.data.wether_rent_sell==1){
+     this.dopostSell(e);
+   }else{
+    console.log("非法submit")
+   }
+   },
+   dopostRent:function(e){
+   // console.log("form 发生了 submit",e.detail.value)
+   let that = this;
+     wx.request({
+       url: 'http://localhost:8080/insertRentHouse',
+       data:{
+         'hostId':'99',
+         "shortestLease": e.detail.value.shortrst_lease,
+         "area": e.detail.value.area,
+         "price": e.detail.value.price,
+         "floor": e.detail.value.floor,
+         "address":e.detail.value.address,
+         "title": e.detail.value.title,
+         "type": e.detail.value.type,
+         "orientation": e.detail.value.orientation,
+         "furniture": e.detail.value.furniture,
+         "isElevator": e.detail.value.is_elevator,
+         "isPet": e.detail.value.is_pet,
+         "isForm": e.detail.value.form,
+       },
+      method:'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          'maskFlag':false
+        })
+        wx.showToast({
+          title: '发布成功',
+          icon: 'success',
+          duration: 2000
+        }),
+        setTimeout(function(){
+          wx.hideToast();
+          wx.navigateBack({
+            delta: 1,
+          });
+         },2000)  
+      }
+     })
+   },
+   dopostSell:function(e){
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/insertSellHouse',
+      data:{
+        'hostId':'99',
+        "address":e.detail.value.address,
+        "title":e.detail.value.title,
+        "property":e.detail.value.property,
+        "type":e.detail.value.type,
+        "orientation":e.detail.value.orientation,
+        "floor":e.detail.value.floor,
+        "isRenovation":e.detail.value.is_renovation,
+        "isElevator":e.detail.value.is_elevator,
+        "area":e.detail.value.area,
+        "furniture":e.detail.value.furniture,
+        "price":e.detail.value.price
+      },
+     method:'POST',
+     header: {
+       'Content-Type': 'application/json'
+     },
+     success: function (res) {
+       console.log(res.data);
+       that.setData({
+        'maskFlag':false
+      })
+       wx.showToast({
+        title: '发布成功',
+        icon: 'success',
+        duration: 2000
+      }),
+      setTimeout(function(){
+        wx.hideToast();
+        wx.navigateBack({
+          delta: 1,
+        })
+       },2000)
+     }
+    })
+    
+   },
+ 
 
   /**
    * 生命周期函数--监听页面加载
@@ -44,7 +146,6 @@ Page({
   onLoad: function (options) {
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -56,7 +157,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
@@ -70,7 +171,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+   
   },
 
   /**
@@ -93,9 +194,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getDate:function(e){
-    console.log(e.detail)
-  },
+  
 
   upfile(){
     // wx.chooseImage({
