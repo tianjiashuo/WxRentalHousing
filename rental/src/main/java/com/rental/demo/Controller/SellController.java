@@ -6,9 +6,7 @@ import com.rental.demo.Service.RentService;
 import com.rental.demo.Service.SellBo;
 import com.rental.demo.Service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +33,12 @@ public class SellController {
     @GetMapping("/sellinfo/{id}")
     SellBo getSellById(@PathVariable int id){return sellService.getSellById(id);}
 
-    @PostMapping("/changeRentState/{id}")
+    @GetMapping ("/sellAllInfo/{id}")
+    Map<String,Object>getRentAllById(@PathVariable int id){
+        return sellService.getSellAllById(id);
+    }
+
+    @PostMapping("/changeSellState/{id}")
     int changeSellState(@PathVariable int id){return sellService.changeState(id);}
 
 }

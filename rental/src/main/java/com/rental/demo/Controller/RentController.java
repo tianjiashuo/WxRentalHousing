@@ -30,9 +30,14 @@ public class RentController {
         return rentService.insertRentHouse(rent);
     }
 
-    @GetMapping ("/rentinfo/{id}")
+    @GetMapping ("/rentInfo/{id}")
     RentBo getRentById (@PathVariable int id){
         return  rentService.getRentById(id);
+    }
+
+    @GetMapping ("/rentAllInfo/{id}")
+    Map<String,Object>getRentAllById(@PathVariable int id){
+        return rentService.getRentAllInfo(id);
     }
 
     @GetMapping ("/roommatesinfo/{id}")

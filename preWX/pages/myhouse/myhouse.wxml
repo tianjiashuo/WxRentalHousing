@@ -4,10 +4,10 @@
     <text class="iconfont icon-approve"></text>
     <text>请发布最真实的房源信息</text>
   </view>
-  <view>
-  <label>发布类型</label>
-  <select prop-array='{{selectArray}}'></select>
-  </view>
+ <view id = "type">
+  <label> 发布类型</label>
+  <select  prop-array='{{selectArray}}' bind:myget='getDate'></select>
+ </view>
   
   <form bindsubmit="dopost">
     <view>

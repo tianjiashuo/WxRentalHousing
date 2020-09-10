@@ -55,6 +55,11 @@ Component({
                 nowText:nowText,
                 animationData: this.animation.export()
             })
+            var nowDate={
+                id:nowIdx,
+                text:nowText
+            }
+            this.triggerEvent('myget', nowDate)
         }
     }
 })

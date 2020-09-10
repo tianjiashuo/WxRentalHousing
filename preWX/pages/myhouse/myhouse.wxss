@@ -13,9 +13,21 @@ page {
 .tip text:nth-of-type(1) {
   margin-right: 10rpx;
 }
-
+view #type{
+  position: relative;
+  left: 30rpx;
+  top : 30rpx;
+  height: 90rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 1px solid #eeeeee;  
+}
+ view select{
+  position:absolute;
+  right: 60rpx;
+  top: 0rpx;
+}
 form view {
-  padding: 30rpx;
+  padding: 20rpx;
   display: flex;
   height: 80rpx;
   line-height: 80rpx;
@@ -24,16 +36,16 @@ form view {
  /* form view:nth-last-of-type(1){
   border: none;
 }  */
+ 
 form view label {
   margin-right: 30rpx;
 }
+
 form view input {
-  height: 80rpx;
+  padding-top: 20rpx;
   line-height: 80rpx;
 }
-form view mp-actionSheet{
- display: inline;
-}
+
 form view switch{
   position: absolute;
   right: 15rpx;
@@ -69,6 +81,7 @@ form view switch{
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index:9999;
   font-size: 18px;
 }
 
@@ -78,6 +91,7 @@ form view switch{
   height: 100rpx;
   opacity: 0;
   position: absolute;
+ 
   top: 0;
   border-radius: 15rpx;
 }

@@ -7,6 +7,7 @@ import com.rental.demo.Repository.dao.UserDao;
 import com.rental.demo.Repository.entity.Image;
 import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Roommates;
+import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -23,6 +24,7 @@ public class RentService {
     private static final String ILLEGAL_STATE  ="-1";
     private static final String URENT_STATE  ="1";
     private static final String RENT_STATE  ="0";
+    private static final String HOUSE_TYPE_RENT ="0";
     /***
      * 租房筛选房源
      * @param condition
@@ -54,6 +56,20 @@ public class RentService {
         RentBo rentBo = new RentBo(rent.getId(),rent.getArea(),rent.getPrice(),rent.getAddress(),
                 rent.getTitle(),rent.getType(),rent.getFurniture(),image);
         return rentBo;
+    }
+
+    /***
+     * 查看详细租房信息
+     * @param rentId
+     * @return
+     */
+    public Map<String,Object> getRentAllInfo(int rentId){
+        Map<String,Object>map = new HashMap<String, Object>();
+        Rent rent = rentDao.queryById(rentId);
+        map.put("rentInfo",rent);
+        List<Image>images = imageDao.getAllImageById(rent.getId(), Integer.parseInt(HOUSE_TYPE_RENT));
+        map.put("imageList",images);
+        return map;
     }
 
 
@@ -92,6 +108,7 @@ public class RentService {
         RoommatesBo roommatesBo = new RoommatesBo(roommates.getId(),roommates.getUserId(),
                 roommates.getHouseId(),roommates.getState());
         return roommatesBo;
+
     }
 
 }

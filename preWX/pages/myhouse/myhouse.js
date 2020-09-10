@@ -21,10 +21,10 @@ Page({
      },
      selectArray: [{
       "id": "0",
-      "text": "租房"
+      "text": "我要租房"
   }, {
       "id": "1",
-      "text": "买房"
+      "text": "我要买房"
   }]
 
   },
@@ -92,6 +92,9 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getDate:function(e){
+    console.log(e.detail)
   },
 
   upfile(){
