@@ -36,11 +36,10 @@ public class UserController {
     int insertUserRealName(@PathVariable int id,@RequestBody UserBo userBo){
         if (CheckIdNumber.isIDNumber(userBo.getIdNumber())){
             return userService.insertUserRealName(id,userBo);
-        }
-        else{
+        }else{
             return -1;
         }
-
     }
+
 
 }

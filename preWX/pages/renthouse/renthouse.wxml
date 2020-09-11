@@ -1,3 +1,4 @@
 <!--pages/renthouse/renthouse.wxml-->
-
-
+<view>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> </button>
+</view>
