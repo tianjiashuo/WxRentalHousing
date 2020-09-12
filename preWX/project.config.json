@@ -21,11 +21,7 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-<<<<<<< HEAD
     "useMultiFrameRuntime": false,
-=======
-    "useMultiFrameRuntime": true,
->>>>>>> c7449206ac0a4115e6db5be40dcca58c494f232c
     "useApiHook": true,
     "babelSetting": {
       "ignore": [],
@@ -40,19 +36,16 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.2",
-<<<<<<< HEAD
   "appid": "wxef61eb5e73eba3b2",
-=======
-  "appid": "wx1a8b5c07794aa546",
->>>>>>> c7449206ac0a4115e6db5be40dcca58c494f232c
   "projectname": "miniprogram-1",
+  "cloudfunctionTemplateRoot": "",
+  "watchOptions": {
+    "ignore": []
+  },
   "debugOptions": {
     "hidedInDevtools": []
   },
   "scripts": {},
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "current": -1,
@@ -62,11 +55,11 @@
       "current": -1,
       "list": []
     },
-    "game": {
+    "plugin": {
       "current": -1,
       "list": []
     },
-    "plugin": {
+    "game": {
       "current": -1,
       "list": []
     },

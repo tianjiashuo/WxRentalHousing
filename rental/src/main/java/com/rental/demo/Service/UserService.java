@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public UserBo getUserById(int id){
+    public UserBo getUserById(String id){
         User user = userDao.queryUserById(id);
         UserBo userBo = new UserBo(id,user.getHead(),user.getNickname(),
                 user.getIntroduction(),user.getPhone(),user.getGender(),user.getIDnumber());
@@ -22,15 +22,15 @@ public class UserService {
     public int initUserInfo(UserBo user) {
         return userDao.insertUserInfo(user);
     }
-    public int editUserInfo(int id,UserBo userBo){
+    public int editUserInfo(String id,UserBo userBo){
         return userDao.editUserInfo(id,userBo);
     }
 
-    public boolean checkUserRealName(int userId){
+    public boolean checkUserRealName(String userId){
         return userDao.checkUserRealName(userId);
     }
 
-    public int insertUserRealName(int id,UserBo userBo){
+    public int insertUserRealName(String id,UserBo userBo){
         return userDao.insertUserRealName(id,userBo);
     }
 }

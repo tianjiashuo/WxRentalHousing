@@ -15,8 +15,8 @@ public class NewsService {
      * @param content
      * @return
      */
-    public boolean addNews(int userId, String content){
-       return  newsDao.addNews(String.valueOf(userId),content);
+    public boolean addNews(String userId, String content){
+       return  newsDao.addNews(userId,content);
     }
 
 }

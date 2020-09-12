@@ -1,11 +1,8 @@
 package com.rental.demo.Repository.dao;
 
-import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Roommates;
-import com.rental.demo.Repository.mappers.RentRowMapper;
 import com.rental.demo.Repository.mappers.RoommatesRowMapper;
 import com.rental.demo.Service.RoommatesBo;
-import com.rental.demo.Service.UserBo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -25,7 +22,7 @@ public class RoommatesDao {
 
     //用户申请
 
-    public int  addApplication(RoommatesBo roommatesBo){
+    public int addApplication(RoommatesBo roommatesBo){
         String sql = "INSERT INTO roommates_info (house_id,user_id,state) VALUES(? ,?,'0')";
         return jdbcTemplate.update(sql,roommatesBo.getHouseId(),
                 roommatesBo.getUserId());

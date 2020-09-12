@@ -13,7 +13,7 @@ public class NewsRowMapper  implements RowMapper<News> {
     public News mapRow(ResultSet rs, int rowNum) throws SQLException {
         News news = new News();
         news.setId(rs.getInt("id"));
-        news.setUser_id(rs.getInt("user_id"));
+        news.setUser_id(rs.getString("user_id"));
         news.setContent(rs.getString("content"));
         return news;
     }

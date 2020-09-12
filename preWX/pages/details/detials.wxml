@@ -1,2 +1,136 @@
 <!--pages/details/detials.wxml-->
-<text>pages/details/detials.wxml</text>
+<view class='bigbox' style='overflow:{{hidden}}'>
+  <navigator open-type="navigateBack">
+    <view class='bor'>
+      <image src='/icons/fanhui.png'></image>
+    </view>
+  </navigator>
+  <!--pages/detials/detials.wxml-->
+  <view class='banner'>
+    <swiper indicator-dots="{{indicatordots}}" autoplay="{{true}}" circular="{{true}}">
+      <!--block wx:for="{{data2}}"-->
+        <!--<swiper-item>
+          <image src="{{data2[index].img}}"></image>
+        </swiper-item>-->
+        <swiper-item>
+          <image src="/images/biehsu1.jpg"></image>  
+        </swiper-item>
+        <swiper-item>
+          <image src="/images/bieshu2.jpg"></image>  
+        </swiper-item>
+      <!--/block-->
+    </swiper>
+    <view class='iconfont'>
+      <view class='icon1'>
+        <image src = '/icons/collection.png'></image>
+      </view>
+      <view class='icon2'>
+        <image src='/icons/report.png'></image>
+      </view>
+    </view>
+    <view class='font'>
+      <view class='fontbox'>
+        <text class='one'>入住-退房</text>
+      </view>
+    </view>
+  </view>
+  <view class='address-infor'>{{address}}</view>
+  <view class='housebox'>
+    <text class='house-name'>{{house_name}}</text>
+    <text class='bed'>{{bed}}</text>
+  </view>
+  
+  <view class='house-inforbox'>
+    <view class='more' bindtap='houseInfor'>更多房源介绍</view>
+  </view>
+  <view class='information'>
+    <view class='house-type'>
+      <image src='/icons/_myhouse.png'></image>
+      <view class='house-inform'>
+        <text class='bold'>独立房间</text>
+        <text class='infor-house'>有独立房间，与房东或房客分享合用空间</text>
+      </view>
+    </view>
+    <view class='time'>
+      <image src='/icons/outtime.png'></image>
+      <view class='time-type'>
+        <text class='bold'>最短租期</text>
+        <text class='time-infor'>入住时间14:00-02:00（次日）·退房时间11:00</text>
+      </view>
+    </view>
+  </view>
+  <view class='estimate'>
+    <view class='estimate_h1'>租客信息</view>
+    <view class='display-img'>
+      <view>
+        <image src='/images/message-bgimg.jpg'></image>
+      </view>
+      <view class='owner'>
+        <view class='name'>Duaiduai</view>
+        <view class='publish-time'>2019年09月</view>
+      </view>
+    </view>
+  
+    <view class="estimatebox">
+    </view>
+  </view>
+  <view class='house_address'>
+    <view>房源位置</view>
+    <view class='more_address'>
+      <view>fangwuweizhi</view>
+    </view>
+  </view>
+  <view class='asked'>
+    <view>租房须知</view>
+    <view class='cancel'>
+      <view class='cancelbox'>
+        <text>取消政策</text>
+      </view>
+      <view>解释权归房东所有</view>
+    </view>
+    <view class='safe'>
+      <view class='safebox'>
+        <text>安全须知</text>
+      </view>
+      <view>租房需谨慎，请确认无误后再付款</view>
+    </view>
+    <view class='tip'>
+      <view class='tipbox'>
+        <text>交易提示</text>
+      </view>
+      <view>本平台支持线下交易</view>
+    </view>
+  </view>
+  <view class='owner_inforbox'>
+    <view>房东介绍</view>
+    <view class='owner_img'>
+      <!--没连 啥都没连-->
+      <image src='https://z1.muscache.cn/im/pictures/1e2569ae-55fc-4be0-b270-fb40928f2555.jpg?aki_policy=profile_x_medium'></image>
+      <view class='owner_infor'>
+        <view>xxx</view>
+      </view>
+    </view>
+    <view class='more_introduce'>
+      <view>嗨，我是房东。很高兴能分享我的房源，欢迎朋友前来入住！</view>
+      <view>查看更多房东介绍</view>
+    </view>
+    <view class='phone_num'>联系房东</view>
+  </view>
+  <view class='money_box'>
+    <view class='left_box'>
+      <text>￥{{data1.money}}</text>每月
+    </view>
+    <view class='right_box'>
+      <!-- 跳转到日历页面 这玩意我还没测试 -->
+      <view class='button'>
+        <navigator url='/pages/index/index' hover-class="navigator-hover">查看可定日期</navigator>
+      </view>
+    </view>
+  </view>
+  <view class='hidden_housebox' style='display:{{display}}' bindtap="click">
+    <view class='hidden_house'>
+      <view>{{data6.address_name}}</view>
+      <view>{{datas}}</view>
+    </view>
+  </view>
+</view>

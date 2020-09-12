@@ -21,7 +21,7 @@ public class RentController {
     }
 
     @PostMapping("rent/delete")
-     boolean deleteRentinfo(@RequestBody Map<String,String> id) {
+    public boolean deleteRentinfo(@RequestBody Map<String,String> id) {
         return rentService.deleteRentInfo(id.get("id"));
     }
 
@@ -36,7 +36,7 @@ public class RentController {
     }
 
     @GetMapping ("/rentAllInfo/{id}")
-    Map<String,Object>getRentAllById(@PathVariable int id){
+    Map<String,Object> getRentAllById(@PathVariable int id){
         return rentService.getRentAllInfo(id);
     }
 

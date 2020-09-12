@@ -1,1 +1,592 @@
 /* pages/details/detials.wxss */
+.bor {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 0 6rpx 6rpx #e6e6e6;
+  border-radius: 50%;
+  position: fixed;
+  top: 40rpx;
+  left: 20rpx;
+}
+
+.bor image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.bigbox {
+  width: 100%;
+  height: 1344rpx;
+}
+
+.banner {
+  width: 750rpx;
+}
+
+swiper {
+  width: 750rpx;
+  height: 440rpx;
+}
+
+image {
+  width: 750rpx;
+  height: 440rpx;
+}
+
+.iconfont {
+  width: 220rpx;
+  height: 135rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 375rpx;
+  left: 500rpx;
+}
+
+.iconfont view {
+  width: 90rpx;
+  height: 90rpx;
+  background-color: #fff;
+  box-shadow: 0 0 7rpx 3rpx rgba(150, 150, 150, 0.507);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconfont view image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.font {
+  width: 90%;
+  height: 90rpx;
+  border-bottom: 1px solid #ebebeb;
+  margin: 0 auto;
+}
+
+.font .fontbox {
+  width: 45%;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fontbox .one {
+  color: #484848;
+}
+
+.fontbox .two {
+  color: #0d7f82;
+}
+
+.address-infor {
+  height: 50rpx;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 24rpx;
+  color: #484848;
+  font-weight: bold;
+  line-height: 50rpx;
+  margin-top: 30rpx;
+}
+
+.housebox {
+  width: 90%;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 0 auto;
+}
+
+.house-name, .bed {
+  color: #484848;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.bed {
+  margin-left: 20rpx;
+}
+
+.displaybox {
+  width: 90%;
+  height: 60rpx;
+  margin: 0 auto;
+  line-height: 60rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.displaybox view {
+  margin: auto 0;
+  height: 44rpx;
+  font-size: 24rpx;
+  line-height: 44rpx;
+  border-radius: 22rpx;
+  padding: 0 20rpx;
+}
+
+.displaybox .score {
+  background-color: #e9f9e9;
+  color: #247400;
+}
+
+.displaybox view:not(.score) {
+  background-color: #f3f3f3;
+  color: #484848;
+}
+
+.supply {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #484848;
+  font-size: 28rpx;
+}
+
+.views {
+  width: 90%;
+  margin: 20rpx auto;
+  height: 100rpx;
+  background-color: #f2fafa;
+  border: 1px solid #ceeae9;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.views .three {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 20rpx;
+}
+
+.views .three image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.views-infor {
+  width: 75%;
+  height: 70rpx;
+  margin: 0 auto;
+}
+
+.bold {
+  color: #484848;
+  font-weight: bold;
+}
+
+.bedroom {
+  width: 50%;
+  height: 250rpx;
+  border: 1px solid #dbdbdb;
+  border-radius: 20rpx;
+  margin: 40rpx;
+  font-size: 24rpx;
+  padding: 35rpx;
+  box-sizing: border-box;
+}
+
+.bedroom view {
+  margin-left: 15rpx;
+  margin-bottom: 15rpx;
+}
+
+.bedroom image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.house-inforbox {
+  width: 90%;
+  height: 80rpx;
+  margin: 0 auto;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.house-infor {
+  width: 100%;
+  height: 46%;
+  margin-bottom: 20rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #484848;
+}
+
+.information .bold {
+  margin-right: 15rpx;
+}
+
+.house-inforbox .more {
+  color: #00858b;
+}
+
+.information {
+  width: 85%;
+  height: 250rpx;
+  margin: 0 auto;
+  font-size: 28rpx;
+}
+
+.information>view {
+  width: 100%;
+  height: 100rpx;
+  margin: 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.information image {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 40rpx;
+}
+
+.information>view view {
+  width: 600rpx;
+}
+
+.picture {
+  width: 90%;
+  height: 250rpx;
+  margin: 0 auto;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.picture>view {
+  width: 150rpx;
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.picture>view image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.picture>view view {
+  height: 40rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+.estimate {
+  width: 90%;
+  height: 250rpx;
+}
+
+.display-img {
+  width: 400rpx;
+  height: 110rpx;
+  margin: 30rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.display-img view:first-of-type {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.display-img .owner {
+  width: 260rpx;
+  height: 100rpx;
+}
+
+.display-img image {
+  width: 110rpx;
+  height: 108rpx;
+  border-radius: 50%;
+}
+
+.display-img .owner view {
+  font-size: 28rpx;
+  color: #484848;
+  width: 200rpx;
+  height: 50rpx;
+}
+
+.display-img .owner.name {
+  font-weight: bold;
+}
+
+.estimate {
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #ebebeb;
+  color: #484848;
+}
+
+.estimate_h1 {
+  margin: 30rpx 0;
+  font-size: 40rpx;
+}
+
+.estimate .infor-estimate {
+  width: 100%;
+  height: 200rpx;
+  font-size: 28rpx;
+  margin: 20rpx 0;
+}
+
+/* .estimate view:first-of-type{
+  margin:30rpx 0;
+  font-size:40rpx;
+  
+} */
+
+.estimatebox view:first-of-type {
+  font-size: 28rpx;
+  display: inline-block;
+  padding-right: 10rpx;
+}
+
+.estimatebox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.estimatebox .star image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.house_address {
+  width: 90%;
+  margin: 0 auto;
+  color: #484848;
+}
+
+.house_address view:first-of-type {
+  font-size: 40rpx;
+  margin: 30rpx 0;
+}
+
+.more_address view:first-of-type {
+  margin: 10rpx 0;
+  font-size: 28rpx;
+}
+
+.more_address view:nth-child(2), .tarvel view:nth-child(2) {
+  height: 150rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+}
+
+.more_address view:nth-child(3), .tarvel view:nth-child(3) {
+  color: #0d7f82;
+  font-size: 28rpx;
+  margin-bottom: 15rpx;
+}
+
+.tarvel {
+  margin: 30rpx 0;
+}
+
+.tarvel view:first-child {
+  font-size: 28rpx;
+  margin: 10rpx 0;
+}
+
+.asked {
+  width: 90%;
+  color: #484848;
+  margin: 20rpx auto;
+  border-bottom: 1px solid #dbdbdb;
+  border-top: 1px solid #dbdbdb;
+}
+
+.asked>view:first-of-type {
+  margin: 30rpx 0;
+  font-size: 40rpx;
+}
+
+.cancel, .safe, .tip {
+  width: 100%;
+  padding: 15rpx 0;
+  font-size: 28rpx;
+  margin-bottom: 15rpx;
+}
+
+.asked text {
+  font-weight: bold;
+  margin-right: 15rpx;
+}
+
+.cancel view:last-of-type, .tip view:last-of-type {
+  color: #472a0f;
+}
+
+.owner_inforbox {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.owner_inforbox>view:first-of-type {
+  font-size: 40rpx;
+  color: #484848;
+  margin: 30rpx 0;
+}
+
+.owner_img {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.owner_img image {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+}
+
+.owner_img .owner_infor {
+  width: 300rpx;
+  height: 160rpx;
+  padding: 25rpx;
+  box-sizing: border-box;
+}
+
+.owner_infor view {
+  color: #484848;
+  width: 300rpx;
+  margin-top: 15rpx;
+}
+
+.owner_infor>view:last-of-type {
+  font-size: 24rpx;
+}
+
+.more_introduce {
+  width: 90%;
+  margin: 20rpx auto;
+  font-size: 28rpx;
+  background-color: #f8f8f8;
+  border-radius: 10rpx;
+  padding: 40rpx;
+  margin-bottom: 70rpx;
+}
+
+.more_introduce view:last-of-type {
+  color: #0d7f82;
+}
+
+.phone_num {
+  font-size: 28rpx;
+  color: #0d7f82;
+  padding: 40rpx 0;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.money_box {
+  width: 100%;
+  height: 150rpx;
+  background-color: #fff;
+  border-top: 1px solid #ebebeb;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.money_box image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.money_box >view {
+  width: 40%;
+  height: 100rpx;
+  margin: auto 0;
+}
+
+.money_box .left_box {
+  font-size: 28rpx;
+  margin-left: 40rpx;
+}
+
+.money_box .right_box {
+  margin-right: 40rpx;
+}
+
+.money_box .right_box .button {
+  background-color: #11472c;
+  width: 300rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.left_box text:first-of-type {
+  font-weight: bold;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.left_box .money_infor {
+  color: #0d7f82;
+  font-weight: bold;
+}
+
+.hidden_housebox {
+  width: 750rpx;
+  height: 1334rpx;
+  position: absolute;
+  top: 0;
+  background-color: rgba(150, 150, 150, 0.507);
+  display: none;
+}
+
+.hidden_house {
+  width: 100%;
+  height: 510rpx;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+}
+
+.hidden_house view {
+  width: 90%;
+  margin: 40rpx auto;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 45rpx;
+}

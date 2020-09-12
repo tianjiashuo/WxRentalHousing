@@ -1,8 +1,6 @@
 package com.rental.demo.Controller;
 
-import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
-import com.rental.demo.Service.RentService;
 import com.rental.demo.Service.SellBo;
 import com.rental.demo.Service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,7 @@ public class SellController {
     boolean deleteSellInfo(@RequestBody Map<String,String> id) {
         return sellService.deleteSellInfo(id.get("id"));
     }
+
     @PostMapping("/insertSellHouse")
     public int insertSellHouse(@RequestBody Sell sell){
         return sellService.insertSellHouse(sell);
