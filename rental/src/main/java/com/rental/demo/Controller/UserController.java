@@ -1,7 +1,6 @@
 package com.rental.demo.Controller;
 
 import com.rental.demo.Service.CheckIdNumber;
-import com.rental.demo.Service.RentService;
 import com.rental.demo.Service.UserBo;
 import com.rental.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/userInfo/{id}")
-    UserBo getUserById(@PathVariable int id){
+    UserBo getUserById(@PathVariable String id){
         return  userService.getUserById(id);
     }
 
@@ -24,22 +23,21 @@ public class UserController {
     }
 
     @PostMapping("/editUserInfo/{id}")
-    int editUserInfo(@PathVariable int id,@RequestBody UserBo userBo){
+    int editUserInfo(@PathVariable String id,@RequestBody UserBo userBo){
         return userService.editUserInfo(id,userBo);
     }
 
     @PostMapping("/checkUserRealName/{id}")
-    boolean checkUserRealName(@PathVariable int id){
+    boolean checkUserRealName(@PathVariable String id){
         return userService.checkUserRealName(id);
     }
     @PostMapping("/insertUserRealName/{id}")
-    int insertUserRealName(@PathVariable int id,@RequestBody UserBo userBo){
+    int insertUserRealName(@PathVariable String id,@RequestBody UserBo userBo){
         if (CheckIdNumber.isIDNumber(userBo.getIdNumber())){
             return userService.insertUserRealName(id,userBo);
         }else{
             return -1;
         }
     }
-
 
 }

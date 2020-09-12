@@ -2,7 +2,7 @@ package com.rental.demo.Repository.entity;
 
 public class Collection {
     private int id;
-    private int userId;
+    private String userId;
     private int houseId;
     private int houseType;
 
@@ -14,11 +14,11 @@ public class Collection {
         this.id = id;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

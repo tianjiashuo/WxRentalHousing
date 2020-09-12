@@ -17,7 +17,7 @@ public class UserDao {
      * @author tian
      * @return
      */
-    public User queryUserById(int id) {
+    public User queryUserById(String id) {
         String sql = "SELECT * FROM user WHERE id=? ";
         User user = jdbcTemplate.queryForObject(sql, new UserRowMapper(), id);
         return user;
@@ -29,13 +29,13 @@ public class UserDao {
                 userBo.getNickname(),userBo.getPhone(),true);
     }
 
-    public int editUserInfo(int id,UserBo userBo){
+    public int editUserInfo(String id,UserBo userBo){
         String sql = "UPDATE user set introduction=?,phone=?,gender=?,IDnumber=? WHERE id=? ";
         return jdbcTemplate.update(sql,userBo.getIntroduction(),userBo.getPhone(),
                 userBo.getGender(),userBo.getIdNumber(),id);
     }
 
-    public boolean checkUserRealName(int userId){
+    public boolean checkUserRealName(String userId){
         String sql = "SELECT * FROM user WHERE id = ?";
         User user = jdbcTemplate.queryForObject(sql,new UserRowMapper(),userId);
         if(user.getIDnumber().equals("")){
@@ -46,13 +46,13 @@ public class UserDao {
         }
     }
 
-    public int insertUserRealName(int id,UserBo userBo){
+    public int insertUserRealName(String id,UserBo userBo){
         String sql = "UPDATE user set IDnumber=? WHERE id=? ";
         return jdbcTemplate.update(sql,userBo.getIdNumber(),id);
 
     }
 
-    public String getPassword(int id){
+    public String getPassword(String id){
         String sql = "SELECT * FROM user WHERE id = ?";
         System.out.println(jdbcTemplate.queryForObject(sql,new UserRowMapper(),id));
         return jdbcTemplate.queryForObject(sql,new UserRowMapper(),id).getPassword();

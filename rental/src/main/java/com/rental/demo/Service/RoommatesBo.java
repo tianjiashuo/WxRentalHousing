@@ -2,7 +2,7 @@ package com.rental.demo.Service;
 
 public class RoommatesBo {
     private int id;
-    private int userId;
+    private String userId;
     private int houseId;
     private int state;
 
@@ -10,9 +10,9 @@ public class RoommatesBo {
 
     public void setId(int id){this.id = id;}
 
-    public int getUserId(){return userId;}
+    public String getUserId(){return userId;}
 
-    public void setUserId(int userId){this.userId = userId;}
+    public void setUserId(String userId){this.userId = userId;}
 
     public int getHouseId(){return houseId;}
 
@@ -22,7 +22,7 @@ public class RoommatesBo {
 
     public void setState(int state){this.state = state;}
 
-    public RoommatesBo(int id, int userId,int houseId,int state){
+    public RoommatesBo(int id, String userId,int houseId,int state){
         this.id = id;
         this.userId = userId;
         this.houseId = houseId;

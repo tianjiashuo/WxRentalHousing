@@ -24,12 +24,13 @@ public class CollectionController {
     }
 
     @PostMapping("/getCollection/{id}")
-    public HashSet getCollection(@PathVariable int id){
+    public HashSet getCollection(@PathVariable String id){
         return collectService.getConnectionByUserId(id);
     }
 
+    //根据房屋id获得收藏了该房屋的所有用户id
     @PostMapping("/getUsersId")
-    public List<Integer> getAllUsersId(@RequestBody CollectionVo collectionVo){
+    public List<String> getAllUsersId(@RequestBody CollectionVo collectionVo){
         return collectService.getAllUsersId(collectionVo.getHouseId(),collectionVo.getHouseType());
     }
 

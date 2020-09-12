@@ -1,19 +1,18 @@
 package com.rental.demo.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 
 public class UserVo {
-    private int id;
+    private String id;
 //    private String head;
     private String nickname;
     private String introduction;
     private String phone;
     private boolean gender;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 //    public String getHead(){
@@ -47,7 +46,7 @@ public class UserVo {
         this.gender = gender;
     }
 
-    UserVo( int id,String head,String nickname,String introduction,String phone,boolean gender){
+    UserVo( String id,String head,String nickname,String introduction,String phone,boolean gender){
         this.id = id;
 //        this.head = head;
         this.nickname = nickname;

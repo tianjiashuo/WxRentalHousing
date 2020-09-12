@@ -3,7 +3,7 @@ package com.rental.demo.Repository.entity;
 
 public class Rent {
     private int id;
-    private int hostId;
+    private String hostId;
     private int shortestLease;
     private int area;
     private int price;
@@ -26,11 +26,11 @@ public class Rent {
         this.id = id;
     }
 
-    public int getHostId() {
+    public String getHostId() {
         return hostId;
     }
 
-    public void setHostId(int hostId) {
+    public void setHostId(String hostId) {
         this.hostId = hostId;
     }
 
@@ -140,7 +140,7 @@ public class Rent {
     @Override
     public int hashCode() {
         int result = title.hashCode();
-        result += id*6 + hostId*9;
+        result += id*6 + hostId.hashCode();
         return result;
     }
 

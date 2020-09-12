@@ -2,7 +2,6 @@ package com.rental.demo.Service;
 
 public class SellBo {
     private int id;
-    //private int hostId;
     private int area;
     private int price;
     private String address;

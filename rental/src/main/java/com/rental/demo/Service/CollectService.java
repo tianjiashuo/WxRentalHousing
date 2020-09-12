@@ -21,7 +21,7 @@ public class CollectService {
     @Autowired
     private SellService sellService;
 
-    public void addCollection(int userId,int houseId,int houseType){
+    public void addCollection(String userId,int houseId,int houseType){
         collectionDao.addCollection(userId,houseId,houseType);
     }
 
@@ -34,7 +34,7 @@ public class CollectService {
      * @author tian
      * @return
      */
-    public HashSet getConnectionByUserId(int id){
+    public HashSet getConnectionByUserId(String id){
         List<Collection> lc = collectionDao.getCollectionById(id);
         HashSet result = new HashSet();
         Iterator<Collection> iter = lc.iterator();
@@ -57,8 +57,8 @@ public class CollectService {
      * @author tian
      * @return
      */
-    public ArrayList<Integer> getAllUsersId(int houseId ,int houseType){
-        ArrayList<Integer> ids = new ArrayList<>();
+    public ArrayList<String> getAllUsersId(int houseId ,int houseType){
+        ArrayList<String> ids = new ArrayList<>();
         List<Collection> collections = collectionDao.getAllUsersId(houseId,houseType);
         Iterator<Collection> iter = collections.iterator();
         while (iter.hasNext()) {

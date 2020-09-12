@@ -86,6 +86,5 @@ public class SellService {
 
     public int insertSellHouse(Sell sell){
         return sellDao.insertSellHouse(sell);
-
     }
 }
