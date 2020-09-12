@@ -4,7 +4,7 @@
     <view class="nav-top">
       <navigator open-type="navigate" url='../login/login'>
         <!-- <view class="nav-top-l" hover-class='bg-color'>注册或登录</view> -->
-        <button class="nav-top-l" hover-class='bg-color' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">注册或登陆</button>
+        <button class="nav-top-l" hover-class='bg-color' open-type="getUserInfo" bindgetuserinfo="getUserInfo">注册或登陆</button>
       </navigator>
       <image class="nav-top-r" src='https://z1.muscache.cn/defaults/user_pic-50x50.png?v=3'></image>
     </view>

@@ -13,10 +13,10 @@ import java.util.Map;
 @Service("aesService")
 public class AesService {
 
-    @Autowired
-    UserService userService;
+
     private String appID ="wx1a8b5c07794aa546";
     private String appSecret = "831163400081c584967d45afc443eae3";
+
 
     public Map decodeUserInfo(String encryptedData, String iv, String code) {
         Map map = new HashMap();
@@ -39,38 +39,33 @@ public class AesService {
         }catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("aes--result"+result);
         Gson json = new Gson();
         Map<String,Object> temp = json.fromJson(result,HashMap.class);
         //获取会话密钥（session_key）
         String session_key = (String)temp.get("session_key");
+        map.put("session_key",session_key);
+        System.out.println("aes--result-session_key"+session_key);
         //用户的唯一标识（openid）
         String openid =(String)temp.get("openid");
+        System.out.println("aes--result-openid"+openid);
         //2、对encryptedData加密数据进行AES解密
         try {
             String userInfoString = AesUtil.decrypt(encryptedData, session_key, iv, "UTF-8");
+            System.out.println("aes--4"+userInfoString);
             if (null != result && result.length() > 0) {
                 map.put("status", 1);
                 map.put("msg", "解密成功");
                 Map userInfoJSON = json.fromJson(userInfoString,HashMap.class);
-                Map userInfo = new HashMap();
-                userInfo.put("openId", userInfoJSON.get("openId"));
-                userInfo.put("nickName", userInfoJSON.get("nickName"));
-                userInfo.put("gender", userInfoJSON.get("gender"));
-                userInfo.put("city", userInfoJSON.get("city"));
-                userInfo.put("province", userInfoJSON.get("province"));
-                userInfo.put("country", userInfoJSON.get("country"));
-                userInfo.put("avatarUrl", userInfoJSON.get("avatarUrl"));
-////                this.id = id;
-////                this.head = head;
-////                this.nickname = nickname;
-////                this.introduction = introduction;
-////                this.phone = phone;
-////                this.gender = gender;
-////                this.idNumber = idNumber;
-//                UserBo userbo = new UserBo(userInfoJSON.get("openid"),userInfoJSON.get("avatarUrl")
-//                                          ,userInfoJSON.get("nickName"),"",""
-//                                          ,userInfoJSON.get("gender"),"");
-//                userService.initUserInfo()
+                Map<String,String> userInfo = new HashMap();
+                userInfo.put("openId", userInfoJSON.get("openId").toString());
+                userInfo.put("nickName", userInfoJSON.get("nickName").toString());
+                userInfo.put("gender", userInfoJSON.get("gender").toString().substring(0,1));
+                userInfo.put("city", userInfoJSON.get("city").toString());
+                userInfo.put("province", userInfoJSON.get("province").toString());
+                userInfo.put("country", userInfoJSON.get("country").toString());
+                userInfo.put("avatarUrl", userInfoJSON.get("avatarUrl").toString());
+                System.out.println("aes--5"+userInfo.toString());
                 map.put("userInfo", userInfo);
                 return map;
             }
@@ -82,12 +77,12 @@ public class AesService {
         return map;
     }
 
-    public Map decodePhoneNumber(String encryptedData, String iv,String openid){
-        String key ="";
+    public Map decodePhoneNumber(String encryptedData, String iv,String key){
         try{
             String phoneInfo = AesUtil.decrypt(encryptedData,key,iv,"UTF-8");
             Gson json = new Gson();
             Map<String,Object> temp = json.fromJson(phoneInfo,HashMap.class);
+            System.out.println("getphone2 "+temp.toString());
             return temp;
         }catch(Exception e ){
             e.printStackTrace();

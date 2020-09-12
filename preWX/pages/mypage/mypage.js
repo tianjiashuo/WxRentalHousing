@@ -35,7 +35,7 @@ Page({
       userName: app.globalData.userInfo.nickName,
       userImgUrl: app.globalData.userInfo.head
     })
-    console.log("----------"+this.hasUserInfo);
+    
   },
 
   /**
@@ -72,11 +72,53 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getPhoneNumber: function(e) { 
-    console.log(e.detail.errMsg) 
-    console.log(e.detail.iv) 
-    console.log(e.detail.encryptedData) 
-  } 
+  getUserInfo: function (e) {
+    // 登录
+    wx.login({
+     success: res => {
+       // 发送 res.code 到后台换取 openId, sessionKey, unionId
+       console.log(res);
+       if (res.code) {
+         wx.getUserInfo({
+           success:function(useres){
+             console.log(useres)
+             var jsonData={
+               code:res.code,
+               encryptedData: useres.encryptedData,
+               iv:useres.iv
+             };
+            
+             wx.request({
+               url: 'http://localhost:8080/user/login',
+               method: 'POST',
+               data: jsonData,
+               header: {
+                 'content-type': 'application/json'
+               },
+               success(res) {
+                 if (res.data.openid != "" || res.data.openid!=null){
+                   // 登录成功
+                     wx.setStorageSync("openId", res.data.userInfo.openId);//将用户id保存到缓存中
+                     app.globalData.hasUserInfo = true;
+                     app.globalData.userInfo.nickName = res.data.userInfo.nickName;
+                     app.globalData.userInfo.head =  res.data.userInfo.avatarUrl;
+                   console.log("res userinfo ", res);
+                   // console.log("session_keymypage",res.data.session_key);
+                 }else{
+                   // 登录失败
+                   return false;
+                 }
+               }
+             })
+           }
+         })
+       } else {
+         console.log('获取用户登录态失败！' + res.errMsg)
+       }
+     }
+   });  
+  }
+  
 })
 
 

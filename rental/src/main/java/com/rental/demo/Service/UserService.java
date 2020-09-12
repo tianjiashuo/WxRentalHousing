@@ -1,27 +1,46 @@
 package com.rental.demo.Service;
 
 import com.rental.demo.Repository.dao.UserDao;
+import com.rental.demo.Repository.entity.Session;
 import com.rental.demo.Repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("userService")
 public class UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private AesService aesService;
+    @Autowired
+    private SessionService sessionService;
 
+
+    /**
+     * mao changed 2020-09-12
+     * @param id
+     * @return
+     */
     public UserBo getUserById(String id){
-        User user = userDao.queryUserById(id);
-        UserBo userBo = new UserBo(id,user.getHead(),user.getNickname(),
-                user.getIntroduction(),user.getPhone(),user.getGender(),user.getIDnumber());
-        return userBo;
+        try{
+            User user = userDao.queryUserById(id);
+            UserBo userBo = new UserBo(id,user.getHead(),user.getNickname(),
+                    user.getIntroduction(),user.getPhone(),user.getGender(),user.getIDnumber());
+            return userBo;
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return null;
     }
 
     public int initUserInfo(UserBo user) {
         return userDao.insertUserInfo(user);
     }
+
     public int editUserInfo(String id,UserBo userBo){
         return userDao.editUserInfo(id,userBo);
     }
@@ -33,4 +52,67 @@ public class UserService {
     public int insertUserRealName(String id,UserBo userBo){
         return userDao.insertUserRealName(id,userBo);
     }
+
+
+    /**
+     * mao 2020-9-12
+     * @param reqinfo
+     * @return
+     */
+    public Map userLogin(Map<String,String> reqinfo){
+
+        Map info = aesService.decodeUserInfo(reqinfo.get("encryptedData"),reqinfo.get("iv"),reqinfo.get("code"));
+        String session = info.get("session_key").toString();
+        System.out.println("aes--0 "+ session);
+        info.remove("session_key");
+        //第三方平台返回失败status=0
+        if(info.get("status").toString().equals("0")){
+            return info;
+        }else{
+              Map<String,String> userInfo = (Map) info.get("userInfo");
+             //用户已经存在
+              if(getUserById(userInfo.get("openId"))!=null){
+                  //更新session
+                 sessionService.updateSession(userInfo.get("openId"),session);
+                  info.put("loginType","login");
+                  return info;
+              }else{
+                  //用户第一次登陆系统
+                  UserBo newuser = new UserBo();
+                  newuser.setId(userInfo.get("openId"));
+                  newuser.setHead(userInfo.get("avatarUrl"));
+                  newuser.setGender(userInfo.get("gender").equals("1"));
+                  newuser.setNickname(userInfo.get("nickName"));
+                  newuser.setPhone("999");
+                  //加入用户
+                  int flag = initUserInfo(newuser);
+                  if(flag==1){//加入成功
+                      info.put("loginType","logUp");
+                      sessionService.insertSession(userInfo.get("openId"),session);
+                  }else{//加入失败
+                      info.put("loginType","logUpFail");
+                  }
+                  return info;
+              }
+        }
+    }
+
+    /**
+     * mao 2020-9-12
+     * @param reqinfo
+     * @return
+     */
+    public Map getPhone(Map<String,Object> reqinfo){
+        System.out.println("getphone0 "+reqinfo.toString());
+        //拿取Session
+        Session session =  sessionService.getSessionById(reqinfo.get("openId").toString());
+        System.out.println("getphone1 "+session.getSession());
+       //获得解码后的map
+        // {phoneNumber=15378965067, watermark={timestamp=1.599921154E9, appid=wx1a8b5c07794aa546}, purePhoneNumber=15378965067, countryCode=86}
+        Map<String,String> map = aesService.decodePhoneNumber(reqinfo.get("encryptedData").toString(),reqinfo.get("iv").toString(),session.getSession());
+        //调用userdao加入电话
+        userDao.editUserPhoneInfo(reqinfo.get("openId").toString(),map.get("phoneNumber"));
+       return map;
+    }
+
 }

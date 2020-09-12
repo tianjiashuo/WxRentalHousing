@@ -3,6 +3,7 @@
     <view class="word1">我要发布</view>
     <view class="word2">请先完善实名 再发布房源信息</view>
     <image class="bg-img" mode="widthFix" src='../../images/message-bgimg.jpg'></image>
-    <view class="button"hover-class="bg-color" bindtap="checkRealInfo">开始探索</view>
-    <navigator url="../myhouse/myhouse"></navigator>
+    <view class="button"hover-class="bg-color" bindtap="release">开始探索</view>
+  
+
 </view>
