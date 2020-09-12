@@ -16,12 +16,14 @@
   top: 45rpx;
   left: 35rpx;
   color: green;
-  width: 200rpx;
-  height: 70rpx;
-  text-align: center;
-  line-height: 70rpx;
+  width: 70rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   border: 2rpx solid green;
+  font-size: small;
+  text-align: center;
   border-radius: 10rpx;
+  padding: 5rpx;
 }
 
 .bg-color {

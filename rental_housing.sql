@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80019
 File Encoding         : 65001
 
-Date: 2020-09-08 14:51:19
+Date: 2020-09-12 10:50:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,7 +40,7 @@ INSERT INTO `admin` VALUES ('4', 'baijiaxin', '123456');
 DROP TABLE IF EXISTS `collection`;
 CREATE TABLE `collection` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `house_id` int NOT NULL,
   `house_type` int DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -49,9 +49,6 @@ CREATE TABLE `collection` (
 -- ----------------------------
 -- Records of collection
 -- ----------------------------
-INSERT INTO `collection` VALUES ('1', '1', '1', '1');
-INSERT INTO `collection` VALUES ('2', '1', '2', '1');
-INSERT INTO `collection` VALUES ('3', '3', '2', '2');
 
 -- ----------------------------
 -- Table structure for `image`
@@ -63,7 +60,7 @@ CREATE TABLE `image` (
   `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `house_type` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of image
@@ -72,25 +69,25 @@ INSERT INTO `image` VALUES ('1', '1', 'https://z1.muscache.cn/im/pictures/d94088
 INSERT INTO `image` VALUES ('2', '2', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '1');
 INSERT INTO `image` VALUES ('3', '3', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '1');
 INSERT INTO `image` VALUES ('4', '4', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '1');
-INSERT INTO `image` VALUES ('5', '1', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '2');
-INSERT INTO `image` VALUES ('6', '2', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '2');
-INSERT INTO `image` VALUES ('7', '3', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '2');
+INSERT INTO `image` VALUES ('5', '1', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '0');
+INSERT INTO `image` VALUES ('6', '2', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '0');
+INSERT INTO `image` VALUES ('7', '3', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '0');
+INSERT INTO `image` VALUES ('8', '1', 'http://127.0.0.1', '0');
 
 -- ----------------------------
 -- Table structure for `news`
 -- ----------------------------
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `id` int NOT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of news
 -- ----------------------------
-INSERT INTO `news` VALUES ('1', '0', '您的举报信息管理员已处理');
 
 -- ----------------------------
 -- Table structure for `rent`
@@ -98,7 +95,7 @@ INSERT INTO `news` VALUES ('1', '0', '您的举报信息管理员已处理');
 DROP TABLE IF EXISTS `rent`;
 CREATE TABLE `rent` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `host_id` int NOT NULL,
+  `host_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `type` varchar(21) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -118,9 +115,6 @@ CREATE TABLE `rent` (
 -- ----------------------------
 -- Records of rent
 -- ----------------------------
-INSERT INTO `rent` VALUES ('1', '3', '津南新城合雅苑', '津南新城合雅园  离海教园图书馆近 交通便捷', '2室两厅', '南北朝向', '5', '1', '0', '6', '100', '家具齐全，拎包入住', '1700', '0', '0');
-INSERT INTO `rent` VALUES ('2', '4', '河西 柳林', '精装修隔音好，房租押一付一，无中介', '4室1厅1卫', '东西朝向', '6', '1', '1', '12', '14', '家具齐全，拎包入住', '960', '0', '1');
-INSERT INTO `rent` VALUES ('3', '4', '和平区 南营门', '天南地北海角天涯 不管在哪里 温馨的小窝都是你避风的港湾', '2室1厅1卫', '南北', '2', '0', '0', '1', '15', '家具齐全，拎包入住', '830', '0', '1');
 
 -- ----------------------------
 -- Table structure for `report`
@@ -128,52 +122,41 @@ INSERT INTO `rent` VALUES ('3', '4', '和平区 南营门', '天南地北海角�
 DROP TABLE IF EXISTS `report`;
 CREATE TABLE `report` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `house_id` int NOT NULL,
   `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `result` tinyint NOT NULL,
   `house_type` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of report
 -- ----------------------------
-INSERT INTO `report` VALUES ('1', '1', '1', '涉黄', '6', '1');
-INSERT INTO `report` VALUES ('2', '2', '2', '涉爆', '1', '2');
-INSERT INTO `report` VALUES ('3', '1', '1', '涉黑', '1', '1');
-INSERT INTO `report` VALUES ('4', '2', '3', '涉恶', '0', '2');
-INSERT INTO `report` VALUES ('5', '6', '6', '测试用', '0', '2');
-INSERT INTO `report` VALUES ('6', '6', '6', '测试用', '0', '2');
-INSERT INTO `report` VALUES ('7', '6', '6', '测试用', '0', '2');
 
 -- ----------------------------
 -- Table structure for `roommates_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `roommates_info`;
 CREATE TABLE `roommates_info` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL,
   `house_id` int NOT NULL,
-  `user_id` int NOT NULL,
+  `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `state` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of roommates_info
 -- ----------------------------
-INSERT INTO `roommates_info` VALUES ('1', '1', '1', '1');
-INSERT INTO `roommates_info` VALUES ('2', '2', '2', '0');
-INSERT INTO `roommates_info` VALUES ('3', '3', '3', '1');
-INSERT INTO `roommates_info` VALUES ('4', '4', '4', '0');
 
 -- ----------------------------
 -- Table structure for `sell`
 -- ----------------------------
 DROP TABLE IF EXISTS `sell`;
 CREATE TABLE `sell` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `host_id` int NOT NULL,
+  `id` int NOT NULL,
+  `host_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `property` tinyint(1) NOT NULL,
@@ -186,15 +169,11 @@ CREATE TABLE `sell` (
   `price` int NOT NULL,
   `state` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of sell
 -- ----------------------------
-INSERT INTO `sell` VALUES ('1', '1', '海河边江景房/全落地窗俯瞰海河风光', ' 天津和平区', '1', '2室一厅', '东西朝向', '12', '1', '1', '120', '1300000', '0');
-INSERT INTO `sell` VALUES ('2', '1', '铭宿-长城脚下的小院', '北京·平房里的独立房间', '1', '1室一厅', '南北朝向', '1', '0', '0', '80', '1000000', '1');
-INSERT INTO `sell` VALUES ('3', '2', '中国铁建国际城诗景颂苑', '天津市河北区', '1', '2室两厅', '南北朝向', '5', '1', '1', '90', '130000', '0');
-INSERT INTO `sell` VALUES ('4', '3', '板楼南北通透， 户型方正，商品房精装修拎包住', '天津市河北区', '1', '3室两厅', '南北朝向', '7', '1', '1', '160', '1500000', '0');
 
 -- ----------------------------
 -- Table structure for `shareflat_info`
@@ -220,7 +199,7 @@ INSERT INTO `shareflat_info` VALUES ('2', '2', '5', '3', '不可以养宠物');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `head` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `introduction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -229,12 +208,106 @@ CREATE TABLE `user` (
   `gender` tinyint(1) NOT NULL,
   `IDnumber` char(18) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'c:/pic/mao', 'maowenrui', '我是毛文瑞', '123456', '15378965067', '0', '111111');
-INSERT INTO `user` VALUES ('2', 'c:/pic/tian', 'tianjiashuo', '我是田家硕', '123456', '15378965068', '1', '222222');
-INSERT INTO `user` VALUES ('3', 'c:/pic/li', 'liqinying', '我是李青颖', '123456', '15378965069', '1', '333333');
-INSERT INTO `user` VALUES ('4', 'c:/pic/bai', 'baijiaxin', '我是白嘉欣', '123456', '15378965070', '1', '333333');
+
+
+
+
+package com.dai7.util;
+
+ 
+
+
+ @ResponseBody
+
+    @RequestMapping(value = "/decodeUserInfo", method = RequestMethod.POST)
+
+    public Map decodeUserInfo(String encryptedData, String iv, String code) {
+        Map map = new HashMap(); 
+        //登录凭证不能为空
+        if (code == null || code.length() == 0) {
+            map.put("status", 0);
+            map.put("msg", "code 不能为空");
+            return map;
+        }
+        //小程序唯一标识   (在微信小程序管理后台获取)
+        String wxspAppid = "";
+        //小程序的 app secret (在微信小程序管理后台获取)
+        String wxspSecret = "";
+        //授权（必填）
+        String grant_type = "authorization_code";
+         1、向微信服务器 使用登录凭证 code 获取 session_key 和 openid 
+        //请求参数
+        String params = "appid=" + wxspAppid + "&secret=" + wxspSecret + "&js_code=" + code + "&grant_type=" + grant_type;
+        //发送请求
+        String sr = HttpRequest.sendGet("https://api.weixin.qq.com/sns/jscode2session", params);
+        //解析相应内容（转换成json对象）
+        JSONObject json = JSONObject.parseObject(sr);
+        //获取会话密钥（session_key）
+        String session_key = json.get("session_key").toString();
+        //用户的唯一标识（openid）
+        String openid = (String) json.get("openid");
+         2、对encryptedData加密数据进行AES解密 
+        try {
+            String result = AesCbcUtil.decrypt(encryptedData, session_key, iv, "UTF-8");
+            if (null != result && result.length() > 0) {
+                map.put("status", 1);
+                map.put("msg", "解密成功");
+                JSONObject userInfoJSON = JSONObject.parseObject(result);
+                Map userInfo = new HashMap();
+                userInfo.put("openId", userInfoJSON.get("openId"));
+                userInfo.put("nickName", userInfoJSON.get("nickName"));
+                userInfo.put("gender", userInfoJSON.get("gender"));
+                userInfo.put("city", userInfoJSON.get("city"));
+                userInfo.put("province", userInfoJSON.get("province"));
+                userInfo.put("country", userInfoJSON.get("country"));
+                userInfo.put("avatarUrl", userInfoJSON.get("avatarUrl"));
+                userInfo.put("unionId", userInfoJSON.get("unionId"));
+                map.put("userInfo", userInfo);
+                return map;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("status", 0);
+        map.put("msg", "解密失败");
+        return map;
+    }
+
+<!-- JSONObject对象依赖的jar包 -->  
+        <dependency>  
+            <groupId>commons-beanutils</groupId>  
+            <artifactId>commons-beanutils</artifactId>  
+            <version>1.9.3</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>commons-collections</groupId>  
+            <artifactId>commons-collections</artifactId>  
+            <version>3.2.1</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>commons-lang</groupId>  
+            <artifactId>commons-lang</artifactId>  
+            <version>2.6</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>commons-logging</groupId>  
+            <artifactId>commons-logging</artifactId>  
+            <version>1.1.1</version> 
+        </dependency>  
+        <dependency>  
+            <groupId>net.sf.ezmorph</groupId>  
+            <artifactId>ezmorph</artifactId>  
+            <version>1.0.6</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>net.sf.json-lib</groupId>  
+            <artifactId>json-lib</artifactId>  
+            <version>2.2.3</version>  
+            <classifier>jdk15</classifier><!-- 指定jdk版本 -->  
+        </dependency>  
+        <!-- Json依赖架包下载 -->  
