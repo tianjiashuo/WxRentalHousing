@@ -37,22 +37,25 @@ Page({
       "text": "我要发布买房信息"
     }]
    },
+
    //获取发布类型
    wetherRentSellDate:function(e){
     this.setData({
      'wether_rent_sell':e.detail.id
     })
    },
+   //提交数据分转
    dopost:function(e){
     console.log("form 发生了 submit",e.detail.value)
-   if( this.data.wether_rent_sell==0){
+    if( this.data.wether_rent_sell==0){
      this.dopostRent(e);
-   }else if(this.data.wether_rent_sell==1){
+    }else if(this.data.wether_rent_sell==1){
      this.dopostSell(e);
-   }else{
+    }else{
     console.log("非法submit")
-   }
+    }
    },
+   //提交租房
    dopostRent:function(e){
    // console.log("form 发生了 submit",e.detail.value)
    let that = this;
@@ -96,6 +99,7 @@ Page({
       }
      })
    },
+   //提交卖房
    dopostSell:function(e){
     let that = this;
     wx.request({

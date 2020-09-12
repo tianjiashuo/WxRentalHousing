@@ -7,7 +7,6 @@
       </navigator>
       <image class="nav-top-r" src='https://z1.muscache.cn/defaults/user_pic-50x50.png?v=3'></image>
     </view>
-
 </block>
 <block wx:else>
   
@@ -21,7 +20,7 @@
       <view>
         <view class="main-word">个人信息:
           <!-- <view > -->
-          <image class="edit" src="../../icons/mypage/编 辑.png"></image>
+          <image class="edit" src="../../icons/mypage/edit.png"></image>
           <!-- </view> -->
         </view>
         <view class="main1-item">
@@ -38,15 +37,15 @@
        <view class="main-word">我的:</view>
           <view class="my-icon">
             <view class="icons">
-              <image class="collection" src='../../icons/mypage/收 藏.png'></image>
+              <image class="collection" src='../../icons/mypage/collection.png'></image>
               <!-- <text class="explain">收 藏</text> -->
             </view>
             <!-- <view class="icons"> -->
-              <image class="myhouse" src='../../icons/mypage/我的房源.png'></image>
+              <image class="myhouse" src='../../icons/mypage/myhouse.png'></image>
               <!-- <text class="explain">房 源</text> -->
             <!-- </view> -->
             <!-- <view class="icons"> -->
-              <image class="apply" src="../../icons/mypage/申请.png"></image>
+              <image class="apply" src="../../icons/mypage/apply.png"></image>
               <!-- <text class="explain">申 请</text> -->
             <!-- </view> -->
           </view>
