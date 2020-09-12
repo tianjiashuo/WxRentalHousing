@@ -2,7 +2,7 @@ package com.rental.demo.Repository.entity;
 
 public class Report {
     private int id;
-    private int user_id;
+    private String user_id;
     private int house_id;
     private int house_type;
     private String content;
@@ -16,11 +16,11 @@ public class Report {
         this.id = id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
@@ -55,7 +55,5 @@ public class Report {
     public void setResult(boolean result) {
         this.result = result;
     }
-
-
 
 }

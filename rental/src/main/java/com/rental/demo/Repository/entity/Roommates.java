@@ -2,7 +2,7 @@ package com.rental.demo.Repository.entity;
 
 public class Roommates {
     private int id;
-    private int userId;
+    private String userId;
     private int houseId;
     private int state;
 
@@ -10,9 +10,9 @@ public class Roommates {
 
     public void setId(int id){this.id = id;}
 
-    public int getUserId(){return userId;}
+    public String getUserId(){return userId;}
 
-    public void setUserId(int userId){this.userId = userId;}
+    public void setUserId(String userId){this.userId = userId;}
 
     public int getHouseId(){return houseId;}
 

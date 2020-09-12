@@ -1,8 +1,6 @@
 package com.rental.demo.Repository.dao;
 
-import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
-import com.rental.demo.Repository.mappers.RentRowMapper;
 import com.rental.demo.Repository.mappers.SellRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

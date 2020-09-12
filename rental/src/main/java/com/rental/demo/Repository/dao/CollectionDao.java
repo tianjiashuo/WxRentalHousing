@@ -19,7 +19,7 @@ public class CollectionDao {
      * @author tian
      * @return
      */
-    public void addCollection(int userId,int houseId,int houseType){
+    public void addCollection(String userId,int houseId,int houseType){
         String sql = "INSERT INTO collection (user_id,house_id,house_type) VALUES(?, ? ,?)";
         jdbcTemplate.update(sql,userId,houseId,houseType);
     }
@@ -37,7 +37,7 @@ public class CollectionDao {
      * @author tian
      * @return
      */
-    public List<Collection> getCollectionById(int userId){
+    public List<Collection> getCollectionById(String userId){
         String sql = "SELECT * FROM collection WHERE user_id = ?";
         List<Collection> lc= jdbcTemplate.query(sql, new CollectionRowMapper(),userId);
         return lc;

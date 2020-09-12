@@ -11,7 +11,7 @@ public class ReportRowMapper implements RowMapper<Report> {
     public Report mapRow(ResultSet rs, int rowNum) throws SQLException {
         Report report = new Report();
         report.setId(rs.getInt("id"));
-        report.setUser_id(rs.getInt("user_id"));
+        report.setUser_id(rs.getString("user_id"));
         report.setHouse_id(rs.getInt("house_id"));
         report.setContent(rs.getString("content"));
         report.setResult(rs.getBoolean("result"));

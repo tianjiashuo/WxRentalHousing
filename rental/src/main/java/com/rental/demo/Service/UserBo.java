@@ -1,7 +1,7 @@
 package com.rental.demo.Service;
 
 public class UserBo {
-    private int id;
+    private String id;
     private String head;
     private String nickname;
     private String introduction;
@@ -9,10 +9,10 @@ public class UserBo {
     private boolean gender;
     private String idNumber;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getHead(){
@@ -51,7 +51,7 @@ public class UserBo {
     public void setIdNumber(String idNumber){
         this.idNumber = idNumber;
     }
-    UserBo( int id,String head,String nickname,String introduction,String phone,boolean gender,String idNumber){
+    UserBo( String id,String head,String nickname,String introduction,String phone,boolean gender,String idNumber){
         this.id = id;
         this.head = head;
         this.nickname = nickname;

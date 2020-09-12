@@ -12,7 +12,7 @@ public class RoommatesRowMapper implements RowMapper<Roommates> {
         Roommates roommates = new Roommates();
         roommates.setId(rs.getInt("id"));
         roommates.setHouseId(rs.getInt("house_id"));
-        roommates.setUserId(rs.getInt("user_id"));
+        roommates.setUserId(rs.getString("user_id"));
         roommates.setState(rs.getInt("state"));
         return roommates;
     }
