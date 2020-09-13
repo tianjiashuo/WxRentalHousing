@@ -25,7 +25,7 @@ public class RentRowMapper implements RowMapper<Rent>{
             rent.setArea(rs.getInt("area"));
             rent.setFurniture(rs.getString("furniture"));
             rent.setPrice(rs.getInt("price"));
-            rent.setState(rs.getBoolean("state"));
+            rent.setState(rs.getInt("state"));
             rent.setForm(rs.getBoolean("form"));
             return rent;
         }

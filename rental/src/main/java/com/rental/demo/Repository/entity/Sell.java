@@ -14,7 +14,7 @@ public class Sell{
     private boolean property;
     private boolean isElevator;
     private boolean isRenovation;
-    private boolean state;
+    private int state;
 
 
     public int getId() {
@@ -113,11 +113,11 @@ public class Sell{
         isRenovation = renovation;
     }
 
-    public boolean getIsState() {
+    public int getIsState() {
         return state;
     }
 
-    public void setState(boolean state) {
+    public void setState(int state) {
         this.state = state;
     }
 

@@ -23,11 +23,11 @@ public class ReportController {
         return reportService.checkReport(report);
     }
     @GetMapping("/unDealReport")
-    public List<Report> showUndealReport(){
+    public List<ReportVo> showUndealReport(){
         return reportService.showUnDealReport();
     }
     @PostMapping ("/showReport")
-    public Report showReport(@RequestBody Map<String,String > id){
+    public Report showReport(@RequestBody Map<String,String> id){
         return reportService.getAReport(id.get("id"));
     }
 
