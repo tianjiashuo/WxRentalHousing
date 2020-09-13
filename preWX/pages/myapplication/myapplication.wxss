@@ -1,0 +1,44 @@
+/* pages/myapplication/myapplication.wxss */
+.application {
+  position: absolute;
+  top: 300rpx;
+  width: 90%;
+  height: 300rpx;
+  left: 5%;
+  border-radius: 6rpx;
+  background-color: white;
+  border: 1px solid #ecebe7;
+}
+
+.content1 {
+  margin: 30rpx;
+}
+
+.id {
+  height: 48rpx;
+  /* line-height: rpx; */
+  border-bottom: 1px solid #ecebe7;
+}
+
+.house {
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  line-height: 100rpx;
+}
+
+.house view:first-child {
+  color: #008489;
+}
+
+
+
+.house view:last-child {
+  color: #008489;
+}
+
+button {
+  color: white;
+  background-color: #008489;
+  font-size: 16px;
+}

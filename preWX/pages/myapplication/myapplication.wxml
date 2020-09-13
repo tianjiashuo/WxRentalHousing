@@ -1,0 +1,11 @@
+<!--pages/myapplication/myapplication.wxml-->
+<view class="application">
+  <view class="content1">
+    <view class="id">id:1</view>
+    <view class="house">
+      <view>津南四季村</view>
+      <view>2020.9.8</view>
+    </view>
+    <view class="id">状态:待批准</view>
+  </view>
+</view>

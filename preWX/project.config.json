@@ -36,7 +36,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.2",
-  "appid": "wx1a8b5c07794aa546",
+  "appid": "",
   "projectname": "miniprogram-1",
   "cloudfunctionTemplateRoot": "",
   "watchOptions": {
