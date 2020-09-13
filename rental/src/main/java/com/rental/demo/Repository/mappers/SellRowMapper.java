@@ -23,7 +23,7 @@ public class SellRowMapper implements RowMapper<Sell> {
             sell.setIsRenovation(rs.getBoolean("is_renovation"));
             sell.setArea(rs.getInt("area"));
             sell.setPrice(rs.getInt("price"));
-            sell.setState(rs.getBoolean("state"));
+            sell.setState(rs.getInt("state"));
           return sell;
         }
 

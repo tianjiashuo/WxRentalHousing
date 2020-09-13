@@ -42,7 +42,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -80,8 +79,6 @@
             <version>2.6</version>
         </dependency>
     </dependencies>
-
-
     <build>
         <plugins>
             <plugin>

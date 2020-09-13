@@ -15,7 +15,7 @@ public class Rent {
     private String furniture;
     private boolean isElevator;
     private boolean isPet;
-    private boolean state;
+    private int state;
     private boolean form ;
 
     public int getId() {
@@ -122,11 +122,11 @@ public class Rent {
         isPet = pet;
     }
 
-    public boolean getIsState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(boolean state) {
+    public void setState(int state) {
         this.state = state;
     }
 
