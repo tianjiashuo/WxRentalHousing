@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/details/detials",
     "pages/renthouse/renthouse",
+    "pages/details/detials",
     "pages/mypage/mypage",
     "pages/myhouse/myhouse",
     "pages/release/release",

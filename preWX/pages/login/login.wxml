@@ -7,7 +7,8 @@
   -->
 
   <view class="userinfo">
-    <button class="button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 使用微信账号登录 </button>
+    <button class="button"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">使用微信帐号登陆</button>
+    
   </view>
 
 

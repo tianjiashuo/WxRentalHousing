@@ -6,16 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hasUserInfo: app.globalData.hasUserInfo,
-    userName: app.globalData.userName,
-    userImgUrl: app.globalData.userImgUrl
+    hasUserInfo:false, 
+    userName: "",
+    userImgUrl: "",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -29,11 +29,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+   
     this.setData({
       hasUserInfo: app.globalData.hasUserInfo,
-      userName: app.globalData.userName,
-      userImgUrl: app.globalData.userImgUrl
+      userName: app.globalData.userInfo.nickName,
+      userImgUrl: app.globalData.userInfo.head
     })
+    
   },
 
   /**
@@ -71,14 +73,52 @@ Page({
 
   },
   getUserInfo: function (e) {
-    console.log(e);
-    app.globalData.hasUserInfo = true;
-    app.globalData.userName = e.detail.userInfo.nickName;
-    app.globalData.userImgUrl = e.detail.userInfo.avatarUrl;
-    // wx.navigateBack({
-    //   url: '../my/my'
-    // })
+    // 登录
+    wx.login({
+     success: res => {
+       // 发送 res.code 到后台换取 openId, sessionKey, unionId
+       console.log(res);
+       if (res.code) {
+         wx.getUserInfo({
+           success:function(useres){
+             console.log(useres)
+             var jsonData={
+               code:res.code,
+               encryptedData: useres.encryptedData,
+               iv:useres.iv
+             };
+            
+             wx.request({
+               url: 'http://localhost:8080/user/login',
+               method: 'POST',
+               data: jsonData,
+               header: {
+                 'content-type': 'application/json'
+               },
+               success(res) {
+                 if (res.data.openid != "" || res.data.openid!=null){
+                   // 登录成功
+                     wx.setStorageSync("openId", res.data.userInfo.openId);//将用户id保存到缓存中
+                     app.globalData.hasUserInfo = true;
+                     app.globalData.userInfo.nickName = res.data.userInfo.nickName;
+                     app.globalData.userInfo.head =  res.data.userInfo.avatarUrl;
+                   console.log("res userinfo ", res);
+                   // console.log("session_keymypage",res.data.session_key);
+                 }else{
+                   // 登录失败
+                   return false;
+                 }
+               }
+             })
+           }
+         })
+       } else {
+         console.log('获取用户登录态失败！' + res.errMsg)
+       }
+     }
+   });  
   }
+  
 })
 
 

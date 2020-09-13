@@ -4,18 +4,32 @@ const app = getApp()
 
 Page({
   data: {
-
+  
   },
   onLoad: function () {
-
+   
   },
-  getUserInfo: function (e) {
-    console.log(e);
-    app.globalData.hasUserInfo = true;
-    app.globalData.userName = e.detail.userInfo.nickName;
-    app.globalData.userImgUrl = e.detail.userInfo.avatarUrl;
+  getPhoneNumber: function(e) { 
+ 
+    var jsonData={
+      encryptedData:e.detail.encryptedData,
+      iv:e.detail.iv,
+      openId:wx.getStorageSync('openId')
+    };
+    wx.request({
+      url: 'http://localhost:8080/user/getPhone',
+      method: 'POST',
+      data:jsonData,
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res){
+        console.log("res phone",res.data);
+        app.globalData.userInfo.phone =res.data.phoneNumber;
+      }
+    })
     wx.navigateBack({
       url: '../mypage/mypage'
     })
-  }
+  } 
 })

@@ -1,6 +1,6 @@
 // pages/release/release.js
+const app = getApp();
 Page({
-
  
   /**
    * 页面的初始数据
@@ -63,6 +63,20 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  release:function(event){
+   console.log("req release"+event);
+   if(app.globalData.hasUserInfo){
+    wx.navigateTo({ 
+      url: '/pages/myhouse/myhouse' 
+      })
+   }else{
+     wx.showToast({
+       title: '请前往主页登陆',
+       icon:'none',
+       duration:1800
+     })
+   }
   }
   
 })

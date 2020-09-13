@@ -37,7 +37,7 @@ public class UserBo {
         return phone;
     }
     public void setPhone(String phone){
-        this.phone= this.phone;
+        this.phone= phone;
     }
     public boolean getGender(){
         return gender;
@@ -50,6 +50,9 @@ public class UserBo {
     }
     public void setIdNumber(String idNumber){
         this.idNumber = idNumber;
+    }
+    UserBo(){
+
     }
     UserBo( String id,String head,String nickname,String introduction,String phone,boolean gender,String idNumber){
         this.id = id;

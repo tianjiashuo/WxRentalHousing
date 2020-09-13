@@ -24,9 +24,9 @@ public class UserDao {
     }
 
     public int insertUserInfo(UserBo userBo){
-        String sql = "INSERT INTO user (head,nickname,phone,gender) VALUES(?, ? ,?,?)";
-        return jdbcTemplate.update(sql,userBo.getHead(),
-                userBo.getNickname(),userBo.getPhone(),true);
+        String sql = "INSERT INTO user (id,head,nickname,phone,gender) VALUES(?,?,?,?,?)";
+        return jdbcTemplate.update(sql,userBo.getId(),userBo.getHead(),
+                userBo.getNickname(),userBo.getPhone(),userBo.getGender());
     }
 
     public int editUserInfo(String id,UserBo userBo){
@@ -35,13 +35,28 @@ public class UserDao {
                 userBo.getGender(),userBo.getIdNumber(),id);
     }
 
+    public int editUserPhoneInfo(String id,String phone){
+        String sql = "UPDATE user set phone=? WHERE id=? ";
+        return jdbcTemplate.update(sql,phone,id);
+    }
+
+    public int editUserIntroductionInfo(String id,String intro){
+        String sql = "UPDATE user set introduction=? WHERE id=? ";
+        return jdbcTemplate.update(sql,intro,id);
+    }
+
+    public int editUserIDInfo(String id,String IDnumber){
+        String sql = "UPDATE user set IDnumber=? WHERE id=? ";
+        return jdbcTemplate.update(sql,IDnumber,id);
+    }
+
+
     public boolean checkUserRealName(String userId){
         String sql = "SELECT * FROM user WHERE id = ?";
         User user = jdbcTemplate.queryForObject(sql,new UserRowMapper(),userId);
         if(user.getIDnumber().equals("")){
             return false;
-        }
-        else{
+        }else{
             return true;
         }
     }
@@ -57,5 +72,7 @@ public class UserDao {
         System.out.println(jdbcTemplate.queryForObject(sql,new UserRowMapper(),id));
         return jdbcTemplate.queryForObject(sql,new UserRowMapper(),id).getPassword();
     }
+
+
 }
 

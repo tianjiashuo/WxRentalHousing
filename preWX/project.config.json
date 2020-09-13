@@ -36,7 +36,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.2",
-  "appid": "wxef61eb5e73eba3b2",
+  "appid": "wx1a8b5c07794aa546",
   "projectname": "miniprogram-1",
   "cloudfunctionTemplateRoot": "",
   "watchOptions": {
@@ -46,6 +46,8 @@
     "hidedInDevtools": []
   },
   "scripts": {},
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "current": -1,

@@ -1,16 +1,21 @@
 package com.rental.demo.Controller;
 
+import com.rental.demo.Service.AesService;
 import com.rental.demo.Service.CheckIdNumber;
 import com.rental.demo.Service.UserBo;
 import com.rental.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.Map;
+
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @GetMapping("/userInfo/{id}")
     UserBo getUserById(@PathVariable String id){
@@ -38,6 +43,15 @@ public class UserController {
         }else{
             return -1;
         }
+    }
+
+    @PostMapping("/user/login")
+    public Map userLogin(@RequestBody Map<String,String> json)  {
+        return userService.userLogin(json);
+    }
+    @PostMapping("/user/getPhone")
+    public Map getPhone(@RequestBody Map<String,Object> json){
+        return userService.getPhone(json);
     }
 
 }
