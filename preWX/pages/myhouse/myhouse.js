@@ -60,9 +60,10 @@ Page({
    // console.log("form 发生了 submit",e.detail.value)
    let that = this;
      wx.request({
-       url: 'http://localhost:8080/insertRentHouse',
-       data:{
-         'hostId':'99',
+      url: 'http://47.94.170.167:8080/insertRentHouse',
+      //url:'http://localhost:8080/insertRentHouse', 
+      data:{
+         'hostId':wx.getStorageSync('openId'),
          "shortestLease": e.detail.value.shortrst_lease,
          "area": e.detail.value.area,
          "price": e.detail.value.price,
@@ -103,7 +104,8 @@ Page({
    dopostSell:function(e){
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/insertSellHouse',
+       url: 'http://47.94.170.167:8080/insertSellHouse',
+       //url:'http://localhost:8080/insertSellHouse',
       data:{
         'hostId':'99',
         "address":e.detail.value.address,

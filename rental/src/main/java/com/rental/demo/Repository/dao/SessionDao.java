@@ -24,6 +24,7 @@ public class SessionDao {
         int flag = jdbcTemplate.update(sql,session,id);
         return(flag==1);
     }
+
     public Boolean insertSession(String id,String session){
         String sql ="INSERT session (id,session_key) VALUES (?,?)";
         int flag = jdbcTemplate.update(sql,id,session);

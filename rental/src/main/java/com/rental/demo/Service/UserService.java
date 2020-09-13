@@ -70,10 +70,16 @@ public class UserService {
             return info;
         }else{
               Map<String,String> userInfo = (Map) info.get("userInfo");
-             //用户已经存在
+
+            //更新session
+              boolean flag0 = sessionService.updateSession(userInfo.get("openId"),session);
+              if(!flag0){
+                  //如果不存在id
+                  sessionService.insertSession(userInfo.get("openId"),session);
+              }
+
+              //用户已经存在
               if(getUserById(userInfo.get("openId"))!=null){
-                  //更新session
-                 sessionService.updateSession(userInfo.get("openId"),session);
                   info.put("loginType","login");
                   return info;
               }else{
@@ -88,10 +94,10 @@ public class UserService {
                   int flag = initUserInfo(newuser);
                   if(flag==1){//加入成功
                       info.put("loginType","logUp");
-                      sessionService.insertSession(userInfo.get("openId"),session);
                   }else{//加入失败
                       info.put("loginType","logUpFail");
                   }
+
                   return info;
               }
         }
@@ -106,6 +112,9 @@ public class UserService {
         System.out.println("getphone0 "+reqinfo.toString());
         //拿取Session
         Session session =  sessionService.getSessionById(reqinfo.get("openId").toString());
+        if(session==null){
+            return null;
+        }
         System.out.println("getphone1 "+session.getSession());
        //获得解码后的map
         // {phoneNumber=15378965067, watermark={timestamp=1.599921154E9, appid=wx1a8b5c07794aa546}, purePhoneNumber=15378965067, countryCode=86}

@@ -17,7 +17,8 @@ Page({
       openId:wx.getStorageSync('openId')
     };
     wx.request({
-      url: 'http://localhost:8080/user/getPhone',
+      url: 'http://47.94.170.167:8080/user/getPhone',
+      //url: 'http://localhost:8080/user/getPhone',
       method: 'POST',
       data:jsonData,
       header: {
