@@ -5,6 +5,7 @@ import com.rental.demo.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 public class loginController {
     @Autowired

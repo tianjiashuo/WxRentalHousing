@@ -3,14 +3,12 @@ package com.rental.demo.Controller;
 import com.rental.demo.Repository.entity.Report;
 import com.rental.demo.Service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 public class ReportController {
     @Autowired

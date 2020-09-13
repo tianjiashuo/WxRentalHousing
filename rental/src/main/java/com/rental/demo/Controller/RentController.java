@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.Set;
 
+@CrossOrigin
 @RestController
 public class RentController {
     @Autowired
