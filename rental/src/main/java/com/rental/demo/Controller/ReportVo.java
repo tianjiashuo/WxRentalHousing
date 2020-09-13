@@ -1,12 +1,15 @@
-package com.rental.demo.Repository.entity;
+package com.rental.demo.Controller;
 
-public class Report {
+import com.rental.demo.Repository.entity.Report;
+
+public class ReportVo {
     private int id;
     private String user_id;
     private int house_id;
     private int house_type;
     private String content;
     private boolean result;
+    private String title;
 
     public int getId() {
         return id;
@@ -48,7 +51,7 @@ public class Report {
         this.content = content;
     }
 
-    public boolean getResult() {
+    public boolean isResult() {
         return result;
     }
 
@@ -56,4 +59,22 @@ public class Report {
         this.result = result;
     }
 
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public String getTitle(){
+        return this.title;
+    }
+
+    public ReportVo(Report report, String title){
+        this.id=report.getId();
+        this.user_id = report.getUser_id();
+        this.house_id = report.getHouse_id();
+        this.house_type = report.getHouse_type();
+        this.content = report.getContent();
+        this.result = report.getResult();
+        this.title = title;
+
+    }
 }

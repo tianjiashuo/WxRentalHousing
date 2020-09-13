@@ -1,7 +1,10 @@
 package com.rental.demo.Service;
 
+import com.rental.demo.Controller.ReportVo;
 import com.rental.demo.Repository.dao.ReportDao;
+import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Report;
+import com.rental.demo.Repository.entity.Sell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,10 @@ public class ReportService {
     private ReportDao reportDao;
     @Autowired
     private NewsService newsService;
+    @Autowired
+    private RentService rentService;
+    @Autowired
+    private SellService sellService;
 
     /**
      * 增加举报
@@ -63,8 +70,28 @@ public class ReportService {
      * 查询没有解决的举报
      * @return
      */
-    public List<Report> showUnDealReport(){
-        return reportDao.getReportByResult(INIT_RESULT);
+    public List<ReportVo> showUnDealReport(){
+        List<Report> lr = reportDao.getReportByResult(INIT_RESULT);
+        ArrayList<ReportVo> lrv = new ArrayList<>();
+        Iterator<Report> iter = lr.iterator();
+        while(iter.hasNext()){
+            Report report = iter.next();
+            //租房信息被举报
+            if(report.getHouse_type()==0){
+                Rent rent = (Rent)rentService.getRentAllInfo(report.getHouse_id()).get("rentInfo");
+                if(rent.getState()!=-1){
+                    lrv.add(new ReportVo(report,rent.getTitle()));
+                }
+            }
+            //卖房信息被举报
+            else if(report.getHouse_type()==1){
+                Sell sell  = (Sell)sellService.getSellAllById(report.getHouse_id()).get("sellInfo");
+                if(sell.getIsState()!=-1){
+                    lrv.add(new ReportVo(report,sell.getTitle()));
+                }
+            }
+        }
+        return lrv;
     }
 
     /**

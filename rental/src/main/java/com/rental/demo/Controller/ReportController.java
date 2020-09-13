@@ -3,14 +3,12 @@ package com.rental.demo.Controller;
 import com.rental.demo.Repository.entity.Report;
 import com.rental.demo.Service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 public class ReportController {
     @Autowired
@@ -25,11 +23,11 @@ public class ReportController {
         return reportService.checkReport(report);
     }
     @GetMapping("/unDealReport")
-    public List<Report> showUndealReport(){
+    public List<ReportVo> showUndealReport(){
         return reportService.showUnDealReport();
     }
     @PostMapping ("/showReport")
-    public Report showReport(@RequestBody Map<String,String > id){
+    public Report showReport(@RequestBody Map<String,String> id){
         return reportService.getAReport(id.get("id"));
     }
 
