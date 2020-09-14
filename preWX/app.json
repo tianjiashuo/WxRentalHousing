@@ -2,10 +2,10 @@
   "pages": [
     "pages/details/detials",
     "pages/renthouse/renthouse",
-    "pages/myapplication/myapplication",
-    
-    "pages/mypage/mypage",
     "pages/myhouse/myhouse",
+    
+    "pages/myapplication/myapplication",
+    "pages/mypage/mypage",
     "pages/release/release",
     "pages/search/search",
     "pages/logs/logs",

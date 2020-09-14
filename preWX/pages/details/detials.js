@@ -74,7 +74,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    id: 1,
+    hostId:0,
+    shortestLease:0,
+    area: 0,
+    price: 0,
+    floor: 0,
+    address: "",
+    title: "",
+    type: "",
+    orientation: "",
+    furniture: "",
+    isElevator: false,
+    isPet: false,
+    isForm: false,
+    isState: false
   },
 
   /**
@@ -92,7 +106,15 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
-         address:res.data.address
+
+         title:res.data.rentInfo.title,
+         address:res.data.rentInfo.address,
+         type:res.data.rentInfo.type,
+         orientation:res.data.rentInfo.orientation,
+         furniture:res.data.rentInfo.furniture,
+         isElevator:res.data.rentInfo.isElevator,
+         shortestLease:res.data.rentInfo.shortestLease
+
         })
       }
     })
