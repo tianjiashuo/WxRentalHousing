@@ -1,51 +1,127 @@
 // pages/renthouse/renthouse.js
 Page({
-
+  houseInfor(e) {
+    wx.navigateTo({
+      url: '../exploration/exploration',
+    })
+  },
   /**
    * 页面的初始数据
    */
   data: {
-   
-  },
-  
+    keywords:"",
+    current:0,
+    swiper:[],
+    city:[{id: 0,type: "全部", typeid:0},
+          {id: 1,type: "待整租", typeid:1},
+          {id: 2,type: "待合租", typeid:2}],
+    typehouse:[],
+    twocurrent:0,
+    hotplace:[],
+    hotplacehouse:[]
 
+  },
+ 
+  click(e) {
+    var id = e.currentTarget.dataset.set;
+    this.setData({
+      current: id
+    })
+    var that = this;
+    // wx.request({
+    //   url: 'http://localhost:8888/cityhouse',
+    //   data: { id: id},
+    //   header: { "content-type": "application/json" },
+    //   method: 'POST',
+    //   dataType: 'json',
+    //   responseType: 'text',
+    //   success: function (res) {
+    //     console.log(res.data)
+    //     that.setData({
+    //       cityhouse: res.data
+    //     })
+    //   },
+    //   fail: function (res) {
+    //     console.log('fail')
+    //   },
+    // })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //     if (res.code) {
-    //       wx.request({
-    //         url: 'http://localhost:8080/user/login',
-    //         method: 'POST',
-    //         data: {
-    //           code: res.code
-    //         },
-    //         header: {
-    //           'content-type': 'application/x-www-form-urlencoded'
-    //         },
-    //         success(res) {
-    //           console.log("openid:"+res.data.openid);
-    //           if (res.data.openid != "" || res.data.openid!=null){
-    //             // 登录成功
-    //             // wx.setStorageSync("openid", res.data.openid);//将用户id保存到缓存中
-    //             // wx.setStorageSync("session_key", res.data.session_key);//将session_key保存到缓存中
-    //             console.log("openid", res.data.openid);
-    //             console.log("session_key",res.data.session_key);
-    //           }else{
-    //             // 登录失败
-    //             // TODO 跳转到错误页面，要求用户重试
-    //             return false;
-    //           }
-    //         }
-    //       })
-    //     } else {
-    //       console.log('获取用户登录态失败！' + res.errMsg)
-    //     }
-    //   }
-    // })
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/page/swiper',
+      data: '',
+      header: { "content-type": "application/json"},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log("swiper"+res.data)
+        that.setData({
+          swiper:res.data
+        })
+      },
+      fail: function(res) {
+        console.log('fail')
+      },
+    })
+   
+    wx.request({
+      url: 'http://localhost:8888/hotplace',
+      data: '',
+      header: { "content-type": "application/json" },
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          hotplace: res.data
+        })
+      },
+      fail: function (res) {
+        console.log('fail')
+      },
+    })
+
+    wx.request({
+      url: 'http://localhost:8888/cityhouse',
+      data: { id: 1 },
+      header: { "content-type": "application/json" },
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          cityhouse: res.data
+        })
+      },
+      fail: function (res) {
+        console.log('fail')
+      },
+    })
+    wx.request({
+      url: 'http://localhost:8888/cityhouse',
+      data: { id: 1 },
+      header: { "content-type": "application/json" },
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          hotplacehouse: res.data
+        })
+      },
+      fail: function (res) {
+        console.log('fail')
+      },
+    })
+
   },
 
   /**
@@ -95,10 +171,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  getPhoneNumber: function(e) { 
-    console.log(e.detail.errMsg) 
-    console.log(e.detail.iv) 
-    console.log(e.detail.encryptedData) 
-  } 
+  }
 })

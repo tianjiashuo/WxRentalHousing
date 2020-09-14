@@ -1,4 +1,53 @@
 <!--pages/buyhouse/buyhouse.wxml-->
-<view class="search_input">
-<search></search>
+<swiper class="swiper" autoplay='true' circular='true' interval="4000" duration='500'>
+  <block wx:for="{{swiper}}">
+    <swiper-item>
+      <view class="item">
+        <image src="{{item.url}}" mode="widthFix" class="qwe"></image>
+        <view class="small">{{item.smallTitle}}</view>
+        <view class="big">{{item.title}}</view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="none"></view>
+<view class="search">
+  <view class="content1">
+    <view class="moldel">
+     <view class="city" >尚未定位</view>
+     <image class="gps" src='../../icons/location.png'></image>
+    </view> 
+
+    <form action="doSearch" method="post">
+      <input  name="keywords" value="{{keywords}}" placeholder=" 请输入关键字"></input>
+      <button id="id" type="button" form-type="submit">查找房源</button>
+    </form>
+  </view>
 </view>
+
+<view class="autumn">
+  <view class="word">为你查找到的房源</view>
+  <view class="infor">一个拿高分的房屋买卖平台</view>
+  <scroll-view class="scroll" enable-flex="true" scroll-x="true">
+    <block wx:for="{{city}}">
+      <view class="{{current==index?'change':'block'}}" id="item-{{index}}" data-set="{{item.typeid}}" bindtap="click">{{item.type}}</view>
+    </block>
+  </scroll-view>
+
+  <view class="house">
+    <block wx:for="{{cityhouse}}">
+      <view class="pichouse">
+       <navigator url='../house/house'> <image mode="widthFix" src="{{item.url}}"></image></navigator>
+        <view class="type">{{item.infor}}</view>
+        <view class="adress">{{item.adress}} </view>
+        <view class="price">
+          <view>{{item.price}}</view>
+          <view>{{item.preprice}}</view>
+          <view>每晚</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+

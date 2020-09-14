@@ -10,9 +10,4 @@
   box-sizing: border-box;
 } 
 
-page{
-  /*主题颜色*/
-  --themeColor :#2aa515;
-  font-size: 28rpx;
-}
 

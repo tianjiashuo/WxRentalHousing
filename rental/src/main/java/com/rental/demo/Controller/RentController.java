@@ -21,6 +21,8 @@ public class RentController {
         return rentService.selectRent(condition);
     }
 
+    @GetMapping("/rent/swiper")
+
     @PostMapping("rent/delete")
     public boolean deleteRentinfo(@RequestBody Map<String,String> id) {
         return rentService.deleteRentInfo(id.get("id"));
@@ -52,5 +54,6 @@ public class RentController {
 
     @PostMapping("/changeRentState/{id}")
     int changeRentState(@PathVariable int id){return rentService.changeState(id);}
+
 
 }

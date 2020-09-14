@@ -12,7 +12,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/page/swiper',
+      data: '',
+      header: { "content-type": "application/json"},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log("swiper"+res.data)
+        that.setData({
+          swiper:res.data
+        })
+      },
+      fail: function(res) {
+        console.log('fail')
+      },
+    })
   },
 
   /**

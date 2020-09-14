@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80019
 File Encoding         : 65001
 
-Date: 2020-09-13 00:21:20
+Date: 2020-09-14 14:40:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,6 +76,24 @@ INSERT INTO `image` VALUES ('5', '1', 'https://z1.muscache.cn/im/pictures/d94088
 INSERT INTO `image` VALUES ('6', '2', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '0');
 INSERT INTO `image` VALUES ('7', '3', 'https://z1.muscache.cn/im/pictures/d9408889-273a-45fb-a6ff-7012930be9af.jpg?aki_policy=large', '0');
 INSERT INTO `image` VALUES ('8', '1', 'http://127.0.0.1', '0');
+
+-- ----------------------------
+-- Table structure for `index_page_swiper`
+-- ----------------------------
+DROP TABLE IF EXISTS `index_page_swiper`;
+CREATE TABLE `index_page_swiper` (
+  `id` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `smalltitle` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of index_page_swiper
+-- ----------------------------
+INSERT INTO `index_page_swiper` VALUES ('1', 'https://z1.muscache.cn/pictures/hongbao/marquee/original/09f9d1ae-2ecc-44e1-bfa3-f0ad3251a475.jpg', '体验家的温度', '妈妈我爱你');
+INSERT INTO `index_page_swiper` VALUES ('2', 'https://z1.muscache.cn/pictures/hongbao/marquee/original/74aed19b-c6f8-4de8-9832-85e75e7aeb17.jpg', '尝鲜小众居住地', '住进山湖飘渺间');
+INSERT INTO `index_page_swiper` VALUES ('3', 'https://z1.muscache.cn/pictures/hongbao/marquee/original/194b4ed2-a1b0-4faf-b2c0-d9028b5e049f.jpg', '入住赏枫佳地', '红叶狩 · ');
 
 -- ----------------------------
 -- Table structure for `news`
@@ -210,7 +228,7 @@ CREATE TABLE `session` (
 -- ----------------------------
 -- Records of session
 -- ----------------------------
-INSERT INTO `session` VALUES ('oIyaj5qho5ttgXXjpmJx-JQ89yL8', 'kGJQMIAyOG8PZ6HRCpW82A==');
+INSERT INTO `session` VALUES ('oIyaj5qho5ttgXXjpmJx-JQ89yL8', 'wlpi2khVSxO9qvmK3Gft6A==');
 
 -- ----------------------------
 -- Table structure for `shareflat_info`

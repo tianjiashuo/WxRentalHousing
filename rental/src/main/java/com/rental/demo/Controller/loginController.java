@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-public class loginController {
+public class LoginController {
     @Autowired
     LoginService loginService;
     @PostMapping("/login")
