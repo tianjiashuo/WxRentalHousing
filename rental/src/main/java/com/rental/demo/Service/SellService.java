@@ -80,7 +80,7 @@ public class SellService {
      * @param sellId
      * @return
      */
-    public boolean deleteSellInfo(String sellId) {
+    public boolean deleteSellInfo(int sellId) {
         return sellDao.updateSellState(sellId, ILLEGAL_STATE);
     }
 

@@ -35,7 +35,7 @@ public class SellDao {
     /*
      * 更改state
      */
-    public boolean updateSellState(String sellId, String stateCode){
+    public boolean updateSellState(int sellId, String stateCode){
         String sql = "UPDATE sell set state = "+ stateCode + " WHERE id = ?";
         int flag = jdbcTemplate.update(sql,sellId);
         return ( flag==1);

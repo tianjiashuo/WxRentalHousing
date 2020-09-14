@@ -39,7 +39,7 @@ public class RentDao {
     /*
      * 更改state
      */
-    public boolean updateRentState(String rentId, String stateCode){
+    public boolean updateRentState(int rentId, String stateCode){
         String sql = "UPDATE rent set state = "+ stateCode + " WHERE id = ?";
         int flag = jdbcTemplate.update(sql,rentId);
         return ( flag==1);

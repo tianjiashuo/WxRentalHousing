@@ -78,7 +78,7 @@ public class RentService {
      * @param houseId
      * @return
      */
-    public boolean deleteRentInfo(String houseId) {
+    public boolean deleteRentInfo(int houseId) {
         return rentDao.updateRentState(houseId, ILLEGAL_STATE);
     }
     //发布房源

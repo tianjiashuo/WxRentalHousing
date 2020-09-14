@@ -24,7 +24,7 @@ public class RentController {
     @GetMapping("/rent/swiper")
 
     @PostMapping("rent/delete")
-    public boolean deleteRentinfo(@RequestBody Map<String,String> id) {
+    public boolean deleteRentinfo(@RequestBody Map<String,Integer> id) {
         return rentService.deleteRentInfo(id.get("id"));
     }
 
