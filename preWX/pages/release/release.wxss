@@ -24,8 +24,8 @@
 }
 .button{
   font-weight: bolder;
-  border: 5rpx solid green;
-  color: green;
+  border: 5rpx solid#758a99;
+  color:#758a99;
   border-radius: 10rpx;
   text-align: center;
   line-height: 80rpx;

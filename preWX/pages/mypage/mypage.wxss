@@ -15,11 +15,11 @@
   position: absolute;
   top: 45rpx;
   left: 35rpx;
-  color: green;
+  color:#758a99;
   width: 70rpx;
   height: 80rpx;
   line-height: 80rpx;
-  border: 2rpx solid green;
+  border: 2rpx solid #758a99;
   font-size: small;
   text-align: center;
   border-radius: 10rpx;

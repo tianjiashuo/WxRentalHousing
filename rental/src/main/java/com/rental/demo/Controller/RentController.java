@@ -7,8 +7,7 @@ import com.rental.demo.Service.RoommatesBo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -17,12 +16,9 @@ public class RentController {
     private RentService rentService;
 
     @PostMapping ("/rent/select")
-    public Set<Rent> selectRent(@RequestBody Map<String,String> condition){
-        return rentService.selectRent(condition);
+    public List<Set<RentBo>> selectRent(@RequestBody Map<String,String> condition){
+        return rentService.conditionSelectRentAll(condition);
     }
-
-    @GetMapping("/rent/swiper")
-
     @PostMapping("rent/delete")
     public boolean deleteRentinfo(@RequestBody Map<String,Integer> id) {
         return rentService.deleteRentInfo(id.get("id"));
@@ -55,5 +51,9 @@ public class RentController {
     @PostMapping("/changeRentState/{id}")
     int changeRentState(@PathVariable int id){return rentService.changeState(id);}
 
+    @GetMapping("/rent/all")
+    public List<Set<RentBo>> getAllRent(){
+        return  rentService.getRentALL();
+    }
 
 }

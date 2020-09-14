@@ -98,7 +98,7 @@ form input{
 
 button {
   color: white;
-  background-color: #065279;
+  background-color:#758a99;
   font-size: 16px;
 }
 
@@ -123,7 +123,7 @@ button {
 }
 
 .block {
-  width: 140rpx;
+  width: 180rpx;
   height: 100rpx;
   line-height: 100rpx;
   font-size: 12px;
@@ -135,7 +135,7 @@ button {
 }
 
 .change {
-  width: 140rpx;
+  width: 260rpx;
   height: 100rpx;
   line-height: 100rpx;
   font-size: 12px;
@@ -144,7 +144,7 @@ button {
   margin-right: 20rpx;
   flex-shrink: 0;
   border-radius: 4px;
-  background-color: #065279;
+  background-color:#758a99;
   color: white;
 }
 

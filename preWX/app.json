@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/details/detials",
     "pages/renthouse/renthouse",
     "pages/myapplication/myapplication",
-    "pages/details/detials",
+    
     "pages/mypage/mypage",
     "pages/myhouse/myhouse",
     "pages/release/release",
@@ -20,7 +21,7 @@
   },
   "tabBar": {
     "color": "#8a8a8a",
-    "selectedColor": "#2aa515",
+    "selectedColor": "#003366",
     "backgroundColor": "#ffffff",
     "list": 
     [

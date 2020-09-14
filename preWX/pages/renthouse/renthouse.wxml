@@ -19,7 +19,7 @@
      <image class="gps" src='../../icons/location.png'></image>
     </view> 
 
-    <form action="doSearch" method="post">
+    <form bindsubmit="doSearch">
       <input  name="keywords" value="{{keywords}}" placeholder=" 请输入关键字"></input>
       <button id="id" type="button" form-type="submit">查找房源</button>
     </form>
@@ -30,19 +30,19 @@
   <view class="word">为你查找到的房源</view>
   <view class="infor">一个拿高分的房屋买卖平台</view>
   <scroll-view class="scroll" enable-flex="true" scroll-x="true">
-    <block wx:for="{{city}}">
+    <block wx:for="{{type}}">
       <view class="{{current==index?'change':'block'}}" id="item-{{index}}" data-set="{{item.typeid}}" bindtap="click">{{item.type}}</view>
     </block>
   </scroll-view>
 
   <view class="house">
-    <block wx:for="{{cityhouse}}">
+    <block wx:for="{{allRent[current]}}">
       <view class="pichouse">
-       <navigator url='../house/house'> <image mode="widthFix" src="{{item.url}}"></image></navigator>
-        <view class="type">{{item.infor}}</view>
-        <view class="adress">{{item.adress}} </view>
+       <navigator url='../house/house'> <image mode="widthFix" src="{{item.imageUrl}}"></image></navigator>
+        <view class="type">{{item.address}}</view>
+        <view class="adress">{{item.title}} </view>
         <view class="price">
-          <view>{{item.price}}</view>
+          <view>￥ {{item.price}}</view>
         </view>
       </view>
     </block>
