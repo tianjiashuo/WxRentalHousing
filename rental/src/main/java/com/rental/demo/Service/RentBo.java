@@ -1,5 +1,7 @@
 package com.rental.demo.Service;
 
+import com.rental.demo.Repository.entity.Rent;
+
 public class RentBo {
 
     private int id;
@@ -85,5 +87,14 @@ public class RentBo {
         this.type = type;
         this.furniture = furniture;
         this.imageUrl = imageUrl;
+    }
+
+    public  RentBo(Rent rent,String image){
+        this.id = rent.getId();
+        this.area = rent.getArea();
+        this.price = rent.getPrice();
+        this.address = rent.getAddress();
+        this.title =rent.getTitle();
+        this.imageUrl =image;
     }
 }

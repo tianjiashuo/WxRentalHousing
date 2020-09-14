@@ -25,6 +25,7 @@ public class RentService {
     private static final String URENT_STATE  ="1";
     private static final String RENT_STATE  ="0";
     private static final String HOUSE_TYPE_RENT ="0";
+    private static final boolean IS_SHARE_RENT_FORM =true;
     /***
      * 租房筛选房源
      * @param condition
@@ -35,6 +36,7 @@ public class RentService {
         //关键字筛选范围
         if(condition.containsKey("key")){
            String keywords = condition.get("key");
+            //System.out.println(keywords);
            ans.addAll(rentDao.queryByKWords("address",keywords));
            ans.addAll(rentDao.queryByKWords("title",keywords));
            ans.addAll(rentDao.queryByKWords("furniture",keywords));
@@ -110,5 +112,54 @@ public class RentService {
         return roommatesBo;
 
     }
+
+    /***
+     * 获得所有分类的rent信息
+     * mao 2020-09-14
+     * @return
+     */
+    public  List<Set<RentBo>>getRentALL() {
+        List list =  rentDao.queryAll();
+        return collectionInfo(list.iterator());
+    }
+
+    /**
+     * 获得所有分类的筛选的rent信息
+     * @param condition
+     * @return
+     */
+    public List<Set<RentBo>>conditionSelectRentAll(Map<String,String> condition){
+        Set tmpSet = selectRent(condition);
+
+        return collectionInfo(tmpSet.iterator());
+    }
+
+    /**
+     * 分类筛选信息为全部、整租、合租
+     * @param it
+     * @return
+     */
+    private List<Set<RentBo>> collectionInfo(Iterator<Rent> it){
+        Set allSet = new HashSet();
+        Set aSet = new HashSet();
+        Set shareSet = new HashSet();
+        while(it.hasNext()){
+            Rent rent = it.next();
+            String image = imageDao.getFirstImageById(rent.getId(),0);
+            RentBo bo = new RentBo(rent,image);
+            allSet.add(bo);
+            if(rent.getIsForm()){//是合租
+                shareSet.add(bo);
+            }else{
+                aSet.add(bo);//整租
+            }
+        }
+        ArrayList ans = new ArrayList();
+        ans.add(0,allSet);
+        ans.add(1,aSet);
+        ans.add(2,shareSet);
+        return ans;
+    }
+
 
 }

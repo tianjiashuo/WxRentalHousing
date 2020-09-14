@@ -5,7 +5,6 @@
     "pages/myhouse/myhouse",
     
     "pages/myapplication/myapplication",
-   
     "pages/mypage/mypage",
     "pages/release/release",
     "pages/search/search",
@@ -22,7 +21,7 @@
   },
   "tabBar": {
     "color": "#8a8a8a",
-    "selectedColor": "#2aa515",
+    "selectedColor": "#003366",
     "backgroundColor": "#ffffff",
     "list": 
     [

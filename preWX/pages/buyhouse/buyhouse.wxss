@@ -99,7 +99,7 @@ form input{
 
 button {
   color: white;
-  background-color: #065279;
+  background-color: #758a99;
   font-size: 16px;
 }
 
@@ -145,7 +145,7 @@ button {
   margin-right: 20rpx;
   flex-shrink: 0;
   border-radius: 4px;
-  background-color: #065279;
+  background-color: #758a99;
   color: white;
 }
 

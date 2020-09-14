@@ -28,6 +28,15 @@ public class RentDao {
     };
 
     /*
+     查询所有的租房信息
+     */
+    public List<Rent> queryAll(){
+        String sql ="SELECT * FROM rent WHERE state =1";
+        List<Rent>ans = jdbcTemplate.query(sql,new RentRowMapper());
+        return ans;
+    }
+
+    /*
     条件查询
      */
     public List<Rent> queryByCondt(String key,String value){

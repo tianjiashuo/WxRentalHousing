@@ -106,6 +106,7 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
+
          title:res.data.rentInfo.title,
          address:res.data.rentInfo.address,
          type:res.data.rentInfo.type,
@@ -113,6 +114,7 @@ Page({
          furniture:res.data.rentInfo.furniture,
          isElevator:res.data.rentInfo.isElevator,
          shortestLease:res.data.rentInfo.shortestLease
+
         })
       }
     })

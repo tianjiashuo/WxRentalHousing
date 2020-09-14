@@ -117,6 +117,11 @@ function getDeatils(reportId) {
 
 //从index页面获取reportId传过来即可
 function fill(reportId){
+
+    // var str = '';
+    // str = "hhtmd";
+    // document.querySelector('.smallpics').innerHTML=str;
+
     console.log(getDeatils(reportId));
     // console.log(getDeatils(reportId)[1].sellInfo.title);
     var details = getDeatils(reportId);
@@ -128,15 +133,30 @@ function fill(reportId){
         $('#reason').html(details[0].content);
         $('#reportId').html(details[0].id);
         //图片赋值
-        if(details[1].imageList.length!=0){
-            //赋值大图
-            $('#zoom1').attr("src",details[1].imageList[0].imageUrl);
-            $("#zoom1").elevateZoom({
-                gallery:details[1].imageList[0].imageUrl,
-                responsive : true,
-                cursor: 'crosshair',
-                zoomType : 'inner'
-            });
+        if(details[1].imageList.length!==0){
+            console.log(details[1].imageList.length);
+            //赋值图
+            for(var i=0;i<details[1].imageList.length;i++){
+                console.log(i);
+                if(i===0){
+                    $('#fir').attr("src",details[1].imageList[i].imageUrl);
+                    console.log(details[1].imageList[i].imageUrl);
+                }
+                else if(i===1){
+                    $('#sec').attr("src",details[1].imageList[i].imageUrl);
+                    console.log(details[1].imageList[i].imageUrl);
+                }
+                else if(i===2){
+                    $('#thr').attr("src",details[1].imageList[i].imageUrl);
+                }
+                else if(i===3){
+                    $('#fou').attr("src",details[1].imageList[i].imageUrl);
+                }
+                else if(i===4){
+                    $('#fif').attr("src",details[1].imageList[i].imageUrl);
+                }
+            }
+            $("#fir").click();
         }
 
     }
@@ -147,16 +167,27 @@ function fill(reportId){
         $('#introduction').html(details[1].sellInfo.address +" "+details[1].sellInfo.orientation+" "+details[1].sellInfo.type);
         $('#reason').html(details[0].content);
         $('#reportId').html(details[0].id);
-        if(details[1].imageList.length!=0) {
-            //赋值大图
-            $('#zoom1').attr("src", details[1].imageList[0].imageUrl);
-            $("#zoom1").elevateZoom({
-                gallery: details[1].imageList[0].imageUrl,
-                responsive: true,
-                cursor: 'crosshair',
-                zoomType: 'inner'
-            });
-            //赋值小图
+        if(details[1].imageList.length!==0) {
+            console.log(details[1].imageList.length);
+            //赋值图
+            for(var i=0;i<details[1].imageList.length;i++){
+                if(i===0){
+                    $('#fir').attr("src",details[1].imageList[i].imageUrl);
+                }
+                else if(i===1){
+                    $('#sec').attr("src",details[1].imageList[i].imageUrl);
+                }
+                else if(i===2){
+                    $('#thr').attr("src",details[1].imageList[i].imageUrl);
+                }
+                else if(i===3){
+                    $('#fou').attr("src",details[1].imageList[i].imageUrl);
+                }
+                else if(i===4){
+                    $('#fif').attr("src",details[1].imageList[i].imageUrl);
+                }
+            }
+            $("#fir").click();
         }
     }
 }
