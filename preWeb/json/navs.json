@@ -1,0 +1,18 @@
+{
+	"contentManagement": [{
+			"title": "管理",
+			"icon": "&#xe716;",
+			"href": "",
+			"spread": true,
+			"children": [
+				{
+					"title": "举报信息",
+					"icon": "",
+					"href": "page/report/report.html",
+					"spread": false
+				}
+			]
+		}
+	]
+
+}

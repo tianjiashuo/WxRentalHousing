@@ -1,0 +1,155 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Safira - product details</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-4.2.1.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.7.0.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<button onclick="fill(2)">想吃关东煮！！！</button>
+<!--product details start-->
+<div class="product_details mt-70 mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-tab">
+                    <div id="img-1" >
+                        <a id="image1" href="#" data-zoom-image="img/productbig4.jpg">
+                            <img id="zoom1" src="img/productbig4.jpg" alt="img/productbig4.jpg">
+                        </a>
+                    </div>
+                    <div class="single-zoom-thumb">
+                        <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+<!--                            <script type="text/html" id="">-->
+<!--                                {{#  for(int i=0,i<2.i++)}{ }}-->
+<!--                                <li>-->
+<!--                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="img/productbig4.jpg" data-zoom-image="img/productbig4.jpg">-->
+<!--                                        <img id="picture1" src="img/productbig4.jpg" />-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                {{#  }}}-->
+<!--                            </script>-->
+
+<!--                            <li>-->
+<!--                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="img/productbig4.jpg" data-zoom-image="img/productbig4.jpg">-->
+<!--                                    <img id="picture1" src="img/productbig4.jpg" />-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="img/productbig1.jpg" data-zoom-image="img/productbig1.jpg">-->
+<!--                                    <img src="img/productbig1.jpg" />-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li >-->
+<!--                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="img/productbig2.jpg" data-zoom-image="img/productbig2.jpg">-->
+<!--                                    <img src="img/productbig2.jpg" />-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li >-->
+<!--                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="img/productbig3.jpg" data-zoom-image="img/productbig3.jpg">-->
+<!--                                    <img src="img/productbig3.jpg" />-->
+<!--                                </a>-->
+<!--                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="product_d_right">
+                    <form action="#">
+                        <h1 ><p href="#" id="title">这里是title</p></h1>
+                        <div class="price_box">
+                            <span class="current_price" id="price">2000.00￥/月</span>
+                        </div>
+                        <div class="product_desc">
+                            <p id ="introduction"> 这里是房源价绍</p>
+                        </div>
+                        <div class="product_desc">
+                            <p id = "reason" style="color: #ff574d"> 这里是举报原因</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product details end-->
+
+<!--start-->
+<div class="product_d_info mb-65">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product_d_inner">
+                    <div class="product_info_button">
+                        <ul class="nav" role="tablist">
+                            <li>
+                                <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" >处理&回复</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" style="display: block">
+<!--                        <div class="tab-pane fade" id="reviews" role="tabpanel" >-->
+                            <div class="reviews_wrapper">
+                                <div class="comment_title">
+                                    <div id="reportId" style="display: none"></div>
+                                    <h2>给出回复</h2>
+                                    <p>示例：您的举报经过核实已被处理，被举报房源已下架，感谢您的监督。</p>
+                                </div>
+                                <div class="product_review_form">
+                                    <div action="#">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <textarea name="comment" id="review_comment" ></textarea>
+                                            </div>
+                                        </div>
+                                        <button style="background-color: #489327;color: #ffffff;border-width: 0px;outline: none;width: 120px;height: 45px;border-radius: 15px;">发送</button>
+                                    </div>
+                                </div>
+                                <h2 style="margin-top: 30px">作出处理</h2>
+                                <button class="dispose" onclick="deleteHouse()" style="background-color: #ff362f;">删除房源</button>
+                                <button class="dispose" onclick="ignoreHouse()" style="background-color: #009688;">不做处理</button>
+                            </div>
+<!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product info end-->
+
+<!-- JS
+============================================ -->
+<!--jquery min js-->
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<!--bootstrap min js-->
+<script src="https://www.jq22.com/jquery/bootstrap-4.2.1.js"></script>
+<!--owl carousel min js-->
+<script src="js/owl.carousel.min.js"></script>
+<!--magnific popup min js-->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!--jquery ui min js-->
+<script src="js/jquery.ui.js"></script>
+<!--jquery elevatezoom min js-->
+<script src="js/jquery.elevatezoom.js"></script>
+<!-- Plugins JS -->
+<script src="js/plugins.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+<script src="../../js/data.js"></script>
+<script src="../../js/changeState.js"></script>
+</body>
+
+</html>
