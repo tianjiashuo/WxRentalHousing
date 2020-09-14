@@ -104,9 +104,9 @@
   <view class='owner_inforbox'>
     <view>房东介绍</view>
     <view class='owner_img'>
-      <!--没连 啥都没连-->
+      <!--没连 啥都没连
       <image src='https://z1.muscache.cn/im/pictures/1e2569ae-55fc-4be0-b270-fb40928f2555.jpg?aki_policy=profile_x_medium'></image>
-      <view class='owner_infor'>
+    --><view class='owner_infor'>
         <view>xxx</view>
       </view>
     </view>
