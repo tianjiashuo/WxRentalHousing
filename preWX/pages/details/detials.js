@@ -1,14 +1,17 @@
 // pages/details/detials.js
 Page({
+ 
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    address:""
+  },
   houseInfor(e) {
     wx.navigateTo({
       url: '../exploration/exploration',
     })
   },
-  /**
-   * 页面的初始数据
-   */
-  data: {},
   Tarvel(e) {
     let sTop = this.data.scrollTop;
     console.log(sTop);
@@ -78,6 +81,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    let that = this;
+    wx.request({
+      url: 'http://47.94.170.167:8080/rentAllInfo/1',
+      method:'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+         address:res.data.address
+        })
+      }
+    })
 
   },
 
