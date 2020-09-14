@@ -2,7 +2,7 @@ function deleteHouse() {
     var reportId = document.getElementById("reportId").innerHTML;
     console.log(reportId);
     $.ajax({
-        url : "http://localhost:8080/checkReportDelete",
+        url : "http://47.94.170.167:8080/checkReportDelete",
         type : "post",
         async : false,
         contentType: "application/json",
@@ -20,7 +20,7 @@ function deleteHouse() {
 function ignoreHouse() {
     var reportId = document.getElementById("reportId").innerHTML;
     $.ajax({
-        url : "http://localhost:8080/checkReportIgnore",
+        url : "http://47.94.170.167:8080/checkReportIgnore",
         type : "post",
         async : false,
         contentType: "application/json",
@@ -38,7 +38,7 @@ function ignoreHouse() {
 
 function sendNews(reportId,content) {
     $.ajax({
-        url : "http://localhost:8080/addNews"+reportId,
+        url : "http://47.94.170.167:8080/addNews/"+reportId,
         type : "post",
         async : false,
         contentType: "application/json",
