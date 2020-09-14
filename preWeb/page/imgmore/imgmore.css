@@ -1,0 +1,100 @@
+/*body{background-color: #FFFFFF}*/
+.img-content *{
+	box-sizing: border-box;
+}
+.img-content{
+	width: 100%;
+	/*border: 1px solid #585858;background-color: #fff;*/
+	/*padding: 10px;*/
+}
+.img-content .small-img{
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+.small-img ul{
+	list-style: none;
+	position: relative;
+	width: 5000px;
+	margin: 0;
+	padding: 0;
+	left: 0;
+	/*transition: all 1s;*/
+}
+.small-img ul:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.small-img ul li{
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin-right: 5px;
+	padding: 2px;
+    box-sizing: border-box;
+}
+.small-img ul li img.moveimg{
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border:2px solid transparent;
+	border-radius: 10px;
+}
+.small-img ul li img.moveimg.active{border: 2px solid #FF0000;}
+.img-content .big-img{
+	margin-top: 30px;
+	width: 100%;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+	border: 1px solid #d0d0d0;
+	border-radius: 10px;
+	background: #dfdfdf;
+}
+.img-content .big-img img{
+	width: 100%;
+	height: 100%;
+	cursor:pointer;
+	border-radius: 10px;
+	position: absolute;
+}
+
+.small-img .left{
+	left: 5px;
+	top: 30px;
+}
+.small-img .right{
+	right: 5px;
+	top: 30px;
+}
+.small-img .right,.small-img .left{
+	display: inline-block;
+	position: absolute;
+	z-index: 10;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 30px;
+	background: rgba(0,0,0,0.6);
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+
+.big-img .img-parent{
+	width:100%;
+	height: 100%;
+	position: absolute;
+}
+.img-rotate{
+	position: absolute;
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	z-index: 100;
+	background-color: rgba(0,0,0,0.1) !important;
+	cursor: pointer;
+}
+

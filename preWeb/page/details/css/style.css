@@ -157,7 +157,8 @@ figure {
     color: #ffffff;
     border-width: 0px;
     outline: none;
-    margin-top: 5px
+    margin-top: 5px;
+    opacity:0.9;
 }
 
 .fix {
