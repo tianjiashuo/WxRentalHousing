@@ -97,7 +97,7 @@ image {
   color: #484848;
   font-weight: bold;
   line-height: 50rpx;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
 }
 
 .housebox {
