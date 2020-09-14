@@ -36,7 +36,7 @@ public class ReportDao {
         return ans;
     }
 
-    public Report getReportById(String reportId){
+    public Report getReportById(int reportId){
         String sql = "SELECT * FROM report WHERE id=? ";
         Report report= jdbcTemplate.queryForObject(sql, new ReportRowMapper(), reportId);
         return report;

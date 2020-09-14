@@ -60,10 +60,28 @@ public class ReportService {
      * @param report
      * @return
      */
-    public boolean  checkReport(Report report) {
-       boolean flag1 = reportDao.updateReportState(RESOLVE_RESULT,String.valueOf(report.getId()));
-       boolean flag2 = newsService.addNews(report.getUser_id(),REPORT_VESOLVED_MSG);
-       return (flag1&&flag2);
+    //删除房源
+    public boolean  checkReportDelete(Report report) {
+        boolean flag1 = reportDao.updateReportState(RESOLVE_RESULT,String.valueOf(report.getId()));
+        boolean flag2=false;
+        if(getAReport(report.getId()).getHouse_type()==0){
+            flag2 = rentService.deleteRentInfo(getAReport(report.getId()).getHouse_id());
+        }
+        else{
+            flag2 = sellService.deleteSellInfo(getAReport(report.getId()).getHouse_id());
+        }
+        return flag1&&flag2;
+    }
+    //不做处理
+    public boolean  checkReportIgnore(Report report) {
+        boolean flag1 = reportDao.updateReportState(RESOLVE_RESULT,String.valueOf(report.getId()));
+        return flag1;
+    }
+
+    //发送信息
+    public boolean addNews(int report_id,String content){
+        boolean flag2 = newsService.addNews(getAReport(report_id).getUser_id(),content);
+        return flag2;
     }
 
     /**
@@ -99,7 +117,7 @@ public class ReportService {
      * @param reportId
      * @return
      */
-    public Report getAReport(String reportId){
+    public Report getAReport(int reportId){
         return  reportDao.getReportById(reportId);
     }
 }
