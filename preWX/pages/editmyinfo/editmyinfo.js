@@ -7,9 +7,7 @@ Page({
    */
  
   data: {
-    maskFlag:true,
     //公共表单
-    wether_rent_sell:"-1",
     title:"",
     address:"",
     type:"",
@@ -17,25 +15,7 @@ Page({
     floor:"",
     is_elevator:"",
     area:"",
-    price:"",
-    //区别表单
-    rentinfo:{
-     is_pet:"",
-     shortrst_lease:"",
-     furniture:"",
-     form:""
-     },
-     sellinfo:{
-      property:"",
-      is_renovation:""
-     },
-     selectArray: [{
-      "id": "0",
-      "text": "我要发布租房信息"
-    }, {
-      "id": "1",
-      "text": "我要发布买房信息"
-    }]
+    price:""
    },
 
    //获取发布类型
@@ -100,53 +80,10 @@ Page({
       }
      })
    },
-   //提交卖房
-   dopostSell:function(e){
-    let that = this;
-    wx.request({
-       url: 'http://47.94.170.167:8080/insertSellHouse',
-       //url:'http://localhost:8080/insertSellHouse',
-      data:{
-        'hostId':'99',
-        "address":e.detail.value.address,
-        "title":e.detail.value.title,
-        "property":e.detail.value.property,
-        "type":e.detail.value.type,
-        "orientation":e.detail.value.orientation,
-        "floor":e.detail.value.floor,
-        "isRenovation":e.detail.value.is_renovation,
-        "isElevator":e.detail.value.is_elevator,
-        "area":e.detail.value.area,
-        "furniture":e.detail.value.furniture,
-        "price":e.detail.value.price
-      },
-     method:'POST',
-     header: {
-       'Content-Type': 'application/json'
-     },
-     success: function (res) {
-       console.log(res.data);
-       that.setData({
-        'maskFlag':false
-      })
-       wx.showToast({
-        title: '修改成功',
-        icon: 'success',
-        duration: 2000
-      }),
-      setTimeout(function(){
-        wx.hideToast();
-        wx.navigateBack({
-          delta: 1,
-        })
-       },2000)
-     }
-    })
-   },
 
    goBack:function()
    {
-   wx.navigateBack({ delta:1 })
+    wx.navigateBack({ delta:1 })
    },
 
   /**

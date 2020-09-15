@@ -11,6 +11,13 @@ Page({
     userImgUrl: "",
   },
 
+  goEditMyInfo:function()
+  {
+   wx.navigateTo({
+     url: '/pages/editmyinfo/editmyinfo'
+   })
+   }, 
+   
   /**
    * 生命周期函数--监听页面加载
    */

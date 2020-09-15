@@ -30,9 +30,8 @@ public class UserDao {
     }
 
     public int editUserInfo(String id,UserBo userBo){
-        String sql = "UPDATE user set introduction=?,phone=?,gender=?,IDnumber=? WHERE id=? ";
-        return jdbcTemplate.update(sql,userBo.getIntroduction(),userBo.getPhone(),
-                userBo.getGender(),userBo.getIdNumber(),id);
+        String sql = "UPDATE user set introduction=?,IDnumber=? WHERE id=? ";
+        return jdbcTemplate.update(sql,userBo.getIntroduction(),userBo.getIdNumber(),id);
     }
 
     public int editUserPhoneInfo(String id,String phone){

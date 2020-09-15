@@ -81,7 +81,7 @@ form view switch{
   position: fixed;
   bottom: 0px;
   width: 100%;
-  height: 100rpx;
+  height: 75rpx;
   background:#fff;
   padding: 0;
   margin: 0;
