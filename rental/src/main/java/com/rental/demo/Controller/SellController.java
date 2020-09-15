@@ -44,7 +44,7 @@ public class SellController {
     int changeSellState(@PathVariable int id){return sellService.changeState(id);}
 
     @GetMapping("/sell/all")
-    public Set<SellBo> getAllRent(){
+    public Set<SellBo> getAllSell(){
         return  sellService.getSellALL();
     }
 

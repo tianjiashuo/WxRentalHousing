@@ -31,7 +31,8 @@
         <view class="type">{{item.address}}</view>
         <view class="adress">{{item.title}} </view>
         <view class="price">
-          <view>￥{{item.price}} 万</view>
+          <view>￥{{item.price}}</view>
+         <view>万</view>
           <view>{{item.area}}</view>
           <view>㎡</view>
         </view>
