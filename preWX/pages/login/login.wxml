@@ -4,4 +4,5 @@
  </view>
 
  <button class="button" id="login"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >使用微信帐号登陆</button>
+
     

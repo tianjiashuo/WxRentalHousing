@@ -4,6 +4,7 @@ import com.rental.demo.Repository.dao.SellDao;
 import com.rental.demo.Repository.entity.Image;
 import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
+import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class SellService {
      * @param condition
      * @return
      */
-    public Set<Sell> selectSell(Map<String,String> condition){
+    public Set<SellBo> selectSell(Map<String,String> condition){
         Set<Sell> ans = new HashSet<Sell>();
         //关键字筛选范围
         if(condition.containsKey("key")){
@@ -42,7 +43,8 @@ public class SellService {
         for(Map.Entry<String,String>entry:condition.entrySet()){
             ans.addAll(sellDao.queryByCondt(entry.getKey(),entry.getValue()));
         }
-        return ans;
+        Iterator it = ans.iterator();
+        return transSellToBo(it);
     }
 
     /**
@@ -86,5 +88,30 @@ public class SellService {
 
     public int insertSellHouse(Sell sell){
         return sellDao.insertSellHouse(sell);
+    }
+
+    /**
+     * 获取所有的卖房消息
+     * @return
+     */
+    public  Set<SellBo>getSellALL() {
+
+        List list = sellDao.queryAll();
+        Iterator<Sell> it = list.iterator();
+        return transSellToBo(it);
+    }
+
+    private Set<SellBo> transSellToBo(Iterator it0){
+        Set set = new HashSet();
+        Iterator<Sell> it = it0;
+        while(it.hasNext()){
+            Sell sell = it.next();
+            String image = imageDao.getFirstImageById(sell.getId(),Integer.parseInt(HOUSE_TYPE_SELL));
+            System.out.println(image+" 22222222");
+            SellBo bo = new SellBo(sell,image);
+            System.out.println(bo.getAddress()+"--------");
+            set.add(bo);
+        }
+        return set;
     }
 }

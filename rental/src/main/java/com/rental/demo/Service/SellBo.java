@@ -1,24 +1,38 @@
 package com.rental.demo.Service;
 
+import com.rental.demo.Repository.entity.Sell;
+
+import java.text.DecimalFormat;
+
 public class SellBo {
     private int id;
     private int area;
-    private int price;
+    private String price;
     private String address;
     private String title;
     private String type;
     private boolean isRenovation;
     private String imageUrl;
 
+    private DecimalFormat df   = new DecimalFormat("######0.00");
     public SellBo(int id, int area, int price, String address, String title, String type, boolean isRenovation, String imageUrl) {
         this.id = id;
         this.area = area;
-        this.price = price;
+        this.price = df.format(price/10000);
         this.address = address;
         this.title = title;
         this.type = type;
         this.isRenovation = isRenovation;
         this.imageUrl = imageUrl;
+    }
+
+    public  SellBo(Sell s,String img){
+        this.id = s.getId();
+        this.area = s.getArea();
+        this.price = df.format(s.getPrice()/10000);
+        this.address = s.getAddress();
+        this.title = s.getTitle();
+        this.imageUrl = img;
     }
 
     public int getId() {
@@ -37,11 +51,11 @@ public class SellBo {
         this.area = area;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

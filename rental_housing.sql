@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
@@ -171,7 +171,7 @@ INSERT INTO `report` VALUES ('7', '6', '6', '测试用', '0', '2');
 -- ----------------------------
 DROP TABLE IF EXISTS `roommates_info`;
 CREATE TABLE `roommates_info` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `house_id` int NOT NULL,
   `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `state` tinyint NOT NULL,
@@ -191,7 +191,7 @@ INSERT INTO `roommates_info` VALUES ('4', '4', '4', '0');
 -- ----------------------------
 DROP TABLE IF EXISTS `sell`;
 CREATE TABLE `sell` (
-  `id` int NOT NULL,
+  `id` int NOT NULL  AUTO_INCREMENT,
   `host_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,

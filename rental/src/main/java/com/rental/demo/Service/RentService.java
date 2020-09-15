@@ -46,7 +46,11 @@ public class RentService {
          }
         //条件筛选范围
         for(Map.Entry<String,String>entry:condition.entrySet()){
-            ans.addAll(rentDao.queryByCondt(entry.getKey(),entry.getValue()));
+            if(entry.getValue()=="true"){
+                ans.addAll(rentDao.queryByCondt(entry.getKey(),entry.getValue()));
+                System.out.println(ans.size());
+            }
+
         }
        return ans;
     }

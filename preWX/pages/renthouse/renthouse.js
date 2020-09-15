@@ -12,7 +12,8 @@ Page({
           {id: 1,type: "待整租", typeid:1},
           {id: 2,type: "待合租", typeid:2}],
     allRent:[],
-    flag:true
+    keywords:"",
+    isChecked:false
   },
  
   click(e) {
@@ -26,7 +27,9 @@ Page({
     wx.request({
       url: 'http://localhost:8080/rent/select',
       data:{
-        "key":e.detail.value.keywords
+        "key":e.detail.value.keywords,
+        "is_pet":e.detail.value.is_pet,
+        "is_elevator":e.detail.value.is_elevator
       },
       header: { "content-type": "application/json"},
       method: 'POST',
@@ -130,6 +133,11 @@ Page({
    */
   onPullDownRefresh: function () {
     var that = this;
+    that.setData({
+      keywords:"",
+      isChecked:false
+    })
+    console.log(that.is_pet);
     wx.request({
       url: 'http://localhost:8080/rent/all',
       data: '',
@@ -140,7 +148,8 @@ Page({
       success: function (res) {
         console.log("allRent"+res.data);
         that.setData({
-          allRent: res.data
+          allRent: res.data,
+          current:0
         })
         wx.stopPullDownRefresh();
       },
