@@ -29,7 +29,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    console.log(options.id);
+    //console.log(options.id);
     wx.request({
       url: 'http://47.94.170.167:8080/rentAllInfo/'+options.id,
       method:'GET',
@@ -46,12 +46,19 @@ Page({
          furniture:res.data.rentInfo.furniture,
          isElevator:res.data.rentInfo.isElevator,
          shortestLease:res.data.rentInfo.shortestLease,
-         images:res.data.imageList
-
+         images:res.data.imageList,
+         hostId:res.data.rentInfo.hostId
         })
       }
     })
 
+    wx.request({
+      url: 'http://localhost:8080/uerInfo/'+hostId,
+      method:'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+    })
     
 
   },
