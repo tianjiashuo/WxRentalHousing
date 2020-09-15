@@ -1,10 +1,6 @@
 // pages/renthouse/renthouse.js
 Page({
-  houseInfor(e) {
-    wx.navigateTo({
-      url: '../exploration/exploration',
-    })
-  },
+  
   /**
    * 页面的初始数据
    */
@@ -56,6 +52,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     var that = this;
     wx.request({
       url: 'http://localhost:8080/page/swiper',
@@ -85,13 +82,22 @@ Page({
       success: function (res) {
         console.log("allRent"+res.data)
         that.setData({
-          allRent: res.data
+          allRent: res.data,
+          id:res.data.id
         })
       },
       fail: function (res) {
         console.log('fail')
       },
     })
+  },
+
+  goNewsDetail:function(event)
+  {
+   wx.navigateTo({
+     url: '/pages/detials/detials?id=' + event.currentTarget.dataset.newsid
+   })
+
   },
 
   /**

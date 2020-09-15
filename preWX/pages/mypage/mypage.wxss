@@ -190,3 +190,11 @@ swiper-item image {
   width:1.2rem;
   height: 1.2rem;
 }
+#pics {
+  margin-top: 200rpx;
+  width: 100%;
+}
+#pic{
+  width: 100%;
+}
+

@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+   
   },
 
   /**
@@ -33,7 +33,9 @@ Page({
     this.setData({
       hasUserInfo: app.globalData.hasUserInfo,
       userName: app.globalData.userInfo.nickName,
-      userImgUrl: app.globalData.userInfo.head
+      userImgUrl: app.globalData.userInfo.head,
+      gender : app.globalData.userInfo.gender,
+      phone:app.globalData.userInfo.phone,
     })
     
   },
@@ -102,6 +104,7 @@ Page({
                      app.globalData.hasUserInfo = true;
                      app.globalData.userInfo.nickName = res.data.userInfo.nickName;
                      app.globalData.userInfo.head =  res.data.userInfo.avatarUrl;
+                     app.globalData.userInfo.gender = res.data.userInfo.gender;
                    console.log("res userinfo ", res);
                    // console.log("session_keymypage",res.data.session_key);
                  }else{
