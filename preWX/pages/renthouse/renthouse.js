@@ -11,7 +11,8 @@ Page({
     type:[{id: 0,type: "全部", typeid:0},
           {id: 1,type: "待整租", typeid:1},
           {id: 2,type: "待合租", typeid:2}],
-    allRent:[]
+    allRent:[],
+    flag:true
   },
  
   click(e) {
@@ -48,6 +49,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     var that = this;
     wx.request({
       url: 'http://localhost:8080/page/swiper',
@@ -87,6 +89,13 @@ Page({
     })
   },
 
+  goNewsDetail:function(event)
+  {
+   wx.navigateTo({
+     url: '/pages/detials/detials?id=' + event.currentTarget.dataset.newsid
+   })
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
