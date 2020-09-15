@@ -1,15 +1,7 @@
-<!--index.wxml-->
-<!-- <view class="container"> -->
+
 <view class="header">
- <image class="head" src='../../icons/login/loginHead3.png' mode='aspectFill'></image>
+ <image class="head" src='../../icons/login/loginhead.png' mode='aspectFill'></image>
  </view>
-<!-- <button type="primary" >使用微信账号登陆</button>
-  -->
 
-  <view class="userinfo">
-    <button class="button"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">使用微信帐号登陆</button>
+ <button class="button" id="login"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >使用微信帐号登陆</button>
     
-  </view>
-
-
-<!-- </view> -->
