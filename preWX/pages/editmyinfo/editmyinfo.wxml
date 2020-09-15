@@ -1,0 +1,34 @@
+<view>
+  <view id="pics">
+    <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/myinfo.png'></image>
+    </view>
+
+  <form  bindsubmit="dopost">
+    <view>
+      <label>昵称</label>
+      <input name="title" value="{{nickname}}" placeholder="该用户昵称" disabled="true"/>
+    </view>
+   
+    <view>
+    <label>性别</label>
+      <input name="type" value="{{type}}" placeholder="女" disabled="true"/>
+    </view>
+    <view>
+      <label>手机号</label>
+      <input name="type" value="{{phone}}" placeholder="1**********" disabled="true" />
+    </view>
+    <view>
+      <label>介绍</label>
+      <input name="orientation" value="{{orientation}}" placeholder="" focus="true" />
+    </view>
+    <view>
+      <label>身份证号</label>
+      <input name="floor" value="{{IDnumber}}" placeholder=""  focus="true"/>
+    </view>
+    <view class="sendbtn">
+      <button id="cancel" type="" >返回 </button>
+      <button id="submit" type="" form-type="submit">提交</button>
+    </view>
+  </form>
+  </view>
+

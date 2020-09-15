@@ -130,7 +130,7 @@ Page({
         'maskFlag':false
       })
        wx.showToast({
-        title: '发布成功',
+        title: '修改成功',
         icon: 'success',
         duration: 2000
       }),
@@ -142,15 +142,12 @@ Page({
        },2000)
      }
     })
-  
    },
- 
-   goEditMyInfo:function()
+
+   goBack:function()
    {
-    wx.navigateTo({
-      url: '/pages/editmyinfo/editmyinfo'
-    })
-    },  
+   wx.navigateBack({ delta:1 })
+   },
 
   /**
    * 生命周期函数--监听页面加载

@@ -13,7 +13,7 @@
     </view>
 
 </block>
-<block wx:else>
+<!-- <block wx:else> -->
 <view class="container1">
     <view class="top-nav">
       <view class="userName">{{userName}}</view>
@@ -23,15 +23,19 @@
       <view>
         <view class="main-word">个人信息:
           <!-- <view > -->
+          <navigator url='/pages/editmyinfo/editmyinfo'>
           <image class="edit" src="../../icons/mypage/edit.png"></image>
+          </navigator>
           <!-- </view> -->
         </view>
         <view class="main1-item">
-        <!-- <view>{{gender1}}</view> -->
           <view class="gender">性别:  {{gender}}</view>
         </view>
         <view class="main1-item">
           <view class="phone">手机号： {{phone}}</view>
+        </view>
+        <view class="main1-item">
+          <view class="IDnumber">介绍：</view>
         </view>
         <view class="main1-item">
           <view class="IDnumber">身份证号：</view>
@@ -42,20 +46,13 @@
           <view class="my-icon">
             <view class="icons">
               <image class="collection" src='../../icons/mypage/collection.png'></image>
-              <!-- <text class="explain">收 藏</text> -->
             </view>
-            <!-- <view class="icons"> -->
-              <image class="myhouse" src='../../icons/mypage/myhouse.png'></image>
-              <!-- <text class="explain">房 源</text> -->
-            <!-- </view> -->
-            <!-- <view class="icons"> -->
+              <image class="myhouse" src='../../icons/mypage/myhouse.png'></image>     
               <image class="apply" src="../../icons/mypage/apply.png"></image>
-              <!-- <text class="explain">申 请</text> -->
-            <!-- </view> -->
           </view>
        </view>
     </view>
   </view>
-  </block>
+  <!-- </block> -->
 
 
