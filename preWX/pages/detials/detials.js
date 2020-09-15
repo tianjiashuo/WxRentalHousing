@@ -29,11 +29,9 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    that.setData({
-      houseId:options.houseId
-    })
+    console.log(options.id);
     wx.request({
-      url: 'http://47.94.170.167:8080/rentAllInfo/2',
+      url: 'http://47.94.170.167:8080/rentAllInfo/'+options.id,
       method:'GET',
       header: {
         'Content-Type': 'application/json'
