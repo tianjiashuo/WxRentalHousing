@@ -47,12 +47,28 @@ Page({
          isElevator:res.data.rentInfo.isElevator,
          shortestLease:res.data.rentInfo.shortestLease,
          images:res.data.imageList,
-         hostId:res.data.rentInfo.hostId
+         hostId:res.data.rentInfo.hostId,
+         data:res.data.rentInfo
+        })
+        wx.setStorage({
+          key:"1",
+          data:res.data.rentInfo.hostId
         })
       }
     })
 
+    wx.getStorage({
+      key: '1',
+      success: function(res) {
+          console.log(res.data)
+        
+            hostId:res.data
+          
+      }
+    })
+
     wx.request({
+      
       url: 'http://localhost:8080/uerInfo/'+hostId,
       method:'GET',
       header: {
