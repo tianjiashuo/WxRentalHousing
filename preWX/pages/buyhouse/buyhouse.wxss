@@ -39,7 +39,7 @@
 }
 
 .none {
-  height: 400rpx;
+  height: 300rpx;
   width: 100%;
 }
 
@@ -53,15 +53,23 @@ form input{
   position: absolute;
   top: 300rpx;
   width: 90%;
-  height: 400rpx;
+  height: 300rpx;
   left: 5%;
   border-radius: 6rpx;
   background-color: white;
   border: 1px solid #ecebe7;
+  border-bottom:  3px solid #ecebe7;
+}
+.searchborder{
+  border-bottom: 1px solid #ecebe7;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
 }
 
 .content1 {
+  border-top: 3px solid #ecebe7;
   margin: 30rpx;
+  border-bottom: 1px solid #ecebe7 ;
 }
 .city {
   height: 48rpx;
@@ -72,9 +80,10 @@ form input{
 }
 .gps{
   position: absolute;
-  right: 80rpx;
-  width:1.2rem;
-  height: 1.2rem;
+  left: 80rpx;
+  top:30rpx;
+  width:2rem;
+  height: 2rem;
   display: flex;
 }
 
@@ -106,6 +115,7 @@ button {
 .autumn {
   width: 90%;
   margin: 0 auto;
+  margin-top: 10rpx;
 }
 
 .word {
@@ -154,6 +164,8 @@ button {
   flex-wrap: wrap;
   /* margin-top: 30rpx; */
   justify-content: space-between;
+  margin-top:30rpx;
+  border-bottom:3px solid #95949a ;
 }
 
 .pichouse {
@@ -193,41 +205,25 @@ button {
   line-height: 40rpx;
   margin-right: 10rpx;
 }
-
 .price view:nth-child(2) {
   font-size: 12px;
-  text-decoration: line-through;
   line-height: 40rpx;
+  margin-right: 10rpx;
 }
 
 .price view:nth-child(3) {
+  font-size: 12px;
+  line-height: 40rpx;
+  margin-left: 30%;
+}
+
+.price view:nth-child(4) {
   line-height: 40rpx;
   font-size: 12px;
 }
 
-.more {
-  width: 100%;
-  border: 1px solid #008489;
-  border-radius: 6rpx;
-  height: 100rpx;
-  text-align: center;
-  line-height: 100rpx;
-  font-size: 12px;
-  color: #008489;
-  margin-bottom: 150rpx;
-}
-.guard{
-   width: 90%;
-  margin: 0 auto;
-}
-.airbnbpic{
-  height: 80rpx;
-  width: 80rpx;
-}
-.airbnbpic image{
-  height: 70rpx;
-  width: 70rpx;
-}
+
+
 .page{
   width: 90%;
   margin: 0 auto;

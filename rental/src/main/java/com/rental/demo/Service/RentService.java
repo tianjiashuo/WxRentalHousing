@@ -46,18 +46,28 @@ public class RentService {
          }
         //条件筛选范围
         for(Map.Entry<String,String>entry:condition.entrySet()){
-            ans.addAll(rentDao.queryByCondt(entry.getKey(),entry.getValue()));
+            if(entry.getValue()=="true"){
+                ans.addAll(rentDao.queryByCondt(entry.getKey(),entry.getValue()));
+                System.out.println(ans.size());
+            }
+
         }
        return ans;
     }
 
     //获取某个房源的首页展示信息
     public RentBo getRentById(int id){
-        Rent rent = rentDao.queryById(id);
-        String image = imageDao.getFirstImageById(id,0);
-        RentBo rentBo = new RentBo(rent.getId(),rent.getArea(),rent.getPrice(),rent.getAddress(),
-                rent.getTitle(),rent.getType(),rent.getFurniture(),image);
-        return rentBo;
+        try{
+            Rent rent = rentDao.queryById(id);
+            String image = imageDao.getFirstImageById(id,0);
+            RentBo rentBo = new RentBo(rent.getId(),rent.getArea(),rent.getPrice(),rent.getAddress(),
+                    rent.getTitle(),rent.getType(),rent.getFurniture(),image);
+            return rentBo;
+        }catch(Exception e ){
+            System.out.println(e.toString());
+            return  null;
+        }
+
     }
 
     /***
@@ -119,8 +129,14 @@ public class RentService {
      * @return
      */
     public  List<Set<RentBo>>getRentALL() {
-        List list =  rentDao.queryAll();
-        return collectionInfo(list.iterator());
+        try{
+            List list =  rentDao.queryAll();
+            return collectionInfo(list.iterator());
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
+
     }
 
     /**
@@ -145,7 +161,13 @@ public class RentService {
         Set shareSet = new HashSet();
         while(it.hasNext()){
             Rent rent = it.next();
-            String image = imageDao.getFirstImageById(rent.getId(),0);
+            //设置默认图片防止查不出来
+            String image= "https://z1.muscache.cn/im/pictures/83177158/9e5c500b_original.jpg?aki_policy=large";
+            try{
+                image = imageDao.getFirstImageById(rent.getId(),0);
+            }catch (Exception e){
+                System.out.println(e.toString());
+            }
             RentBo bo = new RentBo(rent,image);
             allSet.add(bo);
             if(rent.getIsForm()){//是合租

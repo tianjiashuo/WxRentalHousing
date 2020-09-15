@@ -12,7 +12,8 @@ Page({
           {id: 1,type: "待整租", typeid:1},
           {id: 2,type: "待合租", typeid:2}],
     allRent:[],
-    flag:true
+    keywords:"",
+    isChecked:false
   },
  
   click(e) {
@@ -24,9 +25,12 @@ Page({
     console.log("form 发生了 submit",e.detail.value)
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/rent/select',
-      data:{
-        "key":e.detail.value.keywords
+      url: 'http://47.94.170.167:8080/rent/select',
+     //url: 'http://localhost:8080/rent/select', 
+     data:{
+        "key":e.detail.value.keywords,
+        "is_pet":e.detail.value.is_pet,
+        "is_elevator":e.detail.value.is_elevator
       },
       header: { "content-type": "application/json"},
       method: 'POST',
@@ -52,7 +56,8 @@ Page({
 
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/page/swiper',
+      url: 'http://47.94.170.167:8080/page/swiper',
+     //url: 'http://localhost:8080/page/swiper',
       data: '',
       header: { "content-type": "application/json"},
       method: 'GET',
@@ -70,8 +75,9 @@ Page({
     })
    
     wx.request({
-      url: 'http://localhost:8080/rent/all',
-      data: '',
+     url: 'http://47.94.170.167:8080/rent/all',
+     //url: 'http://localhost:8080/rent/all', 
+     data: '',
       header: { "content-type": "application/json" },
       method: 'GET',
       dataType: 'json',
@@ -130,8 +136,14 @@ Page({
    */
   onPullDownRefresh: function () {
     var that = this;
+    that.setData({
+      keywords:"",
+      isChecked:false
+    })
+    console.log(that.is_pet);
     wx.request({
-      url: 'http://localhost:8080/rent/all',
+      url: 'http://47.94.170.167:8080/rent/all',
+    //  url: 'http://localhost:8080/rent/all',
       data: '',
       header: { "content-type": "application/json" },
       method: 'GET',
@@ -140,7 +152,8 @@ Page({
       success: function (res) {
         console.log("allRent"+res.data);
         that.setData({
-          allRent: res.data
+          allRent: res.data,
+          current:0
         })
         wx.stopPullDownRefresh();
       },

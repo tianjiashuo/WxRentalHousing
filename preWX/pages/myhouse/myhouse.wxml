@@ -30,7 +30,7 @@
     </view>
     <view>
       <label>房屋楼层</label>
-      <input name="floor" value="{{floor}}" placeholder=" * * 朝 向" />
+      <input name="floor" value="{{floor}}" placeholder=" * * 层" />
     </view>
     <view>
       <label>有无电梯</label>
