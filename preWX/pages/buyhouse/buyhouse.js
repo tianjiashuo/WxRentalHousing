@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    keywords:"",
+    current:0,
+    swiper:[],
+    allSell:[],
+    keywords:"",
   },
 
   /**
@@ -30,8 +34,50 @@ Page({
         console.log('fail')
       },
     })
+    wx.request({
+      url: 'http://localhost:8080/sell/all',
+      data: '',
+      header: { "content-type": "application/json" },
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log("allSell"+res.data)
+        that.setData({
+          allSell: res.data
+        })
+      },
+      fail: function (res) {
+        console.log('fail')
+      },
+    })
   },
 
+
+  doSearch:function(e){
+    console.log("form 发生了 submit",e.detail.value)
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/sell/select',
+      data:{
+        "key":e.detail.value.keywords
+      },
+      header: { "content-type": "application/json"},
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: function(res) {
+        console.log("search allSell"+res.data)
+        that.setData({
+          allSell: res.data
+        })
+        
+      },
+      fail: function(res) {
+        console.log('fail '+res)
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -64,7 +110,29 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var that = this;
+    that.setData({
+      keywords:""
+    })
+    console.log(that.is_pet);
+    wx.request({
+      url: 'http://localhost:8080/sell/all',
+      data: '',
+      header: { "content-type": "application/json" },
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        console.log("allSell"+res.data);
+        that.setData({
+          allSell: res.data
+        })
+        wx.stopPullDownRefresh();
+      },
+      fail: function (res) {
+        console.log('fail '+res)
+      },
+    })
   },
 
   /**

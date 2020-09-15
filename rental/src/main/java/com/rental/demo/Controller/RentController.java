@@ -5,6 +5,7 @@ import com.rental.demo.Service.RentBo;
 import com.rental.demo.Service.RentService;
 import com.rental.demo.Service.RoommatesBo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jca.cci.core.InteractionCallback;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -17,6 +18,10 @@ public class RentController {
 
     @PostMapping ("/rent/select")
     public List<Set<RentBo>> selectRent(@RequestBody Map<String,String> condition){
+        for(Map.Entry<String,String>entry:condition.entrySet()){
+           System.out.println(entry.getKey()+"22222222"+entry.getValue());
+        }
+
         return rentService.conditionSelectRentAll(condition);
     }
     @PostMapping("rent/delete")

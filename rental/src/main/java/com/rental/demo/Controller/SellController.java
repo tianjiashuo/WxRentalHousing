@@ -1,11 +1,13 @@
 package com.rental.demo.Controller;
 
 import com.rental.demo.Repository.entity.Sell;
+import com.rental.demo.Service.RentBo;
 import com.rental.demo.Service.SellBo;
 import com.rental.demo.Service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,7 +19,7 @@ public class SellController {
     private SellService sellService;
 
     @PostMapping("/sell/select")
-    Set<Sell> selectSell(@RequestBody Map<String,String> condition){
+    Set<SellBo> selectSell(@RequestBody Map<String,String> condition){
         return sellService.selectSell(condition);
     }
     @PostMapping("/sell/delete")
@@ -40,5 +42,10 @@ public class SellController {
 
     @PostMapping("/changeSellState/{id}")
     int changeSellState(@PathVariable int id){return sellService.changeState(id);}
+
+    @GetMapping("/sell/all")
+    public Set<SellBo> getAllRent(){
+        return  sellService.getSellALL();
+    }
 
 }

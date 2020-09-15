@@ -1,6 +1,8 @@
 package com.rental.demo.Repository.dao;
 
+import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
+import com.rental.demo.Repository.mappers.RentRowMapper;
 import com.rental.demo.Repository.mappers.SellRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -51,6 +53,7 @@ public class SellDao {
         Sell sell = jdbcTemplate.queryForObject(sql,new SellRowMapper(),id);
         return sell;
     }
+
     public int insertSellHouse(Sell sell){
         String sql = "INSERT INTO sell (host_id,title,address,property,type,orientation" +
                 ",floor,is_renovation,is_elevator,area,price,state) " +
@@ -62,5 +65,12 @@ public class SellDao {
     public int changeState(int id) {
         String sql = "UPDATE sell set state=0 WHERE id=? ";
         return jdbcTemplate.update(sql, id);
+    }
+
+    //查询所有房源信息
+    public List<Sell> queryAll(){
+        String sql ="SELECT * FROM sell WHERE state =1";
+        List<Sell>ans = jdbcTemplate.query(sql,new SellRowMapper());
+        return ans;
     }
 }

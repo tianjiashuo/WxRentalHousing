@@ -73,7 +73,7 @@ form view switch{
   bottom: 0px;
   width: 750rpx;
   height: 100rpx;
-  background:#2aa515;
+  background:#758a99;
   padding: 0;
   margin: 0;
   text-align: center;

@@ -90,7 +90,6 @@ Page({
             
              wx.request({
                url: 'http://47.94.170.167:8080/user/login',
-               //url: 'http://localhost:8080/user/login',
                method: 'POST',
                data: jsonData,
                header: {

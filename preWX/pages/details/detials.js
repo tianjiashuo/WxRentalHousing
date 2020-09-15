@@ -106,7 +106,6 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
-
          title:res.data.rentInfo.title,
          address:res.data.rentInfo.address,
          type:res.data.rentInfo.type,
