@@ -5,20 +5,13 @@
       <image src='/icons/fanhui.png'></image>
     </view>
   </navigator>
-  <!--pages/detials/detials.wxml-->
   <view class='banner'>
     <swiper indicator-dots="{{indicatordots}}" autoplay="{{true}}" circular="{{true}}">
-      <!--block wx:for="{{data2}}"-->
-        <!--<swiper-item>
-          <image src="{{data2[index].img}}"></image>
-        </swiper-item>-->
+     <block wx:for="{{images}}">
         <swiper-item>
-          <image src="/images/biehsu1.jpg"></image>  
+          <image src="{{item.imageUrl}}"></image>
         </swiper-item>
-        <swiper-item>
-          <image src="/images/bieshu2.jpg"></image>  
-        </swiper-item>
-      <!--/block-->
+      </block>
     </swiper>
     <view class='iconfont'>
       <view class='icon1'>

@@ -1,74 +1,7 @@
 // pages/details/detials.js
 Page({
  
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    address:""
-  },
-  houseInfor(e) {
-    wx.navigateTo({
-      url: '../exploration/exploration',
-    })
-  },
-  Tarvel(e) {
-    let sTop = this.data.scrollTop;
-    console.log(sTop);
-    this.setData({
-      display: 'block',
-      hidden: 'hidden'
-    });
-    let displayData = this.data.data6.travel_infor;
-    this.setData({
-      datas: displayData
-    })
-  },
-  Cancel(e) {
-    let sTop = this.data.scrollTop;
-    console.log(sTop);
-    this.setData({
-      display: 'block',
-      hidden: 'hidden'
-    });
-    let displayData = this.data.data7.cancel;
-    this.setData({
-      datas: displayData
-    })
-  },
-  Tip(e) {
-    let sTop = this.data.scrollTop;
-    console.log(sTop);
-    this.setData({
-      display: 'block',
-      hidden: 'hidden'
-    });
-    let displayData = this.data.data7.tip;
-    this.setData({
-      datas: displayData
-    })
-  },
-  Address(e) {
-    let sTop = this.data.scrollTop;
-    console.log(sTop);
-    this.setData({
-      display: 'block',
-      hidden: 'hidden'
-    });
-    let displayData = this.data.data6.address_infor;
-    this.setData({
-      datas: displayData
-    })
-  },
-  click(e) {
-    console.log(e);
-    if (e.touches[0].pageY < 420) {
-      this.setData({
-        display: 'none',
-        hidden: ''
-      });
-    }
-  },
+  
 
   /**
    * 页面的初始数据
@@ -95,10 +28,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     let that = this;
+    that.setData({
+      houseId:options.houseId
+    })
     wx.request({
-      url: 'http://47.94.170.167:8080/rentAllInfo/1',
+      url: 'http://47.94.170.167:8080/rentAllInfo/2',
       method:'GET',
       header: {
         'Content-Type': 'application/json'
@@ -106,18 +41,20 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
-
          title:res.data.rentInfo.title,
          address:res.data.rentInfo.address,
          type:res.data.rentInfo.type,
          orientation:res.data.rentInfo.orientation,
          furniture:res.data.rentInfo.furniture,
          isElevator:res.data.rentInfo.isElevator,
-         shortestLease:res.data.rentInfo.shortestLease
+         shortestLease:res.data.rentInfo.shortestLease,
+         images:res.data.imageList
 
         })
       }
     })
+
+    
 
   },
 
