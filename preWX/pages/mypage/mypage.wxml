@@ -8,6 +8,10 @@
       </navigator>
       <image class="nav-top-r" src='https://z1.muscache.cn/defaults/user_pic-50x50.png?v=3'></image>
     </view>
+    <view id="pics">
+    <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/mypage.png'></image>
+    </view>
+
 </block>
 <block wx:else>
 <view class="container1">
@@ -23,10 +27,11 @@
           <!-- </view> -->
         </view>
         <view class="main1-item">
-          <view class="gender">性别:</view>
+        <!-- <view>{{gender1}}</view> -->
+          <view class="gender">性别:  {{gender}}</view>
         </view>
         <view class="main1-item">
-          <view class="phone">手机号：</view>
+          <view class="phone">手机号： {{phone}}</view>
         </view>
         <view class="main1-item">
           <view class="IDnumber">身份证号：</view>

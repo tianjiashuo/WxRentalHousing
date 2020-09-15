@@ -1,16 +1,17 @@
 {
   "pages": [
+  
+    "pages/mypage/mypage",
     "pages/details/detials",
     "pages/renthouse/renthouse",
     "pages/myapplication/myapplication",
-    
-    "pages/mypage/mypage",
     "pages/myhouse/myhouse",
     "pages/release/release",
     "pages/search/search",
     "pages/logs/logs",
     "pages/login/login",
     "pages/buyhouse/buyhouse"
+
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -23,8 +24,7 @@
     "color": "#8a8a8a",
     "selectedColor": "#003366",
     "backgroundColor": "#ffffff",
-    "list": 
-    [
+    "list": [
       {
         "pagePath": "pages/renthouse/renthouse",
         "text": "我要租房",
