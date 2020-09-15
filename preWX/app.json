@@ -1,11 +1,12 @@
 {
   "pages": [
-  
-    "pages/mypage/mypage",
-    "pages/details/detials",
+ 
     "pages/renthouse/renthouse",
-    "pages/myapplication/myapplication",
+    "pages/mypage/mypage",
+    "pages/detials/detials",
     "pages/myhouse/myhouse",
+    "pages/mycollection/mycollection",    
+    "pages/myapplication/myapplication",
     "pages/release/release",
     "pages/search/search",
     "pages/logs/logs",

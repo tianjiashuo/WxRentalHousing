@@ -40,7 +40,11 @@
       <view class="pichouse">
        <navigator url='../house/house'> <image mode="widthFix" src="{{item.imageUrl}}"></image></navigator>
         <view class="type">{{item.address}}</view>
-        <view class="adress">{{item.title}} </view>
+        <!--view class="adress">{{item.title}} </view-->
+        <view class="adress">
+        <navigator url='/pages/detials/detials?'>{{item.title}}
+        </navigator>
+        </view>
         <view class="price">
           <view>￥ {{item.price}}</view>
         </view>

@@ -5,20 +5,13 @@
       <image src='/icons/fanhui.png'></image>
     </view>
   </navigator>
-  <!--pages/detials/detials.wxml-->
   <view class='banner'>
     <swiper indicator-dots="{{indicatordots}}" autoplay="{{true}}" circular="{{true}}">
-      <!--block wx:for="{{data2}}"-->
-        <!--<swiper-item>
-          <image src="{{data2[index].img}}"></image>
-        </swiper-item>-->
+     <block wx:for="{{images}}">
         <swiper-item>
-          <image src="/images/biehsu1.jpg"></image>  
+          <image src="{{item.imageUrl}}"></image>
         </swiper-item>
-        <swiper-item>
-          <image src="/images/bieshu2.jpg"></image>  
-        </swiper-item>
-      <!--/block-->
+      </block>
     </swiper>
     <view class='iconfont'>
       <view class='icon1'>
@@ -34,7 +27,7 @@
       </view>
     </view>
   </view>
-  <view class='address-infor'>{{address}}</view>
+  <view class='address-infor'>{{title}}</view>
   <view class='housebox'>
     <text class='house-name'>{{house_name}}</text>
     <text class='bed'>{{bed}}</text>
@@ -48,14 +41,14 @@
       <image src='/icons/_myhouse.png'></image>
       <view class='house-inform'>
         <text class='bold'>独立房间</text>
-        <text class='infor-house'>有独立房间，与房东或房客分享合用空间</text>
+        <text class='infor-house'>{{type}},{{orientation}},{{furniture}}</text>
       </view>
     </view>
     <view class='time'>
       <image src='/icons/outtime.png'></image>
       <view class='time-type'>
         <text class='bold'>最短租期</text>
-        <text class='time-infor'>入住时间14:00-02:00（次日）·退房时间11:00</text>
+        <text class='time-infor'>最短允许租{{shortestLease}}个月</text>
       </view>
     </view>
   </view>
@@ -77,7 +70,7 @@
   <view class='house_address'>
     <view>房源位置</view>
     <view class='more_address'>
-      <view>fangwuweizhi</view>
+      <view>{{address}}</view>
     </view>
   </view>
   <view class='asked'>

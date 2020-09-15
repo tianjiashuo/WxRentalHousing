@@ -1,10 +1,6 @@
 // pages/renthouse/renthouse.js
 Page({
-  houseInfor(e) {
-    wx.navigateTo({
-      url: '../exploration/exploration',
-    })
-  },
+  
   /**
    * 页面的初始数据
    */
@@ -81,7 +77,8 @@ Page({
       success: function (res) {
         console.log("allRent"+res.data)
         that.setData({
-          allRent: res.data
+          allRent: res.data,
+          id:res.data.id
         })
       },
       fail: function (res) {
@@ -89,6 +86,7 @@ Page({
       },
     })
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
