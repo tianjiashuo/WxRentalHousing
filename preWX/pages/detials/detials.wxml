@@ -9,8 +9,16 @@
       </block>
     </swiper>
     <view class='iconfont'>
-      <view class='icon1'>
+      <view class='icon1' bindtap="toCollect">
+        <block wx:if="{{isCollect == null}}">
+        <image src = '/icons/coll_un.png'></image>
+      </block>
+        <block wx:if="{{isCollect == false}}">
+        <image src = '/icons/coll_un.png'></image>
+      </block>
+      <block wx:if="{{isCollect == true}}">
         <image src = '/icons/coll.png'></image>
+      </block>
       </view>
       <view class='icon2'>
         <image src='/icons/report.png'></image>
