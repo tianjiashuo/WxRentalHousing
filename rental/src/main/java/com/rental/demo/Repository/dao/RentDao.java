@@ -4,6 +4,7 @@ import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.User;
 import com.rental.demo.Repository.mappers.RentRowMapper;
 import com.rental.demo.Repository.mappers.UserRowMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -40,8 +41,9 @@ public class RentDao {
     条件查询
      */
     public List<Rent> queryByCondt(String key,String value){
-        String sql = "SELECT * FROM rent WHERE state = 1 AND "+ key + "= ?";
-        List<Rent> ans = jdbcTemplate.query(sql, new RentRowMapper(),value);
+        String sql = "SELECT * FROM rent WHERE state = 1 AND "+ key + " = "+value;
+        System.out.println(sql+"-------------"+value);
+        List<Rent> ans = jdbcTemplate.query(sql, new RentRowMapper());
         return ans;
     }
 

@@ -24,38 +24,18 @@ Page({
      'wether_rent_sell':e.detail.id
     })
    },
-   //提交数据分转
-   dopost:function(e){
-    console.log("form 发生了 submit",e.detail.value)
-    if( this.data.wether_rent_sell==0){
-     this.dopostRent(e);
-    }else if(this.data.wether_rent_sell==1){
-     this.dopostSell(e);
-    }else{
-    console.log("非法submit")
-    }
-   },
-   //提交租房
-   dopostRent:function(e){
+
+   //提交数据
+   dopostInfo:function(e){
    // console.log("form 发生了 submit",e.detail.value)
    let that = this;
      wx.request({
       url: 'http://47.94.170.167:8080/insertRentHouse',
       //url:'http://localhost:8080/insertRentHouse', 
       data:{
-         'hostId':wx.getStorageSync('openId'),
-         "shortestLease": e.detail.value.shortrst_lease,
-         "area": e.detail.value.area,
-         "price": e.detail.value.price,
-         "floor": e.detail.value.floor,
-         "address":e.detail.value.address,
-         "title": e.detail.value.title,
-         "type": e.detail.value.type,
-         "orientation": e.detail.value.orientation,
-         "furniture": e.detail.value.furniture,
-         "isElevator": e.detail.value.is_elevator,
-         "isPet": e.detail.value.is_pet,
-         "isForm": e.detail.value.form,
+         'id':wx.getStorageSync('openId'),
+         "introduction": e.detail.value.shortrst_lease,
+         "IDnumber": e.detail.value.area,
        },
       method:'POST',
       header: {

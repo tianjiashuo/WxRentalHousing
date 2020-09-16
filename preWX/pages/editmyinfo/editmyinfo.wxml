@@ -3,10 +3,10 @@
     <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/myinfo.png'></image>
     </view>
 
-  <form  bindsubmit="dopost">
+  <form  bindsubmit="dopostInfo">
     <view>
       <label>昵称</label>
-      <input name="title" value="{{nickname}}" placeholder="该用户昵称" disabled="true"/>
+      <input name="nickname" value="{{nickname}}" placeholder="该用户昵称" disabled="true"/>
     </view>
    
     <view>
@@ -26,7 +26,7 @@
       <input name="IDnumber" value="{{IDnumber}}" placeholder=""  focus="true"/>
     </view>
     <view class="sendbtn">
-      <button bindtap='goBack' id="cancel" type="" >返回 </button>
+      <button bindtap='goBack' id="cancel" type="" >返回</button>
       <button id="submit" type="" form-type="submit">提交</button>
     </view>
   </form>

@@ -56,7 +56,7 @@ form input{
   left: 5%;
   border-radius: 6rpx;
   background-color: white;
-  border: 1px solid #ecebe7;
+  border-bottom:  3px solid #ecebe7;
 }
 
 .content1 {
@@ -153,6 +153,7 @@ button {
   flex-wrap: wrap;
   /* margin-top: 30rpx; */
   justify-content: space-between;
+  border-bottom:3px solid #95949a 
 }
 
 .pichouse {
@@ -177,7 +178,6 @@ button {
 
 .type {
   font-size: 10px;
-
 }
 
 .price {
@@ -195,7 +195,7 @@ button {
 
 .price view:nth-child(2) {
   font-size: 12px;
-  text-decoration: line-through;
+  margin-left: 30%;
   line-height: 40rpx;
 }
 
@@ -204,17 +204,6 @@ button {
   font-size: 12px;
 }
 
-.more {
-  width: 100%;
-  border: 1px solid #008489;
-  border-radius: 6rpx;
-  height: 100rpx;
-  text-align: center;
-  line-height: 100rpx;
-  font-size: 12px;
-  color: #008489;
-  margin-bottom: 150rpx;
-}
 .guard{
    width: 90%;
   margin: 0 auto;
@@ -223,10 +212,7 @@ button {
   height: 80rpx;
   width: 80rpx;
 }
-.airbnbpic image{
-  height: 70rpx;
-  width: 70rpx;
-}
+
 .page{
   width: 90%;
   margin: 0 auto;
@@ -234,10 +220,23 @@ button {
   margin-top: 40rpx;
   border-radius: 6rpx;
 }
-.moldel{
-  display: flex;
-  margin: 50rpx 40rpx;
+.searchborder{
   border-bottom: 1px solid #ecebe7;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.moldel {
+  display: flex;
+  margin: 10rpx;
+  padding-top: 30rpx;
+  font-weight: 600;
+  color:#758a99;
+  font-size: 46rpx;
+}
+#right{
+  display: right;
+  margin-left:60rpx ;
 }
 .testa{
   margin-left: 20rpx;
@@ -248,5 +247,9 @@ button {
 }
 .testa text:nth-child(2){
   font-size: 14px
+}
+
+.zoom{
+  zoom: .7 
 }
 

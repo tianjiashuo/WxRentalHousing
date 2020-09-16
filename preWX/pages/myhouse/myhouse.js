@@ -107,7 +107,7 @@ Page({
        url: 'http://47.94.170.167:8080/insertSellHouse',
        //url:'http://localhost:8080/insertSellHouse',
       data:{
-        'hostId':'99',
+        'hostId':wx.getStorageSync('openId'),
         "address":e.detail.value.address,
         "title":e.detail.value.title,
         "property":e.detail.value.property,
