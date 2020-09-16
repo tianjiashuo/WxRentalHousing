@@ -21,8 +21,10 @@ Page({
     isElevator: false,
     isPet: false,
     isForm: false,
-    isState: false
+    isState: false,
+    isCollect:null
   },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -51,10 +53,10 @@ Page({
          price:res.data.rentInfo.price,
          data:res.data.rentInfo
         })
-        // wx.setStorage({
-        //   key:"1",
-        //   data:res.data.rentInfo.hostId
-        // })
+        wx.setStorage({
+          key:"1",
+          data:res.data.rentInfo.id
+        })
         wx.request({
           url: 'http://47.94.170.167:8080/userInfo/'+res.data.rentInfo.hostId,
           method:'GET',
@@ -96,6 +98,53 @@ Page({
     
 
   },
+  toCollect () {
+    var bol = this.data.isCollect; // 获取状态
+    this.setData({
+    isCollect:!bol // 改变状态
+    })
+    wx.getStorage({
+      key: '1',
+      success: function(res) {
+          console.log(res.data)
+          console.log(!bol)
+          // this.houseId = res.data
+          // console.log(this.houseId)
+          wx.setStorage({
+            data: !bol,
+            key: '2',
+          })
+          if(!bol == true){
+            wx.request({
+              url: 'http://localhost:8080/addCollection',
+              data:{
+                "userId":1,
+                "houseId":res.data,
+                "houseType":0
+              },
+              method:"POST",
+              header: {
+                'Content-Type': 'application/json'
+              },
+              success:function(res){
+                console.log(res.data)
+              }
+            })
+          }
+          else{
+            wx.request({
+              url: 'http://localhost:8080/cancelCollection/'+id,
+              method:"DELETE",
+              header: {
+                'Content-Type': 'application/json'
+              },
+              success:function(res){
+                console.log("删除成功"+res.data)
+              }
+            })
+          }
+      }
+    })},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

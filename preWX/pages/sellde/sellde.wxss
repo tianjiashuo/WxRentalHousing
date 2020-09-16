@@ -590,3 +590,45 @@ image {
   font-size: 28rpx;
   line-height: 45rpx;
 }
+.sign{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  font-size: 32rpx;
+  color: #fff;
+  background: #2ca2ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -100rpx;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.txt{
+  width: 80%;
+  height: 200rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: #fff;
+  margin: 20% auto 50rpx;
+  padding: 20rpx;
+}
+
+.sub-btn{
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #2ca2ed;
+  font-size: 28rpx;
+  color: #fff;
+}

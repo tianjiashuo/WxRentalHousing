@@ -21,14 +21,35 @@ Page({
     isPet: false,
     isForm: false,
     isState: false,
-    isCollect: false
+    isCollect: false,
+    show: false,
+    isReport:false
   },
   
+
+  showMask: function() {//显示文本框
+    this.setData({
+      show: true
+    })
+  },
+
+  sub: function() {//提交工作内容
+    wx.showToast({
+      title: '提交成功',
+      duration: 1000
+    })
+    
+    this.setData({
+      show: false
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var hId = options.id
     let that = this;
     wx.request({
       url: 'http://47.94.170.167:8080/sellAllInfo/'+options.id,
@@ -50,10 +71,10 @@ Page({
          images:res.data.imageList,
          hostId:res.data.sellInfo.hostId
         })
-        // wx.setStorage({
-        //   key:"1",
-        //   data:res.data.sellInfo.hostId
-        // })
+        wx.setStorage({
+          key:"1",
+          data:res.data.sellInfo.id
+        })
         wx.request({
           url: 'http://47.94.170.167:8080/userInfo/'+res.data.sellInfo.hostId,
           method:'GET',
@@ -82,14 +103,6 @@ Page({
     //   }
     // })
 
-    // wx.request({
-    //   url: 'http://localhost:8080/uerInfo/'+hostId,
-    //   method:'GET',
-    //   header: {
-    //     'Content-Type': 'application/json'
-    //   },
-    // })
-
   },
 
   toCollect () {
@@ -97,26 +110,60 @@ Page({
     this.setData({
     isCollect:!bol // 改变状态
     })
-    console.log(collId)
-    if(isCollect == true){
+    wx.getStorage({
+      key: '1',
+      success: function(res) {
+          console.log(res.data)
+          if(!bol == true){
+            wx.request({
+              url: 'http://localhost:8080/addCollection',
+              data:{
+                "userId":1,
+                "houseId":res.data,
+                "houseType":1
+              },
+              method:"POST",
+              header: {
+                'Content-Type': 'application/json'
+              },
+              success:function(res){
+                console.log(res.data)
+              }
+            })
+          }
+          else{
+            wx.request({
+              url: 'http://localhost:8080/cancelCollection/'+id,
+              method:"DELETE",
+              header: {
+                'Content-Type': 'application/json'
+              },
+              success:function(res){
+                console.log("删除成功"+res.data)
+              }
+            })
+          }
+      }
+    })
+    },
+
+    isReport () {
+      var bol = this.data.isReport; // 获取状态
+      this.setData({
+      isReport:!bol // 改变状态
+      })
       wx.getStorage({
         key: '1',
         success: function(res) {
             console.log(res.data)
             this.setData({
-              id:res.data
+              //注意到模态框的取消按钮也是绑定的这个函数，
+              //所以这里直接取反hiddenmodalput，也是没有毛病
+              isReport: !this.data.isReport
             })
         }
       })
-      wx.request({
-        url: 'url',
-        method:"POST",
-        header: {
-          'Content-Type': 'application/json'
-        },
-      })
-    }
-    },
+      },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
