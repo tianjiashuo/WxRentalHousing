@@ -246,4 +246,6 @@ button {
 .testa text:nth-child(2){
   font-size: 14px
 }
-
+#image{
+  border-radius: 5%;
+}

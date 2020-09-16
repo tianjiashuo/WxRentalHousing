@@ -26,8 +26,10 @@ Page({
         responseType: 'text',
         success: function (res) {
           console.log("collections"+res.data)
+          console.log(res.data.length)
           that.setData({
             collections: res.data,
+            collectionNum: res.data.length,
           })
         },
         fail: function (res) {
