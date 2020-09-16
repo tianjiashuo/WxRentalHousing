@@ -27,6 +27,12 @@ Page({
      url: '/pages/collection/collection'
    })
    }, 
+   goHouses:function()
+   {
+    wx.navigateTo({
+      url: '/pages/houses/houses'
+    })
+    }, 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -34,30 +40,7 @@ Page({
    
   },
 
-  getUserInfo:function(){
-    var that = this;
-    var openId=wx.getStorageSync('openId');
-    console.log("openId -----" +openId);
-      if(typeof(openId) != 'undefined'){
-      wx.request({
-        url:'http://47.94.170.167:8080/userInfo/'+openId,
-        method:'GET',
-        header: {
-          'Content-Type': 'application/json'
-        },
-        success: function (res) {
-          console.log(res.data)
-          console.log(11111)
-          that.setData({
-            gender:res.data.gender?"男":"女",
-            phone:res.data.phone,
-            introduction:res.data.introduction,
-            IDnumber:res.data.idNumber,
-          })
-        }
-      })
-    }
-  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -86,9 +69,9 @@ Page({
         },
         success: function (res) {
           console.log(res.data)
-          console.log(11111)
+          // console.log(11111)
           that.setData({
-            gender:res.data.gender?"男":"女",
+            gender:(res.data.gender===1)?"男":"女",
             phone:res.data.phone,
             introduction:res.data.introduction,
             IDnumber:res.data.idNumber,

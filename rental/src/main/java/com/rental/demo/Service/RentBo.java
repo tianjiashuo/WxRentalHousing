@@ -13,6 +13,7 @@ public class RentBo {
     private String type;
     private String furniture;
     private String imageUrl;
+    private int state;
 
     public int getId() {
         return id;
@@ -78,6 +79,14 @@ public class RentBo {
         this.imageUrl = imageUrl;
     }
 
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
     public RentBo(int id, int area, int price, String address, String title, String type, String furniture, String imageUrl) {
         this.id = id;
         this.area = area;
@@ -87,6 +96,18 @@ public class RentBo {
         this.type = type;
         this.furniture = furniture;
         this.imageUrl = imageUrl;
+    }
+
+    public RentBo(int id, int area, int price, String address, String title, String type, String furniture, String imageUrl,int state) {
+        this.id = id;
+        this.area = area;
+        this.price = price;
+        this.address = address;
+        this.title = title;
+        this.type = type;
+        this.furniture = furniture;
+        this.imageUrl = imageUrl;
+        this.state = state;
     }
 
     public  RentBo(Rent rent,String image){

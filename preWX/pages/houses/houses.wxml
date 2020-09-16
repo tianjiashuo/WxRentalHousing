@@ -1,0 +1,83 @@
+<view class="autumn">
+    <view id="pics">
+      <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/houses.png'></image>
+    </view>
+
+<view class="main-word>">我的出租：</view>
+  <view class="rentHouse">
+      <block wx:if="{{rentNum===0}}">
+        <view id="message">您还没有发布出租房源呦</view>
+      </block>
+    <block wx:for="{{rent}}">
+      <view class="pichouse" data-newsid='{{item.id}}'>
+      <view id="infos" bindtap="goNewsDetail">
+       <image id="image" mode="widthFix" src="{{item.imageUrl}}"></image>
+       <block wx:if="{{item.state===-1}}">
+       <image id="off" src="../../icons/mypage/off.png"></image>
+       </block> 
+       <view id="intro">
+        <view class="type">{{item.address}}</view>
+        <view bindtap='goNewsDetail' data-newsid='{{item.id}}'>
+        <view class="adress">{{item.title}} </view>
+        </view>
+        <view class="price">
+          <view>￥ {{item.price}}</view>
+          <view>{{item.area}}</view>
+          <view>㎡</view>
+          </view>
+        </view>
+        </view>
+        <view >
+          <block wx:if="{{item.state===-1}}">
+          <button disabled="true" bindtap="btnTap" id="{{item.id}}">下架该房源</button>
+          </block> 
+           <block wx:else>
+              <button bindtap="btnTapRent" id="{{item.id}}">下架该房源</button>
+           </block>
+        </view>
+      </view>
+    </block>
+  </view>
+
+<view class="main-word>">我的售卖：</view>
+<view class="rentHouse">
+      <block wx:if="{{sellNum===0}}">
+        <view id="message">您还没有发布出售房源呦</view>
+      </block>
+    <block wx:for="{{sell}}">
+      <view class="pichouse"  data-newsid='{{item.id}}'>
+
+      <view id="infos" bindtap="goNewsDetail">
+       <image id="image" mode="widthFix" src="{{item.imageUrl}}"></image>
+        <block wx:if="{{item.state===-1}}">
+       <image id="off" src="../../icons/mypage/off.png"></image>
+       </block> 
+       <view id="intro">
+        <view class="type">{{item.address}}</view>
+        <view bindtap='goNewsDetail' data-newsid='{{item.id}}'>
+        <view class="adress">{{item.title}} </view>
+        </view>
+        <view class="price">
+          <view>￥ {{item.price}}</view>
+          <view>{{item.area}}</view>
+          <view>㎡</view>
+          </view>
+        </view>
+        </view>
+
+        <view>
+        <block wx:if="{{item.state===-1}}">
+          <button disabled="true" bindtap="btnTap" id="{{item.id}}">下架该房源</button>
+          </block> 
+           <block wx:else>
+              <button bindtap="btnTapSell" id="{{item.id}}">下架该房源</button>
+           </block>        </view>
+
+      </view>
+    </block>
+  </view>
+</view>
+
+
+
+

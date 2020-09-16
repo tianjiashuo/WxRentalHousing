@@ -1,14 +1,16 @@
 package com.rental.demo.Service;
 
+import com.rental.demo.Repository.dao.RentDao;
+import com.rental.demo.Repository.dao.SellDao;
 import com.rental.demo.Repository.dao.UserDao;
+import com.rental.demo.Repository.entity.Rent;
+import com.rental.demo.Repository.entity.Sell;
 import com.rental.demo.Repository.entity.Session;
 import com.rental.demo.Repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("userService")
 public class UserService {
@@ -18,7 +20,14 @@ public class UserService {
     private AesService aesService;
     @Autowired
     private SessionService sessionService;
-
+    @Autowired
+    private RentDao rentDao;
+    @Autowired
+    private RentService rentService;
+    @Autowired
+    private SellDao sellDao;
+    @Autowired
+    private SellService sellService;
 
     /**
      * mao changed 2020-09-12
@@ -122,6 +131,26 @@ public class UserService {
         //调用userdao加入电话
         userDao.editUserPhoneInfo(reqinfo.get("openId").toString(),map.get("phoneNumber"));
        return map;
+    }
+
+    //获取某人发布的所有房源
+    public HashMap<String,Set> getUserHouse(String hostId){
+        HashMap<String,Set> result = new HashMap<>();
+        List<Rent> lr = rentDao.queryByHostId(hostId);
+        Iterator<Rent> ir = lr.iterator();
+        HashSet rentResult  = new HashSet();
+        while(ir.hasNext()) {
+            rentResult.add(rentService.getRentByIdHost(ir.next().getId()));
+        }
+        List<Sell> ls = sellDao.queryByHostId(hostId);
+        Iterator<Sell> is = ls.iterator();
+        HashSet sellResult  = new HashSet();
+        while(is.hasNext()) {
+            sellResult.add(sellService.getSellByIdHost(is.next().getId()));
+        }
+        result.put("rent",rentResult);
+        result.put("sell",sellResult);
+        return result;
     }
 
 }

@@ -1,4 +1,4 @@
-// pages/mycollection/mycollection.js
+// pages/audit/audit.js
 Page({
 
   /**

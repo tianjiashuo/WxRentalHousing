@@ -70,6 +70,19 @@ public class RentService {
 
     }
 
+    public RentBo getRentByIdHost(int id){
+        try{
+            Rent rent = rentDao.queryById(id);
+            String image = imageDao.getFirstImageById(id,0);
+            RentBo rentBo = new RentBo(rent.getId(),rent.getArea(),rent.getPrice(),rent.getAddress(),
+                    rent.getTitle(),rent.getType(),rent.getFurniture(),image,rent.getState());
+            return rentBo;
+        }catch(Exception e ){
+            System.out.println(e.toString());
+            return  null;
+        }
+
+    }
     /***
      * 查看详细租房信息
      * @param rentId

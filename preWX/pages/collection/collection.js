@@ -78,31 +78,27 @@ Page({
    */
   onPullDownRefresh: function () {
     var that = this;
-    that.setData({
-      keywords:"",
-      isChecked:false
-    })
-    console.log(that.is_pet);
-    wx.request({
-      url: 'http://47.94.170.167:8080/rent/all',
-    //  url: 'http://localhost:8080/rent/all',
-      data: '',
-      header: { "content-type": "application/json" },
-      method: 'POST',
-      dataType: 'json',
-      responseType: 'text',
-      success: function (res) {
-        console.log("allRent"+res.data);
-        that.setData({
-          allRent: res.data,
-          current:0
-        })
-        wx.stopPullDownRefresh();
-      },
-      fail: function (res) {
-        console.log('fail '+res)
-      },
-    })
+    var openId=wx.getStorageSync('openId');
+    if(typeof(openId) != 'undefined'){
+      wx.request({
+        url:'http://47.94.170.167:8080/getCollection/'+openId,
+        header: { "content-type": "application/json" },
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log("collections"+res.data)
+          console.log(res.data.length)
+          that.setData({
+            collections: res.data,
+            collectionNum: res.data.length,
+          })
+        },
+        fail: function (res) {
+          console.log('fail')
+        },
+      })
+    } 
   },
 
   /**
