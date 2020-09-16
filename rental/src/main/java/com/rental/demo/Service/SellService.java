@@ -96,9 +96,14 @@ public class SellService {
      */
     public  Set<SellBo>getSellALL() {
 
-        List list = sellDao.queryAll();
-        Iterator<Sell> it = list.iterator();
-        return transSellToBo(it);
+        try{
+            List list = sellDao.queryAll();
+            Iterator<Sell> it = list.iterator();
+            return transSellToBo(it);
+        }catch (Exception e){
+            return null;
+        }
+
     }
 
     private Set<SellBo> transSellToBo(Iterator it0){
@@ -106,10 +111,13 @@ public class SellService {
         Iterator<Sell> it = it0;
         while(it.hasNext()){
             Sell sell = it.next();
-            String image = imageDao.getFirstImageById(sell.getId(),Integer.parseInt(HOUSE_TYPE_SELL));
-            System.out.println(image+" 22222222");
+            String image="https://z1.muscache.cn/im/pictures/83177158/9e5c500b_original.jpg?aki_policy=large";
+            try{
+                 image = imageDao.getFirstImageById(sell.getId(),Integer.parseInt(HOUSE_TYPE_SELL));
+            }catch(Exception e){
+                System.out.println(e.toString());
+            }
             SellBo bo = new SellBo(sell,image);
-            System.out.println(bo.getAddress()+"--------");
             set.add(bo);
         }
         return set;

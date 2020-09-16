@@ -49,6 +49,7 @@
         </view>
         <view class="price">
           <view>￥ {{item.price}}</view>
+         
           <view>{{item.area}}</view>
           <view>㎡</view>
         </view>

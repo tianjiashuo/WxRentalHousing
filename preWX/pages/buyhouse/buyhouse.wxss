@@ -205,16 +205,23 @@ button {
   line-height: 40rpx;
   margin-right: 10rpx;
 }
-
 .price view:nth-child(2) {
   font-size: 12px;
   line-height: 40rpx;
+  margin-right: 10rpx;
 }
 
 .price view:nth-child(3) {
+  font-size: 12px;
+  line-height: 40rpx;
+  margin-left: 30%;
+}
+
+.price view:nth-child(4) {
   line-height: 40rpx;
   font-size: 12px;
 }
+
 
 
 .page{

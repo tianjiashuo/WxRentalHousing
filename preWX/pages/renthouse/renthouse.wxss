@@ -195,7 +195,7 @@ button {
 
 .price view:nth-child(2) {
   font-size: 12px;
-  margin-left: 30%;
+  margin-left: 40%;
   line-height: 40rpx;
 }
 
@@ -208,10 +208,7 @@ button {
    width: 90%;
   margin: 0 auto;
 }
-.airbnbpic{
-  height: 80rpx;
-  width: 80rpx;
-}
+
 
 .page{
   width: 90%;

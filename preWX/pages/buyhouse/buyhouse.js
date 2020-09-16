@@ -35,7 +35,8 @@ Page({
       },
     })
     wx.request({
-      url: 'http://localhost:8080/sell/all',
+      url: 'http://47.94.170.167:8080/sell/all',
+    //  url: 'http://localhost:8080/sell/all',
       data: '',
       header: { "content-type": "application/json" },
       method: 'GET',
@@ -58,7 +59,8 @@ Page({
     console.log("form 发生了 submit",e.detail.value)
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/sell/select',
+      url: 'http://47.94.170.167:8080/sell/select',
+      //url: 'http://localhost:8080/sell/select',
       data:{
         "key":e.detail.value.keywords
       },
@@ -78,6 +80,15 @@ Page({
       },
     })
   },
+
+  goNewsDetail:function(event)
+  {
+   wx.navigateTo({
+     url: '/pages/detials/detials?id=' + event.currentTarget.dataset.newsid
+   })
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -116,7 +127,8 @@ Page({
     })
     console.log(that.is_pet);
     wx.request({
-      url: 'http://localhost:8080/sell/all',
+      url: 'http://47.94.170.167:8080/sell/all',
+      //url: 'http://localhost:8080/sell/all',
       data: '',
       header: { "content-type": "application/json" },
       method: 'GET',
