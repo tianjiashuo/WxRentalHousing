@@ -9,7 +9,7 @@ public class User {
     private String password;
     private String phone;
     private boolean gender;
-    private String IDnumber;
+    private String idNumber;
 
     public String getId() {
         return id;
@@ -53,10 +53,10 @@ public class User {
     public void setGender(boolean gender){
         this.gender = gender;
     }
-    public String getIDnumber(){
-        return IDnumber;
+    public String getIdNumber(){
+        return idNumber;
     }
-    public void setIDnumber(String IDnumber){
-        this.IDnumber = IDnumber;
+    public void setIdNumber(String idNumber){
+        this.idNumber = idNumber;
     }
 }

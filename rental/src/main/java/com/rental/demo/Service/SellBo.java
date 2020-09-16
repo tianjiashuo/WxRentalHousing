@@ -1,5 +1,6 @@
 package com.rental.demo.Service;
 
+import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
 
 import java.text.DecimalFormat;
@@ -97,5 +98,28 @@ public class SellBo {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result += id*6 +address.hashCode() ;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof SellBo)){
+            return false;
+        }else{
+            SellBo sobj = (SellBo)obj;
+            if(this==sobj){
+                return true;
+            }
+            if(sobj.id==(this.id)){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 }

@@ -1,4 +1,15 @@
 <!--pages/renthouse/renthouse.wxml-->
+<view class="mask" wx:if="{{showDialog}}" catchtouchmove="noTouchMove"></view> 
+    <view class="modal-dialog" wx:if="{{showDialog}}">
+      <view class="modal-title">温馨提示</view>
+      <image class="securephoto" src="/images/girls.png"></image>
+      <view class="modal-content">交易买卖过程中请注意安全     
+      </view>
+      <view class="modal-footer">
+      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+    </view>
+</view> 
+
 <swiper class="swiper" autoplay='true' circular='true' interval="4000" duration='500'>
   <block wx:for="{{swiper}}">
     <swiper-item>
@@ -57,5 +68,7 @@
     </block>
   </view>
 </view>
+
+
 
 

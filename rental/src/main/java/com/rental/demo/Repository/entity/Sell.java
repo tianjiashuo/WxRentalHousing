@@ -130,7 +130,7 @@ public class Sell{
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Rent)){
+        if (!(obj instanceof Sell)){
             return false;
         }else{
             Sell sobj = (Sell)obj;

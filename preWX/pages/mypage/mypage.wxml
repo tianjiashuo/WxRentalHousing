@@ -1,17 +1,16 @@
 
-<block wx:if="{{hasUserInfo===false||typeof(tmp) == 'undefined'}}">
+<block wx:if="{{hasUserInfo===false||typeof(hasUserInfo) == 'undefined'}}">
   <!-- <view class="container"> -->
     <view class="nav-top">
       <navigator open-type="navigate" url='../login/login'>
         <!-- <view class="nav-top-l" hover-class='bg-color'>注册或登录</view> -->
-        <button class="nav-top-l" hover-class='bg-color' open-type="getUserInfo" bindgetuserinfo="getUserInfo">注册或登陆</button>
+        <button bindtap='getUserInfo' class="nav-top-l" hover-class='bg-color' open-type="getUserInfo" bindgetuserinfo="getUserInfo">注册或登陆</button>
       </navigator>
       <image class="nav-top-r" src='https://z1.muscache.cn/defaults/user_pic-50x50.png?v=3'></image>
     </view>
     <view id="pics">
     <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/mypage.png'></image>
     </view>
-
 </block>
 <block wx:else>
 <view class="container1">
@@ -21,20 +20,23 @@
     </view>
     <view class="main1">
       <view>
-        <view class="main-word">个人信息:
-          <!-- <view > -->
-          <image class="edit" src="../../icons/mypage/edit.png"></image>
-          <!-- </view> -->
+        <view bindtap='goEditMyInfo' class="main-word">个人信息:✏️
         </view>
         <view class="main1-item">
-        <!-- <view>{{gender1}}</view> -->
-          <view class="gender">性别:  {{gender}}</view>
+          <view id="gender">性别:</view>
+          <view > {{gender}}</view>
         </view>
         <view class="main1-item">
-          <view class="phone">手机号： {{phone}}</view>
+          <view id="phone">手机号：</view>
+           <view> {{phone}}</view>
         </view>
         <view class="main1-item">
-          <view class="IDnumber">身份证号：</view>
+          <view id="introduction">介绍：</view>
+          <view>{{introduction}}</view>
+        </view>
+        <view class="main1-item">
+          <view id="IDnumber">身份证号：</view>
+          <view>{{IDnumber}}</view>
         </view>
       </view>
       <view class="mine">
@@ -42,16 +44,16 @@
           <view class="my-icon">
             <view class="icons">
               <image class="collection" src='../../icons/mypage/collection.png'></image>
-              <!-- <text class="explain">收 藏</text> -->
+              <view id="intro">收藏</view>
             </view>
-            <!-- <view class="icons"> -->
-              <image class="myhouse" src='../../icons/mypage/myhouse.png'></image>
-              <!-- <text class="explain">房 源</text> -->
-            <!-- </view> -->
-            <!-- <view class="icons"> -->
+            <view class="icons1">
+              <image class="myhouse" src='../../icons/mypage/myhouse.png'></image> 
+               <view id="intro">房源</view>    
+               </view>
+                <view class="icons1">
               <image class="apply" src="../../icons/mypage/apply.png"></image>
-              <!-- <text class="explain">申 请</text> -->
-            <!-- </view> -->
+               <view id="intro">审核</view>    
+               </view>
           </view>
        </view>
     </view>

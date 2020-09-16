@@ -29,7 +29,7 @@ public class UserService {
         try{
             User user = userDao.queryUserById(id);
             UserBo userBo = new UserBo(id,user.getHead(),user.getNickname(),
-                    user.getIntroduction(),user.getPhone(),user.getGender(),user.getIDnumber());
+                    user.getIntroduction(),user.getPhone(),user.getGender(),user.getIdNumber());
             return userBo;
         }catch (Exception e){
             System.out.println(e.toString());

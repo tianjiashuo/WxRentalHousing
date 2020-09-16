@@ -1,6 +1,4 @@
 {
   "usingComponents": {
-    "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
-    "mp-navigation-bar":"weui-miniprogram/navigation-bar/navigation-bar"
   }
 }

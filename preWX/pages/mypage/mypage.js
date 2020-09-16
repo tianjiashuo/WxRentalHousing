@@ -9,8 +9,19 @@ Page({
     hasUserInfo:false, 
     userName: "",
     userImgUrl: "",
+    gender:"",
+    phone:"",
+    introduction:"",
+    IDnumber:"",
   },
 
+  goEditMyInfo:function()
+  {
+   wx.navigateTo({
+     url: '/pages/editmyinfo/editmyinfo'
+   })
+   }, 
+ 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -18,6 +29,30 @@ Page({
    
   },
 
+  getUserInfo:function(){
+    var that = this;
+    var openId=wx.getStorageSync('openId');
+    console.log("openId -----" +openId);
+      if(typeof(openId) != 'undefined'){
+      wx.request({
+        url:'http://47.94.170.167:8080/userInfo/'+openId,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+          console.log(11111)
+          that.setData({
+            gender:res.data.gender?"男":"女",
+            phone:res.data.phone,
+            introduction:res.data.introduction,
+            IDnumber:res.data.idNumber,
+          })
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -29,15 +64,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+    
     this.setData({
       hasUserInfo: app.globalData.hasUserInfo,
       userName: app.globalData.userInfo.nickName,
       userImgUrl: app.globalData.userInfo.head,
-      gender : app.globalData.userInfo.gender,
-      phone:app.globalData.userInfo.phone,
     })
-    
+    var that = this;
+    var openId=wx.getStorageSync('openId');
+      if(typeof(openId) != 'undefined'){
+      wx.request({
+        url:'http://47.94.170.167:8080/userInfo/'+openId,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+          console.log(11111)
+          that.setData({
+            gender:res.data.gender?"男":"女",
+            phone:res.data.phone,
+            introduction:res.data.introduction,
+            IDnumber:res.data.idNumber,
+          })
+        }
+      })
+    }
   },
 
   /**
@@ -74,7 +127,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+
+
   getUserInfo: function (e) {
+    // var that = this;
     // 登录
     wx.login({
      success: res => {
@@ -105,7 +162,9 @@ Page({
                      app.globalData.userInfo.nickName = res.data.userInfo.nickName;
                      app.globalData.userInfo.head =  res.data.userInfo.avatarUrl;
                      app.globalData.userInfo.gender = res.data.userInfo.gender;
+               
                    console.log("res userinfo ", res);
+                   console.log(app.globalData.hasUserInfo);
                    // console.log("session_keymypage",res.data.session_key);
                  }else{
                    // 登录失败
@@ -123,5 +182,3 @@ Page({
   }
   
 })
-
-

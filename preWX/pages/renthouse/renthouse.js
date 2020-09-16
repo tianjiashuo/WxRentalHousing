@@ -13,14 +13,11 @@ Page({
           {id: 2,type: "待合租", typeid:2}],
     allRent:[],
     keywords:"",
-    isChecked:false
+    isChecked:false,
+    showDialog:true
   },
  
-  click(e) {
-    this.setData({
-      current: e.currentTarget.dataset.set
-    })
-  },
+  
   doSearch:function(e){
     console.log("form 发生了 submit",e.detail.value)
     let that = this;
@@ -55,6 +52,10 @@ Page({
   onLoad: function (options) {
 
     var that = this;
+    console.log("showDialog" + that.data.showDialog);
+    that.setData({
+      showDialog:true
+    });
     wx.request({
      // url: 'http://47.94.170.167:8080/page/swiper',
      url: 'http://localhost:8080/page/swiper',
@@ -167,13 +168,27 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-   
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   }
+  ,//弹出弹框
+  onConfirm:function(){
+    this.setData({
+      showDialog:false
+    })
+  },
+
+  noTouchMove: function() {
+  },
+  
+  //切换房屋种类
+  click(e) {
+    this.setData({
+      current: e.currentTarget.dataset.set
+    })
+  },
 })
