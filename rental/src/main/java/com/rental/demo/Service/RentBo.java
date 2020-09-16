@@ -97,4 +97,28 @@ public class RentBo {
         this.title =rent.getTitle();
         this.imageUrl =image;
     }
+
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result += id*6 + address.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof RentBo)){
+            return false;
+        }else{
+            RentBo robj = (RentBo)obj;
+            if(this==robj){
+                return true;
+            }
+            if(robj.id==(this.id)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 }

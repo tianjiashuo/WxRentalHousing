@@ -18,8 +18,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/page/swiper',
-      data: '',
+     // url: 'http://localhost:8080/page/swiper',
+     url: 'http://47.94.170.167:8080/page/swiper',
+     data: '',
       header: { "content-type": "application/json"},
       method: 'GET',
       dataType: 'json',
@@ -59,8 +60,8 @@ Page({
     console.log("form 发生了 submit",e.detail.value)
     let that = this;
     wx.request({
-      url: 'http://47.94.170.167:8080/sell/select',
-      //url: 'http://localhost:8080/sell/select',
+      //url: 'http://47.94.170.167:8080/sell/select',
+      url: 'http://localhost:8080/sell/select',
       data:{
         "key":e.detail.value.keywords
       },
@@ -116,7 +117,6 @@ Page({
     that.setData({
       keywords:""
     })
-    console.log(that.is_pet);
     wx.request({
       url: 'http://47.94.170.167:8080/sell/all',
       //url: 'http://localhost:8080/sell/all',
