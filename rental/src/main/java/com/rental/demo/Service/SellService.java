@@ -44,7 +44,9 @@ public class SellService {
             ans.addAll(sellDao.queryByCondt(entry.getKey(),entry.getValue()));
         }
         Iterator it = ans.iterator();
-        return transSellToBo(it);
+        Set<SellBo> set =  transSellToBo(it);
+        return set;
+
     }
 
     /**

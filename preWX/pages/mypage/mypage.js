@@ -32,6 +32,7 @@ Page({
   getUserInfo:function(){
     var that = this;
     var openId=wx.getStorageSync('openId');
+    console.log("openId -----" +openId);
       if(typeof(openId) != 'undefined'){
       wx.request({
         url:'http://47.94.170.167:8080/userInfo/'+openId,
