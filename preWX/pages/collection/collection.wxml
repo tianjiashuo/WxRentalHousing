@@ -1,0 +1,27 @@
+<view class="autumn">
+<view id="pics">
+    <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/collectionHeader.png'></image>
+    </view>
+  <view class="house">
+    <block wx:for="{{collections}}">
+      <view class="pichouse" bindtap="goNewsDetail" data-newsid='{{item.id}}'>
+       <image id="image" mode="widthFix" src="{{item.imageUrl}}"></image>
+        <view class="type">{{item.address}}</view>
+      
+        <view bindtap='goNewsDetail' data-newsid='{{item.id}}'>
+        <view class="adress">{{item.title}} </view>
+        </view>
+        <view class="price">
+          <view>￥ {{item.price}}</view>
+         
+          <view>{{item.area}}</view>
+          <view>㎡</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+
+

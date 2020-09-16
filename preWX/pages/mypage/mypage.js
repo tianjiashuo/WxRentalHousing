@@ -21,7 +21,12 @@ Page({
      url: '/pages/editmyinfo/editmyinfo'
    })
    }, 
- 
+   goCollection:function()
+  {
+   wx.navigateTo({
+     url: '/pages/collection/collection'
+   })
+   }, 
   /**
    * 生命周期函数--监听页面加载
    */
