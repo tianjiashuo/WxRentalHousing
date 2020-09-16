@@ -1,8 +1,7 @@
-// pages/details/detials.js
+// pages/sellde/sellde.js
 Page({
- 
-  
 
+  
   /**
    * 页面的初始数据
    */
@@ -21,17 +20,18 @@ Page({
     isElevator: false,
     isPet: false,
     isForm: false,
-    isState: false
+    isState: false,
+    isCollect: false
   },
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this;
-    //console.log(options.id);
     wx.request({
-      url: 'http://47.94.170.167:8080/rentAllInfo/'+options.id,
+      url: 'http://47.94.170.167:8080/sellAllInfo/'+options.id,
       method:'GET',
       header: {
         'Content-Type': 'application/json'
@@ -39,24 +39,23 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
-         title:res.data.rentInfo.title,
-         address:res.data.rentInfo.address,
-         type:res.data.rentInfo.type,
-         orientation:res.data.rentInfo.orientation,
-         furniture:res.data.rentInfo.furniture,
-         isElevator:res.data.rentInfo.isElevator,
-         shortestLease:res.data.rentInfo.shortestLease,
+         title:res.data.sellInfo.title,
+         address:res.data.sellInfo.address,
+         type:res.data.sellInfo.type,
+         orientation:res.data.sellInfo.orientation,
+         furniture:res.data.sellInfo.furniture,
+         isElevator:res.data.sellInfo.isElevator,
+         id:res.data.sellInfo.id,
+         price:res.data.sellInfo.price,
          images:res.data.imageList,
-         hostId:res.data.rentInfo.hostId,
-         price:res.data.rentInfo.price,
-         data:res.data.rentInfo
+         hostId:res.data.sellInfo.hostId
         })
         // wx.setStorage({
         //   key:"1",
-        //   data:res.data.rentInfo.hostId
+        //   data:res.data.sellInfo.hostId
         // })
         wx.request({
-          url: 'http://47.94.170.167:8080/userInfo/'+res.data.rentInfo.hostId,
+          url: 'http://47.94.170.167:8080/userInfo/'+res.data.sellInfo.hostId,
           method:'GET',
           header: {
             'Content-Type': 'application/json'
@@ -79,23 +78,45 @@ Page({
     //   key: '1',
     //   success: function(res) {
     //       console.log(res.data)
-        
-    //         hostId:res.data
-          
+    //       this.hostId = res.data
     //   }
     // })
 
-    wx.request({
-      
-      url: 'http://localhost:8080/uerInfo/'+hostId,
-      method:'GET',
-      header: {
-        'Content-Type': 'application/json'
-      },
-    })
-    
+    // wx.request({
+    //   url: 'http://localhost:8080/uerInfo/'+hostId,
+    //   method:'GET',
+    //   header: {
+    //     'Content-Type': 'application/json'
+    //   },
+    // })
 
   },
+
+  toCollect () {
+    var bol = this.data.isCollect; // 获取状态
+    this.setData({
+    isCollect:!bol // 改变状态
+    })
+    console.log(collId)
+    if(isCollect == true){
+      wx.getStorage({
+        key: '1',
+        success: function(res) {
+            console.log(res.data)
+            this.setData({
+              id:res.data
+            })
+        }
+      })
+      wx.request({
+        url: 'url',
+        method:"POST",
+        header: {
+          'Content-Type': 'application/json'
+        },
+      })
+    }
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

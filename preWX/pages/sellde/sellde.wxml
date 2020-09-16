@@ -1,5 +1,6 @@
-<!--pages/details/detials.wxml-->
+<!--pages/sellde/sellde.wxml-->
 <view class='bigbox' style='overflow:{{hidden}}'>
+  
   <view class='banner'>
     <swiper indicator-dots="{{indicatordots}}" autoplay="{{true}}" circular="{{true}}">
      <block wx:for="{{images}}">
@@ -9,8 +10,13 @@
       </block>
     </swiper>
     <view class='iconfont'>
-      <view class='icon1'>
+      <view class='icon1' bindtap="toCollect">
+        <block wx:if="{{isCollect == false}}">
+        <image src = '/icons/coll_un.png'></image>
+      </block>
+      <block wx:if="{{isCollect == true}}">
         <image src = '/icons/coll.png'></image>
+      </block>
       </view>
       <view class='icon2'>
         <image src='/icons/report.png'></image>
@@ -36,31 +42,11 @@
       <image src='/icons/_myhouse.png'></image>
       <view class='house-inform'>
         <text class='bold'>独立房间</text>
-        <text class='infor-house'>{{type}};   朝向:{{orientation}};   家具:{{furniture}}</text>
-      </view>
-    </view>
-    <view class='time'>
-      <image src='/icons/outtime.png'></image>
-      <view class='time-type'>
-        <text class='bold'>最短租期</text>
-        <text class='time-infor'>最短允许租{{shortestLease}}个月</text>
+        <text class='infor-house'>{{type}},{{orientation}},{{furniture}}</text>
       </view>
     </view>
   </view>
   <view class='estimate'>
-    <view class='estimate_h1'>租客信息</view>
-    <view class='display-img'>
-      <view>
-        <image src='/images/message-bgimg.jpg'></image>
-      </view>
-      <view class='owner'>
-        <view class='name'>Duaiduai</view>
-        <view class='publish-time'>2019年09月</view>
-      </view>
-    </view>
-  
-    <view class="estimatebox">
-    </view>
   </view>
   <view class='house_address'>
     <view>房源位置</view>
@@ -92,7 +78,8 @@
   <view class='owner_inforbox'>
     <view>房东介绍</view>
     <view class='owner_img'>
-      <image src='{{head}}'></image><view class='owner_infor'>
+        <image src='{{head}}'></image>
+    <view class='owner_infor'>
         <view>{{nickname}}</view>
         <view>联系方式：{{phone}}</view>
       </view>
@@ -107,7 +94,7 @@
     </view>
     <view class='right_box'>
       <view class='button'>
-        ￥{{price}}/月
+        ￥{{price}}
       </view>
     </view>
   </view>
