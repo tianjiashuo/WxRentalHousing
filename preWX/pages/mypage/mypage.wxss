@@ -172,12 +172,12 @@ swiper-item image {
 .myhouse{
   width: 3rem;
   height: 3rem;
-  margin-left: 3rem;
+  /* margin-left: 3rem; */
 }
 .apply{
   width: 3rem;
   height: 3rem;
-  margin-left: 3rem;
+  /* margin-left: 3rem; */
 }
 .my-icon{
   margin-top:2rem;
@@ -185,7 +185,18 @@ swiper-item image {
   justify-content: center;
 }
 .icons{
-  width: 100%rem;
+  width: 3rem;
+  height: auto;
+}
+.icons1{
+  width: 3rem;
+  height: auto;
+  margin-left: 3rem;
+}
+#intro{
+  display: flex;
+  justify-content: center;
+  color: #2c4f54;
 }
 .mine{
   margin-top: 1rem;

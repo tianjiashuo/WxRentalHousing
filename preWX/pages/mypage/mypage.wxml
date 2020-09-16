@@ -4,7 +4,7 @@
     <view class="nav-top">
       <navigator open-type="navigate" url='../login/login'>
         <!-- <view class="nav-top-l" hover-class='bg-color'>注册或登录</view> -->
-        <button class="nav-top-l" hover-class='bg-color' open-type="getUserInfo" bindgetuserinfo="getUserInfo">注册或登陆</button>
+        <button bindtap='getUserInfo' class="nav-top-l" hover-class='bg-color' open-type="getUserInfo" bindgetuserinfo="getUserInfo">注册或登陆</button>
       </navigator>
       <image class="nav-top-r" src='https://z1.muscache.cn/defaults/user_pic-50x50.png?v=3'></image>
     </view>
@@ -44,8 +44,15 @@
           <view class="my-icon">
             <view class="icons">
               <image class="collection" src='../../icons/mypage/collection.png'></image>
-              <image class="myhouse" src='../../icons/mypage/myhouse.png'></image>     
+              <view id="intro">收藏</view>
+            </view>
+            <view class="icons1">
+              <image class="myhouse" src='../../icons/mypage/myhouse.png'></image> 
+               <view id="intro">房源</view>    
+               </view>
+                <view class="icons1">
               <image class="apply" src="../../icons/mypage/apply.png"></image>
+               <view id="intro">审核</view>    
                </view>
           </view>
        </view>

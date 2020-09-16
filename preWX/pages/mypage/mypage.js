@@ -26,6 +26,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
+  },
+
+  getUserInfo:function(){
     var that = this;
     var openId=wx.getStorageSync('openId');
       if(typeof(openId) != 'undefined'){
@@ -47,9 +51,7 @@ Page({
         }
       })
     }
-   
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -67,6 +69,27 @@ Page({
       userName: app.globalData.userInfo.nickName,
       userImgUrl: app.globalData.userInfo.head,
     })
+    var that = this;
+    var openId=wx.getStorageSync('openId');
+      if(typeof(openId) != 'undefined'){
+      wx.request({
+        url:'http://47.94.170.167:8080/userInfo/'+openId,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+          console.log(11111)
+          that.setData({
+            gender:res.data.gender?"男":"女",
+            phone:res.data.phone,
+            introduction:res.data.introduction,
+            IDnumber:res.data.idNumber,
+          })
+        }
+      })
+    }
   },
 
   /**
