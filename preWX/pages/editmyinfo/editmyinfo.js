@@ -1,5 +1,4 @@
 // pages/myhouse/myhouse.js
-import renting from '../../models/Renting';
 Page({
 
   /**
@@ -8,46 +7,34 @@ Page({
  
   data: {
     //公共表单
-    title:"",
-    address:"",
-    type:"",
-    orientation:"",
-    floor:"",
-    is_elevator:"",
-    area:"",
-    price:""
+    introduction:"",
+    IDnumber:"",
    },
 
-   //获取发布类型
-   wetherRentSellDate:function(e){
-    this.setData({
-     'wether_rent_sell':e.detail.id
-    })
-   },
 
    //提交数据
    dopostInfo:function(e){
    // console.log("form 发生了 submit",e.detail.value)
    let that = this;
      wx.request({
-      url: 'http://47.94.170.167:8080/insertRentHouse',
-      //url:'http://localhost:8080/insertRentHouse', 
+      url: 'http://47.94.170.167:8080/editUserInfo',
+      //url:'http://localhost:8080/editUserInfo', 
       data:{
-         'id':wx.getStorageSync('openId'),
-         "introduction": e.detail.value.shortrst_lease,
-         "IDnumber": e.detail.value.area,
+         "id":wx.getStorageSync('openId'),
+         "introduction": e.detail.value.introduction,
+         "idNumber": e.detail.value.IDnumber,
        },
       method:'POST',
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data)
+        console.log(e.detail.value)
         that.setData({
           'maskFlag':false
         })
         wx.showToast({
-          title: '发布成功',
+          title: '修改成功',
           icon: 'success',
           duration: 2000
         }),
@@ -70,7 +57,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var openId=wx.getStorageSync('openId');
+      if(typeof(openId) != 'undefined'){
+      wx.request({
+        url:'http://47.94.170.167:8080/userInfo/'+openId,
+        method:'GET',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success: function (res) {
+          console.log(res.data)
+          console.log(11111)
+          that.setData({
+            nickname:res.data.nickname,
+            gender:res.data.gender?"男":"女",
+            phone:res.data.phone,
+            introduction:res.data.introduction,
+            IDnumber:res.data.idNumber,
+          })
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -120,20 +128,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  
 
-  upfile(){
-    // wx.chooseImage({
-    //   sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
-    //   sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
-    //   success: res => {
-    //     const images = this.data.images.concat(res.tempFilePaths)
-    //     // 限制最多只能留下3张照片
-    //     this.data.images = images.length <= 3 ? images : images.slice(0, 3) 
-    //     $digest(this)
-    //   }
-   // })
-
-  }
 })
 

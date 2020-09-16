@@ -3,19 +3,19 @@
     <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/myinfo.png'></image>
     </view>
 
-  <form  bindsubmit="dopostInfo">
+  <form class="infos" bindsubmit="dopostInfo">
     <view>
       <label>昵称</label>
-      <input name="nickname" value="{{nickname}}" placeholder="该用户昵称" disabled="true"/>
+      <input name="nickname" value="{{nickname}}" placeholder="" disabled="true"/>
     </view>
    
     <view>
     <label>性别</label>
-      <input name="gender" value="{{gender}}" placeholder="女" disabled="true"/>
+      <input name="gender" value="{{gender}}" placeholder="" disabled="true"/>
     </view>
     <view>
       <label>手机号</label>
-      <input name="phone" value="{{phone}}" placeholder="1**********" disabled="true" />
+      <input name="phone" value="{{phone}}" placeholder="" disabled="true" />
     </view>
     <view>
       <label>介绍</label>
@@ -23,7 +23,7 @@
     </view>
     <view>
       <label>身份证号</label>
-      <input name="IDnumber" value="{{IDnumber}}" placeholder=""  focus="true"/>
+      <input name="IDnumber" value="{{IDnumber}}" placeholder="" />
     </view>
     <view class="sendbtn">
       <button bindtap='goBack' id="cancel" type="" >返回</button>

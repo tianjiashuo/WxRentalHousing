@@ -31,6 +31,7 @@ public class UserDao {
 
     public int editUserInfo(String id,UserBo userBo){
         String sql = "UPDATE user set introduction=?,IDnumber=? WHERE id=? ";
+        System.out.println(userBo.getIdNumber());
         return jdbcTemplate.update(sql,userBo.getIntroduction(),userBo.getIdNumber(),id);
     }
 
@@ -53,7 +54,7 @@ public class UserDao {
     public boolean checkUserRealName(String userId){
         String sql = "SELECT * FROM user WHERE id = ?";
         User user = jdbcTemplate.queryForObject(sql,new UserRowMapper(),userId);
-        if(user.getIDnumber().equals("")){
+        if(user.getIdNumber().equals("")){
             return false;
         }else{
             return true;

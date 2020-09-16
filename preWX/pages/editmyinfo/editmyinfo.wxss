@@ -41,6 +41,7 @@ form view {
   height: 80rpx;
   line-height: 80rpx;
   border-bottom: 1px solid #eeeeee;
+  color: #2c4f54;
 }
  /* form view:nth-last-of-type(1){
   border: none;
@@ -133,4 +134,7 @@ background-color: #c8c2be;
   flex-direction: row;
   position: relative;
   align-items:center;
+}
+.infos>view{
+  color: #2c4f54;
 }
