@@ -4,7 +4,7 @@ import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.User;
 import com.rental.demo.Repository.mappers.RentRowMapper;
 import com.rental.demo.Repository.mappers.UserRowMapper;
-import com.sun.javaws.IconUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

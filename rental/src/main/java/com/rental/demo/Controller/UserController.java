@@ -28,9 +28,9 @@ public class UserController {
         return userService.initUserInfo(userBo);
     }
 
-    @PostMapping("/editUserInfo/{id}")
-    int editUserInfo(@PathVariable String id,@RequestBody UserBo userBo){
-        return userService.editUserInfo(id,userBo);
+    @PostMapping("/editUserInfo")
+    int editUserInfo(@RequestBody UserBo userBo){
+        return userService.editUserInfo(userBo.getId(),userBo);
     }
 
     @PostMapping("/checkUserRealName/{id}")

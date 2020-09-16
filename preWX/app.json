@@ -1,17 +1,19 @@
 {
+
   "pages": [    
-  
-    "pages/renthouse/renthouse",
-    "pages/buyhouse/buyhouse",  
     "pages/mypage/mypage",
+    "pages/renthouse/renthouse",
+    "pages/buyhouse/buyhouse",
+    "pages/editmyinfo/editmyinfo",
     "pages/detials/detials",
     "pages/myhouse/myhouse",
-    "pages/mycollection/mycollection",    
+    "pages/mycollection/mycollection",
     "pages/myapplication/myapplication",
     "pages/release/release",
     "pages/search/search",
     "pages/logs/logs",
     "pages/login/login"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",
