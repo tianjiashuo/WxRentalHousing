@@ -57,8 +57,8 @@ Page({
       showDialog:true
     });
     wx.request({
-      url: 'http://47.94.170.167:8080/page/swiper',
-     //url: 'http://localhost:8080/page/swiper',
+     // url: 'http://47.94.170.167:8080/page/swiper',
+     url: 'http://localhost:8080/page/swiper',
       data: '',
       header: { "content-type": "application/json"},
       method: 'GET',
@@ -76,8 +76,8 @@ Page({
     })
    
     wx.request({
-     url: 'http://47.94.170.167:8080/rent/all',
-     //url: 'http://localhost:8080/rent/all', 
+     //url: 'http://47.94.170.167:8080/rent/all',
+     url: 'http://localhost:8080/rent/all', 
      data: '',
       header: { "content-type": "application/json" },
       method: 'GET',
