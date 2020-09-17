@@ -159,6 +159,7 @@ button {
 
 .pichouse {
   width: 48%;
+  color: #44617b;
 }
 
 .pichouse image {

@@ -164,6 +164,7 @@ button {
 
 .pichouse {
   width: 48%;
+  margin-bottom: 15px;
 }
 
 .pichouse image {
