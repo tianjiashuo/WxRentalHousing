@@ -7,6 +7,7 @@ import com.rental.demo.Repository.entity.Collection;
 import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Sell;
 import com.rental.demo.Repository.mappers.RentRowMapper;
+import com.rental.demo.utils.xiaomageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +21,15 @@ public class CollectService {
     private RentService rentService;
     @Autowired
     private SellService sellService;
+    @Autowired
+    private UserService userService;
+
+
 
 //    public void addCollection(String userId,int houseId,int houseType){
 //        collectionDao.addCollection(userId,houseId,houseType);
 //    }
+
 
     public void cancelCollection(int id){
         collectionDao.cancelCollection(id);
@@ -72,7 +78,44 @@ public class CollectService {
             Collection collection = iter.next();
             ids.add(collection.getUserId());
         }
+        System.out.println(ids);
         return ids;
+    }
+
+    /***
+     * 收藏信息更改后变换状态
+     */
+
+    public String collectInfoChanged(int houseId,int houseType){
+        //拿到提示的所有用户的id;
+        System.out.println(houseId+"====="+houseType);
+        List idList = getAllUsersId(houseId,houseType);
+        System.out.println("idList"   + idList.toString());
+        Iterator<String> it = idList.iterator();
+        List<String> phones = new ArrayList();
+        while(it.hasNext()){
+            String s = it.next();
+            System.out.println("userId--------"+ s );
+            UserBo u = userService.getUserById(s);
+            String p = "+86"+u.getPhone();
+            System.out.println("telephone++++++"+p);
+            phones.add(p);
+        }
+       Map<String,Object> sms = new HashMap<>();
+        sms.put("smsType","news");
+        sms.put("phone",phones);
+        System.out.println(phones.toString());
+        if(houseType==0){
+            String title = rentService.getRentById(houseId).getTitle();
+            title="❤"+title.substring(0,6);
+            title = title+"...";
+            sms.put("param",title);
+        }else {
+            String title = sellService.getSellById(houseId).getTitle();
+            sms.put("param",title);
+        }
+        String response = xiaomageUtil.sendSMS(sms);
+        return response;
     }
 
 //    public ArrayList<String> getCollectionId(String userId,int houseId ,int houseType){

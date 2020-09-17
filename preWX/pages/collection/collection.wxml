@@ -1,6 +1,6 @@
 <view class="autumn">
     <view id="pics">
-      <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/collectionHeader.png'></image>
+      <image id = "pic" mode="scaleToFill" src='../../icons/mypage/collectionHeader.png'></image>
     </view>
     <block wx:if="{{collectionNum===0}}">
     <view id="message">
@@ -11,7 +11,7 @@
   <view class="house">
     <block wx:for="{{collections}}">
       <view class="pichouse" bindtap="goNewsDetail" data-newsid='{{item.id}}'>
-       <image id="image" mode="widthFix" src="{{item.imageUrl}}"></image>
+       <image id="image" mode="aspectFill" src="{{item.imageUrl}}"></image>
         <view class="type">{{item.address}}</view>
         <view bindtap='goNewsDetail' data-newsid='{{item.id}}'>
         <view class="adress">{{item.title}} </view>

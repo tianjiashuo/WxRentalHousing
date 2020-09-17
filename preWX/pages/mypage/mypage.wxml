@@ -12,7 +12,7 @@
     <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/mypage.png'></image>
     </view>
 </block>
-<!-- <block wx:else> -->
+<block wx:else>
 <view class="container1">
     <view class="top-nav">
       <view class="userName">{{userName}}</view>
@@ -58,6 +58,6 @@
        </view>
     </view>
   </view>
-  <!-- </block> -->
+  </block>
 
 
