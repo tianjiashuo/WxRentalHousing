@@ -5,6 +5,8 @@ import com.rental.demo.Repository.dao.ReportDao;
 import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.entity.Report;
 import com.rental.demo.Repository.entity.Sell;
+import com.rental.demo.Repository.entity.User;
+import com.rental.demo.utils.xiaomageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,8 @@ public class ReportService {
     private RentService rentService;
     @Autowired
     private SellService sellService;
+    @Autowired
+    private UserService userService;
 
     /**
      * 增加举报
@@ -70,6 +74,16 @@ public class ReportService {
         else{
             flag2 = sellService.deleteSellInfo(getAReport(report.getId()).getHouse_id());
         }
+        //为了拿到user_id
+        Report r = reportDao.getReportById(report.getId());
+        String user_id = r.getUser_id();
+        UserBo user = userService.getUserById(user_id);
+        Map<String,Object> res = new HashMap();
+        res.put("phone","[\"+86"+user.getPhone()+"\"]");
+        res.put("param","【深入理解租赁系统】");
+        res.put("smsType","report");
+        String smsEes = xiaomageUtil.sendSMS(res);
+        System.out.println("举报发送短信"+ smsEes);
         return flag1&&flag2;
     }
     //不做处理
