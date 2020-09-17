@@ -10,8 +10,8 @@
 <!-- <block wx:else> -->
   <view class="house">
     <block wx:for="{{audits}}">
-      <view class="auditHouse" data-newsid='{{item.id}}'>
-        <view bindtap='goNewsDetail' id="houseInfo" >
+      <view class="auditHouse" >
+        <view bindtap='goNewsDetail' id="houseInfo" data-newsid='{{item.house.id}}'>
           <image id="image" mode="aspectFill" src="{{item.house.imageUrl}}"></image>
           <view class="address">{{item.house.address}}</view>
           <view bindtap='goNewsDetail' data-newsid='{{item.id}}'>
