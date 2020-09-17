@@ -18,10 +18,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    // var openId=wx.getStorageSync('openId');
-    // if(typeof(openId) != 'undefined'){
+    var openId=wx.getStorageSync('openId');
+    if(typeof(openId) != 'undefined'){
       wx.request({
-        url:'http://localhost:8080/getUserHouse/3',
+        // url:'http://localhost:8080/getUserHouse/3',
+        url:'http://47.94.170.167:8080/getUserHouse/'+openId,
         header: { "content-type": "application/json" },
         method: 'GET',
         dataType: 'json',
@@ -40,7 +41,7 @@ Page({
           console.log(res)
         },
       })
-    // } 
+    } 
   },
 
   goNewsDetail:function(event)
@@ -59,7 +60,8 @@ Page({
           console.log('点击确认')
           console.log("id=" + e.currentTarget.id);
           wx.request({
-            url: 'http://localhost:8080/rent/delete',
+            // url: 'http://localhost:8080/rent/delete',
+            url:'http://47.94.170.167:8080/rent/delete',
             header: { "content-type": "application/json" },
             method: 'POST',
             dataType: 'json',
@@ -91,7 +93,8 @@ Page({
           console.log('点击确认')
           console.log("id=" + e.currentTarget.id);
           wx.request({
-            url: 'http://localhost:8080/sell/delete',
+            // url: 'http://localhost:8080/sell/delete',
+            url:'http://47.94.170.167:8080/sell/delete',
             header: { "content-type": "application/json" },
             method: 'POST',
             dataType: 'json',
@@ -126,10 +129,11 @@ Page({
    */
   onShow: function () {
     var that = this;
-    // var openId=wx.getStorageSync('openId');
-    // if(typeof(openId) != 'undefined'){
+    var openId=wx.getStorageSync('openId');
+    if(typeof(openId) != 'undefined'){
       wx.request({
-        url:'http://localhost:8080/getUserHouse/3',
+        // url:'http://localhost:8080/getUserHouse/3',
+        url:'http://47.94.170.167:8080/getUserHouse/'+openId,
         header: { "content-type": "application/json" },
         method: 'GET',
         dataType: 'json',
@@ -148,7 +152,7 @@ Page({
           console.log(res)
         },
       })
-      //}
+      }
   },
 
   /**
@@ -170,10 +174,11 @@ Page({
    */
   onPullDownRefresh: function () {
     var that = this;
-    // var openId=wx.getStorageSync('openId');
-    // if(typeof(openId) != 'undefined'){
+    var openId=wx.getStorageSync('openId');
+    if(typeof(openId) != 'undefined'){
       wx.request({
-        url:'http://localhost:8080/getUserHouse/3',
+        // url:'http://localhost:8080/getUserHouse/3',
+        url:'http://47.94.170.167:8080/getUserHouse/'+openId,
         header: { "content-type": "application/json" },
         method: 'GET',
         dataType: 'json',
@@ -190,7 +195,7 @@ Page({
           console.log(res)
         },
       })
-      //}
+      }
   },
 
   /**

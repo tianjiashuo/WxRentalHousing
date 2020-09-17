@@ -163,6 +163,7 @@ button {
 
 .pichouse image {
   width: 100%;
+  height: 190px;
   margin-bottom: 10rpx;
 }
 
@@ -226,6 +227,7 @@ button {
 }
 #image{
   border-radius: 5%;
+  height: 120px;
 }
 #message{
   display: flex;

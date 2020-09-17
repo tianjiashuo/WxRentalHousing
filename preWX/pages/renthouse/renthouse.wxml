@@ -14,7 +14,7 @@
   <block wx:for="{{swiper}}">
     <swiper-item>
       <view class="item">
-        <image src="{{item.url}}" mode="widthFix" class="qwe"></image>
+        <image src="{{item.url}}" mode="aspectFill" class="qwe"></image>
         <view class="small">{{item.smallTitle}}</view>
         <view class="big">{{item.title}}</view>
       </view>
@@ -48,7 +48,7 @@
   <view class="house">
     <block wx:for="{{allRent[current]}}">
       <view class="pichouse" bindtap="goNewsDetail" data-newsid='{{item.id}}'>
-       <image id="image" mode="widthFix" src="{{item.imageUrl}}"></image>
+       <image id="image" mode="aspectFill" src="{{item.imageUrl}}"></image>
         <view class="type">{{item.address}}</view>
         <!--view class="adress">{{item.title}} </view-->
         <!--view class="adress">

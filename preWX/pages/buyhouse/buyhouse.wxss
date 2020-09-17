@@ -248,4 +248,5 @@ button {
 }
 #image{
   border-radius: 5%;
+  height: 190px;
 }

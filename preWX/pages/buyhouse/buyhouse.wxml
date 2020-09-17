@@ -3,7 +3,7 @@
   <block wx:for="{{swiper}}">
     <swiper-item>
       <view class="item">
-        <image src="{{item.url}}" mode="widthFix" class="qwe"></image>
+        <image src="{{item.url}}" mode="aspectFill" class="qwe"></image>
         <view class="small">{{item.smallTitle}}</view>
         <view class="big">{{item.title}}</view>
       </view>
@@ -27,7 +27,7 @@
   <view class="house">
     <block wx:for="{{allSell}}">
       <view class="pichouse" bindtap="goNewsDetail" data-newsid='{{item.id}}'>
-       <navigator url='../house/house'> <image id="image" mode="widthFix" src="{{item.imageUrl}}"></image></navigator>
+       <navigator url='../house/house'> <image id="image" mode="aspectFill" src="{{item.imageUrl}}"></image></navigator>
         <view class="type">{{item.address}}</view>
         <view bindtap='goNewsDetail' data-newsid='{{item.id}}'>
         <view class="adress">{{item.title}} </view>

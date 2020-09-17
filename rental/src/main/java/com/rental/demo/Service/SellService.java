@@ -63,7 +63,8 @@ public class SellService {
 
     public SellBo getSellByIdHost(int id) {
         Sell sell = sellDao.queryById(id);
-        String image = imageDao.getFirstImageById(id, 1);
+        String image= "https://z1.muscache.cn/im/pictures/83177158/9e5c500b_original.jpg?aki_policy=large";
+        image = imageDao.getFirstImageById(id, 1);
         SellBo sellBo = new SellBo(sell.getId(), sell.getArea(), sell.getPrice(), sell.getAddress(),
                 sell.getTitle(), sell.getType(), sell.getIsRenovation(), image,sell.getState());
         return sellBo;

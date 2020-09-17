@@ -79,7 +79,8 @@ public class RentService {
     public RentBo getRentByIdHost(int id){
         try{
             Rent rent = rentDao.queryById(id);
-            String image = imageDao.getFirstImageById(id,0);
+            String image= "https://z1.muscache.cn/im/pictures/83177158/9e5c500b_original.jpg?aki_policy=large";
+            image = imageDao.getFirstImageById(id,0);
             RentBo rentBo = new RentBo(rent.getId(),rent.getArea(),rent.getPrice(),rent.getAddress(),
                     rent.getTitle(),rent.getType(),rent.getFurniture(),image,rent.getState());
             return rentBo;
