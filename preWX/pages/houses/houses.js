@@ -69,11 +69,27 @@ Page({
             responseType: 'text',
             success: function (res) {
               console.log(res);
-              
             },
             fail: function (res) {
               console.log(res)
             },
+          })
+          wx.request({
+            url: 'http://localhost:8080/collectionChanged',
+            header: { "content-type": "application/json" },
+            method: 'POST',
+            dataType: 'json',
+            data:{
+              "houseId":e.currentTarget.id,
+              "houseType":"0"
+            },
+            responseType: 'text',
+            success: function (res) {
+              console.log(res);
+            },
+            fail: function (res) {
+              console.log(res)
+            }
           })
         } else {   
           console.log('点击取消')
@@ -106,6 +122,23 @@ Page({
             fail: function (res) {
               console.log(res)
             },
+          })
+          wx.request({
+            url: 'http://localhost:8080/collectionChanged',
+            header: { "content-type": "application/json" },
+            method: 'POST',
+            dataType: 'json',
+            data:{
+              "houseId":e.currentTarget.id,
+              "houseType":"1"
+            },
+            responseType: 'text',
+            success: function (res) {
+              console.log(res);
+            },
+            fail: function (res) {
+              console.log(res)
+            }
           })
         } else {   
           console.log('点击取消')

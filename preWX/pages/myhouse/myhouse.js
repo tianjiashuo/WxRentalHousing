@@ -121,8 +121,8 @@ Page({
           })
           console.log("我希望只执行一次好吗？",that.data.urls);
           wx.request({
-            //url: 'http://47.94.170.167:8080/insertRentHouse',
-            url:'http://localhost:8080/insertRentHouse',
+            url: 'http://47.94.170.167:8080/insertRentHouse',
+            //url:'http://localhost:8080/insertRentHouse',
             data:{
             'host_id':wx.getStorageSync('openId'),
             "shortest_lease": e.detail.value.shortest_lease,
@@ -227,8 +227,8 @@ Page({
             console.log("图片上传完成后再执行后台数据库交互")
             console.log("urls",that.data.urls);
             wx.request({
-              // url: 'http://47.94.170.167:8080/insertSellHouse',
-                url:'http://localhost:8080/insertSellHouse',
+               url: 'http://47.94.170.167:8080/insertSellHouse',
+              //  url:'http://localhost:8080/insertSellHouse',
                 data:{
                   'host_id':wx.getStorageSync('openId'),
                   "address":e.detail.value.address,
@@ -289,7 +289,8 @@ Page({
   onLoad: function (options) {
     
     wx.request({
-      url:  "http://localhost:8080/qiniuimg/token",
+     // url:  "http://localhost:8080/qiniuimg/token",
+      url:"http://47.94.170.167:8080/qiniuimg/token",
       method: "get",
       header: {
         'content-type': 'application/json' // 默认值
