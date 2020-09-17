@@ -55,7 +55,7 @@
     </view>
   </view>
   <view class='asked'>
-    <view>租房须知</view>
+    <view>买房须知</view>
     <view class='cancel'>
       <view class='cancelbox'>
         <text>取消政策</text>

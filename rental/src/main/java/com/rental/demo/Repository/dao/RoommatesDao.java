@@ -17,9 +17,9 @@ public class RoommatesDao {
 
     //根据id查询
 
-    public Roommates queryById(int id) {
-        String sql = "SELECT * FROM roommates_info WHERE id = ?";
-        Roommates roommates = jdbcTemplate.queryForObject(sql, new RoommatesRowMapper(), id);
+    public List<Roommates> queryById(int id) {
+        String sql = "SELECT * FROM roommates_info WHERE house_id = ?";
+        List roommates = jdbcTemplate.query(sql, new RoommatesRowMapper(), id);
         return roommates;
     }
 

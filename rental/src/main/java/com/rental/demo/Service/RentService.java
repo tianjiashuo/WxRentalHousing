@@ -202,12 +202,14 @@ public class RentService {
     }
 
     //获取合租信息
-    public RoommatesBo getRoomatesById(int id){
-        Roommates roommates = roommatesDao.queryById(id);
-        RoommatesBo roommatesBo = new RoommatesBo(roommates.getId(),roommates.getUserId(),
-                roommates.getHouseId(),roommates.getState());
-        return roommatesBo;
-
+    public List<Roommates> getRoommatesById(int id){
+        try{
+            List list =  roommatesDao.queryById(id);
+            return list;
+        }catch(Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
     }
 
     /***

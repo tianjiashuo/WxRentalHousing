@@ -9,20 +9,12 @@ import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 import java.util.HashMap;
 import java.util.Map;
 public class xiaomageUtil {
-    //    // 短信应用SDK AppID
-//    private int appid = 1400412374; // 1400开头
-//
-//    // 短信应用SDK AppKey
-//    private String appkey = "012e78d9660928d9955332f3736e2375";
-//
-//    // 短信模板ID，需要在短信应用中申请
-//    private int templateId = 692467; // NOTE: 这里的模板ID`7839`只是一个示例，真实的模板ID需要在短信控制台中申请
-//    // 签名
+
     private static final String Sign = "阿毛的实验室"; //
 
-    private static final String secretId="AKIDtc5xeBpoSyTheMQ2H3kETBk2bvyl2jyr";
+    private static final String secretId="AKIDtc5xeBpoSyTheMQ2H3kETBk2bvyl2*****";
 
-    private static final String secretKey="nfGZdS9xzlqztW9fY9VLyLSnsnUuJRIz";
+    private static final String secretKey="nfGZdS9xzlqztW9fY9VLyLSnsnUu*******";
 
     private static final String SmsSdkAppid="1400412374";
 
