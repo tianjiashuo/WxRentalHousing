@@ -2,7 +2,6 @@
   "pages": [
     "pages/renthouse/renthouse",
     "pages/myhouse/myhouse",
-    "pages/index/index",
     "pages/mypage/mypage",
     "pages/buyhouse/buyhouse",
     "pages/editmyinfo/editmyinfo",
