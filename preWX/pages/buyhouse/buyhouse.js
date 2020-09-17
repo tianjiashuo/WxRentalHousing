@@ -60,8 +60,8 @@ Page({
     console.log("form 发生了 submit",e.detail.value)
     let that = this;
     wx.request({
-      //url: 'http://47.94.170.167:8080/sell/select',
-      url: 'http://localhost:8080/sell/select',
+      url: 'http://47.94.170.167:8080/sell/select',
+      //url: 'http://localhost:8080/sell/select',
       data:{
         "key":e.detail.value.keywords
       },

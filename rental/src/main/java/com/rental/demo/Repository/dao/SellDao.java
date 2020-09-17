@@ -6,8 +6,13 @@ import com.rental.demo.Repository.mappers.RentRowMapper;
 import com.rental.demo.Repository.mappers.SellRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 @Repository("SellDao")
@@ -54,12 +59,16 @@ public class SellDao {
         return sell;
     }
 
-    public int insertSellHouse(Sell sell){
-        String sql = "INSERT INTO sell (host_id,title,address,property,type,orientation" +
-                ",floor,is_renovation,is_elevator,area,price,state) " +
-                "VALUES(?, ? ,?, ?, ?, ? , ? , ? , ? , ? , ? , ? )";
-        return jdbcTemplate.update(sql,sell.getHostId(),sell.getTitle(),sell.getAddress(),sell.getIsProperty(),sell.getType(),sell.getOrientation(),
-                sell.getFloor(),sell.getIsRenovation(),sell.getIsElevator(),sell.getArea(),sell.getPrice(),1);
+    public int insertSellHouse(List keys,List values){
+        String sql = "INSERT INTO sell (" +String.join(",",keys) + ") VALUES ('"+ String.join("','",values)+"')";
+        System.out.println(sql+"--sell");
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        PreparedStatementCreator preparedStatementCreator = con -> {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            return ps;
+        };
+        jdbcTemplate.update(preparedStatementCreator, keyHolder);
+        return  keyHolder.getKey().intValue();
     }
     //房源状态修改
     public int changeState(int id) {

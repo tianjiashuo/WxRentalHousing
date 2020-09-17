@@ -19,8 +19,8 @@ public class SellService {
     private ImageDao imageDao;
 
     private static final String ILLEGAL_STATE  ="-1";
-    private static final String USELL_STATE  ="1";
-    private static final String SELL_STATE  ="0";
+    private static final String SELL_STATE  ="1";
+    private static final String SELLED_STATE  ="0";
     private static final String HOUSE_TYPE_SELL = "1";
 
     /**
@@ -88,8 +88,42 @@ public class SellService {
         return sellDao.updateSellState(sellId, ILLEGAL_STATE);
     }
 
-    public int insertSellHouse(Sell sell){
-        return sellDao.insertSellHouse(sell);
+    /*
+    加入sell 的逻辑
+     */
+    public int insertSellHouse(Map<String,Object> sell){
+
+        List keys = new ArrayList<String>();
+        List values = new ArrayList<String>();
+        //处理state
+        keys.add("state");
+        values.add(SELL_STATE);
+        //拿出List类型的images并删除
+        List imagesList = (ArrayList) sell.get("images");
+        sell.remove("images");
+
+        //处理其他数据values 均为String
+        for(Map.Entry<String,Object>Entry:sell.entrySet()){
+            keys.add(Entry.getKey());
+            String flag =Entry.getValue().toString();
+            if(flag.equals("true")){
+                values.add("1");
+            }else if(flag.equals("false")){
+                values.add("0");
+            }else {
+                values.add(Entry.getValue());
+            }
+        }
+        //获得house_id主键
+        int sellId = sellDao.insertSellHouse(keys,values);
+        //处理imageList
+        Iterator<String> it = imagesList.iterator();
+        while(it.hasNext()){
+            String url = it.next();
+          int i= imageDao.insertImg(sellId,url, Integer.valueOf(HOUSE_TYPE_SELL));
+        }
+
+        return sellId;
     }
 
     /**
@@ -125,3 +159,9 @@ public class SellService {
         return set;
     }
 }
+
+
+
+
+
+

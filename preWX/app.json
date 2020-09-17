@@ -1,15 +1,17 @@
 {
 
   "pages": [    
-    "pages/mypage/mypage",
+
     "pages/renthouse/renthouse",
-    "pages/buyhouse/buyhouse",
-    "pages/editmyinfo/editmyinfo",
-    "pages/detials/detials",
     "pages/myhouse/myhouse",
-    "pages/mycollection/mycollection",
-    "pages/myapplication/myapplication",
+    "pages/index/index",
     "pages/release/release",
+    "pages/myapplication/myapplication",
+    "pages/mycollection/mycollection",
+    "pages/editmyinfo/editmyinfo",
+    "pages/mypage/mypage",
+    "pages/buyhouse/buyhouse",
+    "pages/detials/detials",
     "pages/search/search",
     "pages/logs/logs",
     "pages/login/login"
