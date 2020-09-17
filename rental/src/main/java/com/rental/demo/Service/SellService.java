@@ -60,6 +60,14 @@ public class SellService {
         return sellBo;
     }
 
+
+    public SellBo getSellByIdHost(int id) {
+        Sell sell = sellDao.queryById(id);
+        String image = imageDao.getFirstImageById(id, 1);
+        SellBo sellBo = new SellBo(sell.getId(), sell.getArea(), sell.getPrice(), sell.getAddress(),
+                sell.getTitle(), sell.getType(), sell.getIsRenovation(), image,sell.getState());
+        return sellBo;
+    }
     /**
      * 查询商品的详细信息
      * @param id

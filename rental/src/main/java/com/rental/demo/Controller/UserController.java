@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -55,4 +55,8 @@ public class UserController {
         return userService.getPhone(json);
     }
 
+    @GetMapping("/getUserHouse/{id}")
+    public Map<String,Set> getUserHouse(@PathVariable String id){
+        return userService.getUserHouse(id);
+    }
 }

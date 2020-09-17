@@ -67,4 +67,15 @@ public class CollectService {
         }
         return ids;
     }
+
+//    public ArrayList<String> getCollectionId(String userId,int houseId ,int houseType){
+//        ArrayList<String> ids = new ArrayList<>();
+//        List<Collection> collections = collectionDao.getCollectionId(userId,houseId,houseType);
+//        Iterator<Collection> iter = collections.iterator();
+//        while (iter.hasNext()) {
+//            Collection collection = iter.next();
+//            ids.add(collection.getUserId());
+//        }
+//        return ids;
+//    }
 }

@@ -61,7 +61,6 @@ Page({
     let that = this;
     wx.request({
       url: 'http://47.94.170.167:8080/sell/select',
-      //url: 'http://localhost:8080/sell/select',
       data:{
         "key":e.detail.value.keywords
       },
@@ -85,9 +84,8 @@ Page({
   goNewsDetail:function(event)
   {
    wx.navigateTo({
-     url: '/pages/detials/detials?id=' + event.currentTarget.dataset.newsid
+     url: '/pages/sellde/sellde?id=' + event.currentTarget.dataset.newsid
    })
-
   },
 
   /**

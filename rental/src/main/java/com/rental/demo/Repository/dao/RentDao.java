@@ -2,11 +2,9 @@ package com.rental.demo.Repository.dao;
 
 import com.rental.demo.Repository.entity.Rent;
 import com.rental.demo.Repository.mappers.RentRowMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -87,5 +85,11 @@ public class RentDao {
         return jdbcTemplate.update(sql,id);
     }
 
+
+    public List<Rent> queryByHostId(String hostId){
+        String sql = "SELECT * FROM rent WHERE host_id=?";
+        List<Rent> ans = jdbcTemplate.query(sql , new RentRowMapper(),hostId);
+        return ans;
+    }
 
 }

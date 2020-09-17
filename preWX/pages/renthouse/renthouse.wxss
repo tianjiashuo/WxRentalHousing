@@ -267,7 +267,7 @@ button {
   z-index: 9999;
   background:white;
   margin: -180rpx 105rpx;
-  border-radius: 6rpx;
+  border-radius: 15rpx;
 }
 .modal-title{
   padding-top: 50rpx;
@@ -308,4 +308,6 @@ button {
   text-align: center;
 }
 
-
+#image{
+  border-radius: 5%;
+}

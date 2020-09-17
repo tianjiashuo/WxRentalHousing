@@ -14,6 +14,15 @@ public class SellBo {
     private String type;
     private boolean isRenovation;
     private String imageUrl;
+    private int state;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 
     private DecimalFormat df   = new DecimalFormat("######0.00");
     public SellBo(int id, int area, int price, String address, String title, String type, boolean isRenovation, String imageUrl) {
@@ -25,6 +34,18 @@ public class SellBo {
         this.type = type;
         this.isRenovation = isRenovation;
         this.imageUrl = imageUrl;
+    }
+
+    public SellBo(int id, int area, int price, String address, String title, String type, boolean isRenovation, String imageUrl,int state) {
+        this.id = id;
+        this.area = area;
+        this.price = df.format(price/10000);
+        this.address = address;
+        this.title = title;
+        this.type = type;
+        this.isRenovation = isRenovation;
+        this.imageUrl = imageUrl;
+        this.state = state;
     }
 
     public  SellBo(Sell s,String img){

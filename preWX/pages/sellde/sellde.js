@@ -1,8 +1,7 @@
-// pages/details/detials.js
+// pages/sellde/sellde.js
 Page({
- 
-  
 
+  
   /**
    * 页面的初始数据
    */
@@ -22,7 +21,27 @@ Page({
     isPet: false,
     isForm: false,
     isState: false,
-    isCollect:null
+    isCollect: false,
+    show: false,
+    isReport:false
+  },
+  
+
+  showMask: function() {//显示文本框
+    this.setData({
+      show: true
+    })
+  },
+
+  sub: function() {//提交工作内容
+    wx.showToast({
+      title: '提交成功',
+      duration: 1000
+    })
+    
+    this.setData({
+      show: false
+    })
   },
 
 
@@ -30,10 +49,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var hId = options.id
     let that = this;
-    //console.log(options.id);
     wx.request({
-      url: 'http://47.94.170.167:8080/rentAllInfo/'+options.id,
+      url: 'http://47.94.170.167:8080/sellAllInfo/'+options.id,
       method:'GET',
       header: {
         'Content-Type': 'application/json'
@@ -41,24 +60,23 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
-         title:res.data.rentInfo.title,
-         address:res.data.rentInfo.address,
-         type:res.data.rentInfo.type,
-         orientation:res.data.rentInfo.orientation,
-         furniture:res.data.rentInfo.furniture,
-         isElevator:res.data.rentInfo.isElevator,
-         shortestLease:res.data.rentInfo.shortestLease,
+         title:res.data.sellInfo.title,
+         address:res.data.sellInfo.address,
+         type:res.data.sellInfo.type,
+         orientation:res.data.sellInfo.orientation,
+         furniture:res.data.sellInfo.furniture,
+         isElevator:res.data.sellInfo.isElevator,
+         id:res.data.sellInfo.id,
+         price:res.data.sellInfo.price,
          images:res.data.imageList,
-         hostId:res.data.rentInfo.hostId,
-         price:res.data.rentInfo.price,
-         data:res.data.rentInfo
+         hostId:res.data.sellInfo.hostId
         })
         wx.setStorage({
           key:"1",
-          data:res.data.rentInfo.id
+          data:res.data.sellInfo.id
         })
         wx.request({
-          url: 'http://47.94.170.167:8080/userInfo/'+res.data.rentInfo.hostId,
+          url: 'http://47.94.170.167:8080/userInfo/'+res.data.sellInfo.hostId,
           method:'GET',
           header: {
             'Content-Type': 'application/json'
@@ -81,23 +99,12 @@ Page({
     //   key: '1',
     //   success: function(res) {
     //       console.log(res.data)
-        
-    //         hostId:res.data
-          
+    //       this.hostId = res.data
     //   }
     // })
 
-    wx.request({
-      
-      url: 'http://localhost:8080/uerInfo/'+hostId,
-      method:'GET',
-      header: {
-        'Content-Type': 'application/json'
-      },
-    })
-    
-
   },
+
   toCollect () {
     var bol = this.data.isCollect; // 获取状态
     this.setData({
@@ -107,20 +114,13 @@ Page({
       key: '1',
       success: function(res) {
           console.log(res.data)
-          console.log(!bol)
-          // this.houseId = res.data
-          // console.log(this.houseId)
-          wx.setStorage({
-            data: !bol,
-            key: '2',
-          })
           if(!bol == true){
             wx.request({
               url: 'http://localhost:8080/addCollection',
               data:{
                 "userId":1,
                 "houseId":res.data,
-                "houseType":0
+                "houseType":1
               },
               method:"POST",
               header: {
@@ -144,7 +144,26 @@ Page({
             })
           }
       }
-    })},
+    })
+    },
+
+    isReport () {
+      var bol = this.data.isReport; // 获取状态
+      this.setData({
+      isReport:!bol // 改变状态
+      })
+      wx.getStorage({
+        key: '1',
+        success: function(res) {
+            console.log(res.data)
+            this.setData({
+              //注意到模态框的取消按钮也是绑定的这个函数，
+              //所以这里直接取反hiddenmodalput，也是没有毛病
+              isReport: !this.data.isReport
+            })
+        }
+      })
+      },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

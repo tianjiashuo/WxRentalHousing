@@ -1,4 +1,3 @@
-/* pages/buyhouse/buyhouse.wxss */
 /* pages/first/first.wxss */
 
 .swiper {
@@ -39,7 +38,7 @@
 }
 
 .none {
-  height: 300rpx;
+  height: 400rpx;
   width: 100%;
 }
 
@@ -53,23 +52,15 @@ form input{
   position: absolute;
   top: 300rpx;
   width: 90%;
-  height: 300rpx;
+  height: 400rpx;
   left: 5%;
   border-radius: 6rpx;
   background-color: white;
-  border: 1px solid #ecebe7;
   border-bottom:  3px solid #ecebe7;
-}
-.searchborder{
-  border-bottom: 1px solid #ecebe7;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
 }
 
 .content1 {
-  border-top: 3px solid #ecebe7;
   margin: 30rpx;
-  border-bottom: 1px solid #ecebe7 ;
 }
 .city {
   height: 48rpx;
@@ -80,10 +71,9 @@ form input{
 }
 .gps{
   position: absolute;
-  left: 80rpx;
-  top:30rpx;
-  width:2rem;
-  height: 2rem;
+  right: 80rpx;
+  width:1.2rem;
+  height: 1.2rem;
   display: flex;
 }
 
@@ -108,14 +98,13 @@ form input{
 
 button {
   color: white;
-  background-color: #758a99;
+  background-color:#758a99;
   font-size: 16px;
 }
 
 .autumn {
   width: 90%;
   margin: 0 auto;
-  margin-top: 10rpx;
 }
 
 .word {
@@ -134,7 +123,7 @@ button {
 }
 
 .block {
-  width: 140rpx;
+  width: 180rpx;
   height: 100rpx;
   line-height: 100rpx;
   font-size: 12px;
@@ -146,7 +135,7 @@ button {
 }
 
 .change {
-  width: 140rpx;
+  width: 260rpx;
   height: 100rpx;
   line-height: 100rpx;
   font-size: 12px;
@@ -155,17 +144,17 @@ button {
   margin-right: 20rpx;
   flex-shrink: 0;
   border-radius: 4px;
-  background-color: #758a99;
+  background-color:#758a99;
   color: white;
 }
 
 .house {
+  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   /* margin-top: 30rpx; */
   justify-content: space-between;
-  margin-top:30rpx;
-  border-bottom:3px solid #95949a ;
+  border-bottom:3px solid #00a3af 
 }
 
 .pichouse {
@@ -190,7 +179,6 @@ button {
 
 .type {
   font-size: 10px;
-
 }
 
 .price {
@@ -205,47 +193,46 @@ button {
   line-height: 40rpx;
   margin-right: 10rpx;
 }
+
 .price view:nth-child(2) {
   font-size: 12px;
+  margin-left: 40%;
   line-height: 40rpx;
-  margin-right: 10rpx;
 }
 
 .price view:nth-child(3) {
-  font-size: 12px;
-  line-height: 40rpx;
-  margin-left: 30%;
-}
-
-.price view:nth-child(4) {
   line-height: 40rpx;
   font-size: 12px;
 }
 
-
-
+.guard{
+   width: 90%;
+  margin: 0 auto;
+}
 .page{
   width: 90%;
   margin: 0 auto;
-  border: 1px solid #ecebe7;
+  border: 1px solid #44617b;
   margin-top: 40rpx;
   border-radius: 6rpx;
 }
-.moldel{
-  display: flex;
-  margin: 50rpx 40rpx;
-  border-bottom: 1px solid #ecebe7;
+
+#pics {
+  margin-top: 50rpx;
+  width: 100%;
 }
-.testa{
-  margin-left: 20rpx;
-}
-.testa text:nth-child(1){
-  font-size: 14px;
-  font-weight: 900;
-}
-.testa text:nth-child(2){
-  font-size: 14px
+#pic{
+  width: 100%;
 }
 #image{
   border-radius: 5%;
+}
+#message{
+  display: flex;
+  /* align-items: center; */
+  width: 100%;
+height: 100%;
+  justify-content: center;
+  color: #008899;
+  margin-top: 1rem;
 }

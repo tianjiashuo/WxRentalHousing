@@ -125,7 +125,7 @@ swiper-item image {
 
 .main1-item {
   width: 100%;
-  height: 150rpx;
+  height: 135rpx;
   border-bottom: 2rpx solid #2c4f54;
   display: flex;
   flex-direction: row;
@@ -133,6 +133,7 @@ swiper-item image {
 }
 #gender,#phone,#IDnumber,#introduction{
   width: 30%;
+  margin-left: 15px;
 }
 .main1-item>view{
   width: 70%;
@@ -165,18 +166,18 @@ swiper-item image {
 }
 
 .collection{
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .myhouse{
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   /* margin-left: 3rem; */
 }
 .apply{
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   /* margin-left: 3rem; */
 }
 .my-icon{
@@ -185,13 +186,13 @@ swiper-item image {
   justify-content: center;
 }
 .icons{
-  width: 3rem;
+  width: 2.5rem;
   height: auto;
 }
 .icons1{
-  width: 3rem;
+  width: 2.5rem;
   height: auto;
-  margin-left: 3rem;
+  margin-left: 3.4rem;
 }
 #intro{
   display: flex;

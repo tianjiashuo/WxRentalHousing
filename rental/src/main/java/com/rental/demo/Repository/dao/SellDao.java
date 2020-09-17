@@ -82,4 +82,12 @@ public class SellDao {
         List<Sell>ans = jdbcTemplate.query(sql,new SellRowMapper());
         return ans;
     }
+    /*
+    查询出某个host_id对应的房源信息
+  */
+    public List<Sell> queryByHostId(String hostId){
+        String sql = "SELECT * FROM sell WHERE host_id=?";
+        List<Sell> ans = jdbcTemplate.query(sql , new SellRowMapper(),hostId);
+        return ans;
+    }
 }

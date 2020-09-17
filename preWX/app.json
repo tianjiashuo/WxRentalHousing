@@ -1,21 +1,22 @@
 {
-
-  "pages": [    
-
+  "pages": [
     "pages/renthouse/renthouse",
     "pages/myhouse/myhouse",
     "pages/index/index",
-    "pages/release/release",
-    "pages/myapplication/myapplication",
-    "pages/mycollection/mycollection",
-    "pages/editmyinfo/editmyinfo",
     "pages/mypage/mypage",
     "pages/buyhouse/buyhouse",
+    "pages/editmyinfo/editmyinfo",
     "pages/detials/detials",
+    "pages/sellde/sellde",
+    "pages/myapplication/myapplication",
+    "pages/release/release",
+    "pages/mycollection/mycollection",
     "pages/search/search",
     "pages/logs/logs",
-    "pages/login/login"
-    
+    "pages/login/login",
+    "pages/collection/collection",
+    "pages/houses/houses",
+    "pages/audit/audit"
   ],
   "window": {
     "backgroundTextStyle": "dark",

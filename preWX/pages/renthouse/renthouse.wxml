@@ -48,7 +48,7 @@
   <view class="house">
     <block wx:for="{{allRent[current]}}">
       <view class="pichouse" bindtap="goNewsDetail" data-newsid='{{item.id}}'>
-       <image mode="widthFix" src="{{item.imageUrl}}"></image>
+       <image id="image" mode="widthFix" src="{{item.imageUrl}}"></image>
         <view class="type">{{item.address}}</view>
         <!--view class="adress">{{item.title}} </view-->
         <!--view class="adress">
