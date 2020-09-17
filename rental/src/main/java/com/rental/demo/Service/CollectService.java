@@ -78,6 +78,7 @@ public class CollectService {
             Collection collection = iter.next();
             ids.add(collection.getUserId());
         }
+        System.out.println(ids);
         return ids;
     }
 
@@ -87,13 +88,18 @@ public class CollectService {
 
     public String collectInfoChanged(int houseId,int houseType){
         //拿到提示的所有用户的id;
+        System.out.println(houseId+"====="+houseType);
         List idList = getAllUsersId(houseId,houseType);
+        System.out.println("idList"   + idList.toString());
         Iterator<String> it = idList.iterator();
-        List phones = new ArrayList();
+        List<String> phones = new ArrayList();
         while(it.hasNext()){
             String s = it.next();
+            System.out.println("userId--------"+ s );
             UserBo u = userService.getUserById(s);
-            phones.add(u.getPhone());
+            String p = "+86"+u.getPhone();
+            System.out.println("telephone++++++"+p);
+            phones.add(p);
         }
        Map<String,Object> sms = new HashMap<>();
         sms.put("smsType","news");
@@ -101,6 +107,8 @@ public class CollectService {
         System.out.println(phones.toString());
         if(houseType==0){
             String title = rentService.getRentById(houseId).getTitle();
+            title="❤"+title.substring(0,6);
+            title = title+"...";
             sms.put("param",title);
         }else {
             String title = sellService.getSellById(houseId).getTitle();

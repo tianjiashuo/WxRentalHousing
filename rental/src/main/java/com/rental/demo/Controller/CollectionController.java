@@ -40,8 +40,9 @@ public class CollectionController {
 
     //根据房屋id获得收藏了该房屋的所有用户id
     @PostMapping("/collectionChanged")
-    public String collectionChanged(@RequestBody CollectionVo collectionVo){
-        return collectService.collectInfoChanged(collectionVo.getHouseId(),collectionVo.getHouseType());
+    public String collectionChanged(@RequestBody Map<String,Integer> res){
+
+        return collectService.collectInfoChanged(res.get("houseId"),res.get("houseType"));
     }
 
 }

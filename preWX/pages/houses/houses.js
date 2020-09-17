@@ -77,13 +77,13 @@ Page({
             },
           })
           wx.request({
-            url: 'http://localhost:8080/collectionChanged',
+            url: 'http://47.94.170.167:8080/collectionChanged',
             header: { "content-type": "application/json" },
             method: 'POST',
             dataType: 'json',
             data:{
               "houseId":e.currentTarget.id,
-              "houseType":"0"
+              "houseType":0
             },
             responseType: 'text',
             success: function (res) {
@@ -127,13 +127,13 @@ Page({
             },
           })
           wx.request({
-            url: 'http://localhost:8080/collectionChanged',
+            url: 'http://47.94.170.167:8080/collectionChanged',
             header: { "content-type": "application/json" },
             method: 'POST',
             dataType: 'json',
             data:{
               "houseId":e.currentTarget.id,
-              "houseType":"1"
+              "houseType":1
             },
             responseType: 'text',
             success: function (res) {
