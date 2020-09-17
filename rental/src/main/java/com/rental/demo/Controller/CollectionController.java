@@ -11,8 +11,10 @@ import java.util.List;
 @CrossOrigin
 @RestController
 public class CollectionController {
+
     @Autowired
     private CollectService collectService;
+
 
     @PostMapping("/addCollection")
     public void addCollection(@RequestBody Collection collection){
@@ -30,9 +32,9 @@ public class CollectionController {
     }
 
     //根据房屋id获得收藏了该房屋的所有用户id
-    @PostMapping("/getUsersId")
-    public List<String> getAllUsersId(@RequestBody CollectionVo collectionVo){
-        return collectService.getAllUsersId(collectionVo.getHouseId(),collectionVo.getHouseType());
+    @PostMapping("/collectionChanged")
+    public String collectionChanged(@RequestBody CollectionVo collectionVo){
+        return collectService.collectInfoChanged(collectionVo.getHouseId(),collectionVo.getHouseType());
     }
 
 }
