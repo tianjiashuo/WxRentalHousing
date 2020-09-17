@@ -113,7 +113,7 @@ public class Sell{
         isRenovation = renovation;
     }
 
-    public int getIsState() {
+    public int getState() {
         return state;
     }
 

@@ -46,7 +46,7 @@
               <image class="collection" src='../../icons/mypage/collection.png'></image>
               <view id="intro">收藏</view>
             </view>
-            <view class="icons1">
+            <view bindtap="goHouses" class="icons1">
               <image class="myhouse" src='../../icons/mypage/myhouse.png'></image> 
                <view id="intro">房源</view>    
                </view>

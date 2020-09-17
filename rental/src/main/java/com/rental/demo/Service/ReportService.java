@@ -104,7 +104,7 @@ public class ReportService {
             //卖房信息被举报
             else if(report.getHouse_type()==1){
                 Sell sell  = (Sell)sellService.getSellAllById(report.getHouse_id()).get("sellInfo");
-                if(sell.getIsState()!=-1){
+                if(sell.getState()!=-1){
                     lrv.add(new ReportVo(report,sell.getTitle()));
                 }
             }

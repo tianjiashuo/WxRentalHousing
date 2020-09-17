@@ -1,20 +1,22 @@
 {
   "pages": [
-    "pages/buyhouse/buyhouse",
     "pages/report/report",
-    "pages/mypage/mypage",
     "pages/renthouse/renthouse",
+    "pages/myhouse/myhouse",
+    "pages/mypage/mypage",
+    "pages/buyhouse/buyhouse",
     "pages/editmyinfo/editmyinfo",
     "pages/detials/detials",
     "pages/sellde/sellde",
-    "pages/myhouse/myhouse",
-    "pages/mycollection/mycollection",
     "pages/myapplication/myapplication",
     "pages/release/release",
+    "pages/mycollection/mycollection",
     "pages/search/search",
     "pages/logs/logs",
     "pages/login/login",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/houses/houses",
+    "pages/audit/audit"
   ],
   "window": {
     "backgroundTextStyle": "dark",

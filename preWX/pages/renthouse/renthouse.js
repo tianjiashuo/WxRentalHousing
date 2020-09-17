@@ -1,6 +1,5 @@
 // pages/renthouse/renthouse.js
 Page({
-  
   /**
    * 页面的初始数据
    */
@@ -19,11 +18,11 @@ Page({
  
   
   doSearch:function(e){
-    console.log("form 发生了 submit",e.detail.value)
+    console.log("form 发生了 submit",e.detail.value);
     let that = this;
     wx.request({
-     // url: 'http://47.94.170.167:8080/rent/select',
-     url: 'http://localhost:8080/rent/select', 
+      url: 'http://47.94.170.167:8080/rent/select',
+     //url: 'http://localhost:8080/rent/select', 
      data:{
         "key":e.detail.value.keywords,
         "is_pet":e.detail.value.is_pet,
@@ -34,15 +33,14 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
-        console.log("search allRent"+res.data)
+        console.log("search allRent",res.data)
         that.setData({
           allRent: res.data,
           current:0
-        })
-        
+        }) 
       },
       fail: function(res) {
-        console.log('fail '+res)
+        console.log('fail ',res);
       },
     })
   },
@@ -50,7 +48,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     var that = this;
     console.log("showDialog" + that.data.showDialog);
     that.setData({
@@ -96,12 +93,10 @@ Page({
     })
   },
 
-  goNewsDetail:function(event)
-  {
+  goNewsDetail:function(event){
    wx.navigateTo({
      url: '/pages/detials/detials?id=' + event.currentTarget.dataset.newsid
    })
-
   },
 
   /**
@@ -140,7 +135,7 @@ Page({
     that.setData({
       keywords:"",
       isChecked:false
-    })
+    });
     console.log(that.is_pet);
     wx.request({
       url: 'http://47.94.170.167:8080/rent/all',
@@ -159,7 +154,7 @@ Page({
         wx.stopPullDownRefresh();
       },
       fail: function (res) {
-        console.log('fail '+res)
+        console.log('fail '+res);
       },
     })
   },
@@ -190,5 +185,5 @@ Page({
     this.setData({
       current: e.currentTarget.dataset.set
     })
-  },
+  }
 })

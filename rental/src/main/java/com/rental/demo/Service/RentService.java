@@ -10,6 +10,8 @@ import com.rental.demo.Repository.entity.Roommates;
 import org.omg.CORBA.INTERNAL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.lang.reflect.Field;
 import java.util.*;
 
 @Service("RentService")
@@ -22,8 +24,8 @@ public class RentService {
     private RoommatesDao roommatesDao;
 
     private static final String ILLEGAL_STATE  ="-1";
-    private static final String URENT_STATE  ="1";
-    private static final String RENT_STATE  ="0";
+    private static final String RENT_STATE  ="1";
+    private static final String RENTED_STATE  ="0";
     private static final String HOUSE_TYPE_RENT ="0";
     private static final boolean IS_SHARE_RENT_FORM =true;
     /***
@@ -70,6 +72,19 @@ public class RentService {
 
     }
 
+    public RentBo getRentByIdHost(int id){
+        try{
+            Rent rent = rentDao.queryById(id);
+            String image = imageDao.getFirstImageById(id,0);
+            RentBo rentBo = new RentBo(rent.getId(),rent.getArea(),rent.getPrice(),rent.getAddress(),
+                    rent.getTitle(),rent.getType(),rent.getFurniture(),image,rent.getState());
+            return rentBo;
+        }catch(Exception e ){
+            System.out.println(e.toString());
+            return  null;
+        }
+
+    }
     /***
      * 查看详细租房信息
      * @param rentId
@@ -93,9 +108,45 @@ public class RentService {
     public boolean deleteRentInfo(int houseId) {
         return rentDao.updateRentState(houseId, ILLEGAL_STATE);
     }
-    //发布房源
-    public int insertRentHouse(Rent rent){
-        return rentDao.insertRentHouse(rent);
+
+    /**
+     * 发布房源
+     * @param rent
+     * @return
+     */
+    public int insertRentHouse(Map<String,Object> rent){
+
+        List keys = new ArrayList<String>();
+        List values = new ArrayList<String>();
+        //处理state
+        keys.add("state");
+        values.add(RENT_STATE);
+        //拿出List类型的images并删除
+        List imagesList = (ArrayList) rent.get("images");
+        rent.remove("images");
+
+        for(Map.Entry<String,Object>Entry:rent.entrySet()){
+            keys.add(Entry.getKey());
+            String flag = Entry.getValue().toString();
+            if(flag.equals("true")){
+                values.add("1");
+            }else if(flag.equals("false")){
+                values.add("0");
+            }else {
+                values.add(Entry.getValue());
+            }
+
+        }
+        //获得house_id主键
+        int rentId =rentDao.insertRentHouse(keys,values);
+        //处理imageList
+        Iterator<String> it = imagesList.iterator();
+        while(it.hasNext()){
+            String url = it.next();
+            int i=  imageDao.insertImg(rentId,url, Integer.valueOf(HOUSE_TYPE_RENT));
+            System.out.println("增加了图片"+i);
+        }
+        return rentId;
     }
 
     //提交租房申请

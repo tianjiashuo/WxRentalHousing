@@ -1,18 +1,16 @@
 package com.rental.demo.Repository.dao;
 
 import com.rental.demo.Repository.entity.Rent;
-import com.rental.demo.Repository.entity.User;
 import com.rental.demo.Repository.mappers.RentRowMapper;
-import com.rental.demo.Repository.mappers.UserRowMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
+import java.sql.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Repository("RentDao")
 public class RentDao {
@@ -68,17 +66,17 @@ public class RentDao {
         return rent;
     }
 
-    public int insertRentHouse(Rent rent){
-        String sql = "INSERT INTO rent (host_id,address,title,type,orientation,floor,is_elevator," +
-                "is_pet,shortest_lease,area,furniture,price,state,form) " +
-                "VALUES(?, ? ,?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? ,?)";
+    public int insertRentHouse(List keys,List values){
+        String sql = "INSERT INTO rent (" +String.join(",",keys) + ") VALUES ('"+ String.join("','",values)+"')";
+        System.out.println(sql+"--rent");
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        PreparedStatementCreator preparedStatementCreator = con -> {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            return ps;
+        };
+        jdbcTemplate.update(preparedStatementCreator, keyHolder);
+        return  keyHolder.getKey().intValue();
 
-        System.out.println(rent.getAddress()+"----------");
-        System.out.println(rent.getHostId()+"----------");
-        return jdbcTemplate.update(sql,rent.getHostId(),rent.getAddress(),rent.getTitle(),rent.getType()
-                ,rent.getOrientation(),rent.getFloor(),rent.getIsElevator(),rent.getIsPet(),
-                rent.getShortestLease(),rent.getArea(),rent.getFurniture(),rent.getPrice()
-        ,1,rent.getIsForm());
     }
 
     //房源状态修改
@@ -87,5 +85,11 @@ public class RentDao {
         return jdbcTemplate.update(sql,id);
     }
 
+
+    public List<Rent> queryByHostId(String hostId){
+        String sql = "SELECT * FROM rent WHERE host_id=?";
+        List<Rent> ans = jdbcTemplate.query(sql , new RentRowMapper(),hostId);
+        return ans;
+    }
 
 }
