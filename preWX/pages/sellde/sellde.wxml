@@ -19,7 +19,7 @@
       </block>
       </view>
 
-     <!-- <view class='icon2' bindtap='showMask' >
+      <!--<view class='icon2' bindtap='showMask' >
         <image src='/icons/report.png'></image>
       </view>
 <view class="mask" wx:if="{{show}}">
@@ -30,9 +30,9 @@
 </view>-->
 
       
-      <view class='icon2' >
+<navigator url='../report/report'><view class='icon2' >
         <image src='/icons/report.png'></image>
-      </view>
+      </view></navigator>
     </view>
     <view class='font'>
       <view class='fontbox'>
