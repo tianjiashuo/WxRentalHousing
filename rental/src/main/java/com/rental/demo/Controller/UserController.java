@@ -61,6 +61,10 @@ public class UserController {
         return userService.getUserHouse(id);
     }
 
+    //获得某个房子的租客信息
+    @GetMapping("/getHouseRoommates/{id}")
+    Map<String,Set> getRoommates(@PathVariable int id){return userService.getUserInfomation(id);}
+
     //房东查看自己房源的申请
     @PostMapping("/getAuditByHostId/{hostId}")
     public List<Map<String,Object>> queryAuditByHostId(@PathVariable String hostId){

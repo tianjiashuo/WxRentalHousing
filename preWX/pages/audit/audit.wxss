@@ -137,7 +137,7 @@ button {
   border-radius: 8%;
   /* color: #006e54; */
   position: relative;
-  height: 272px;
+  height: 280px;
   flex-direction:column;
   /* flex-direction:row; */
 }

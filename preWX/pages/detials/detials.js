@@ -33,6 +33,26 @@ Page({
     let that = this;
     //console.log(options.id);
     var hId = options.id
+
+    wx.request({
+      url: 'http://localhost:8080/getHouseRoommates/'+hId,
+      method:"GET",
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success:function(res){
+        console.log(res.data)
+        that.setData({
+          allroommates: res.data.roommates,
+          id:res.data.id,
+          gender:res.data.roommates.gender?"man":"woman",
+        })
+      },
+      fail:function(){
+        console.log("house failed")
+      }
+    })
+
     wx.setStorage({
       data: hId,
       key: 'renthouseId',
@@ -56,7 +76,8 @@ Page({
          images:res.data.imageList,
          hostId:res.data.rentInfo.hostId,
          price:res.data.rentInfo.price,
-         data:res.data.rentInfo
+         data:res.data.rentInfo,
+         isForm:res.data.rentInfo.isForm
         })
         wx.setStorage({
           key:"1",
@@ -82,16 +103,6 @@ Page({
       }
     })
 
-    // wx.getStorage({
-    //   key: '1',
-    //   success: function(res) {
-    //       console.log(res.data)
-        
-    //         hostId:res.data
-          
-    //   }
-    // })
-
     wx.request({
       
       url: 'http://localhost:8080/uerInfo/'+hostId,
@@ -100,7 +111,20 @@ Page({
         'Content-Type': 'application/json'
       },
     })
-    
+
+    // wx.request({
+    //   url: 'http://localhost:8080/roommatesinfo/'+hId,
+    //   method:"GET",
+    //   header: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   success:function(res){
+    //     console.log(res.data+"house")
+    //   },
+    //   fail:function(){
+    //     console.log("house failed")
+    //   }
+    // })
 
   },
   toCollect () {
@@ -168,7 +192,30 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+  },
 
+  save:function(){
+    wx.getStorage({
+      key: '1',
+      success:function(res){
+        //console.log(res.data)
+        var houseId = res.data
+        wx.request({
+          url: 'http://localhost:8080/addApplocation',
+          data:{
+            "houseId":houseId,
+            "userId":'1'
+          },
+          method:"POST",
+          header: {
+            'Content-Type': 'application/json'
+          },
+          success:function(res){
+            console.log("app"+res.data)
+          }
+        })
+      }
+    })
   },
 
   /**
@@ -198,6 +245,9 @@ Page({
               },
               success:function(res){
                 console.log("haha"+res.data)
+              },
+              fail:function(){
+                console.log("failed")
               }
             })
           }

@@ -55,21 +55,32 @@
       </view>
     </view>
   </view>
-  <view class='estimate'>
+  <block wx:if="{{isForm == true}}">
     <view class='estimate_h1'>租客信息</view>
+    <block wx:for="{{allroommates}}">
+      
+    <view class='estimate'>
     <view class='display-img'>
       <view>
-        <image src='/images/message-bgimg.jpg'></image>
+        <image src='{{item.head}}'></image>
       </view>
       <view class='owner'>
-        <view class='name'>Duaiduai</view>
-        <view class='publish-time'>2019年09月</view>
+        <view class='name'>{{item.nickname}}</view>
+        <view class='publish-time'>{{item.phone}}</view>
+        <block wx:if="{{item.gender == true}}">
+        <view class='publish-time'>man</view>
+      </block>
+      <block wx:if="{{item.gender == false}}">
+        <view class='publish-time'>woman</view>
+      </block>
       </view>
-    </view>
-  
+    </view>  
     <view class="estimatebox">
     </view>
   </view>
+</block>
+  <button class = "reportbutton" bindtap="save">申请加入合租</button>
+</block>
   <view class='house_address'>
     <view>房源位置</view>
     <view class='more_address'>

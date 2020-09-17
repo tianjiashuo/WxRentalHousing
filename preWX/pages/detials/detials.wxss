@@ -302,7 +302,7 @@ image {
 
 .estimate {
   width: 90%;
-  height: 250rpx;
+  height: 150rpx;
 }
 
 .display-img {
@@ -351,6 +351,7 @@ image {
 .estimate_h1 {
   margin: 30rpx 0;
   font-size: 40rpx;
+  margin-left: 10px;
 }
 
 .estimate .infor-estimate {
@@ -544,6 +545,28 @@ image {
 }
 
 .money_box .right_box .button {
+  background-color: #11472c;
+  width: 300rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.reportbutton {
+  padding: 8px 24px;
+  line-height: 1.41176471;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 17px;
+  color: rgb(15, 29, 66);
+  background-color: #eef1f7;
+}
+
+.rent.Button{
   background-color: #11472c;
   width: 300rpx;
   height: 100rpx;

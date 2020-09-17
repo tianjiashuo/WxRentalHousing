@@ -49,10 +49,13 @@ public class RentController {
     }
 
     @GetMapping ("/roommatesinfo/{id}")
-    RoommatesBo getRoomatesById(@PathVariable int id){return  rentService.getRoomatesById(id);}
+    List<Roommates> getRoommatesById(@PathVariable int id){return  rentService.getRoommatesById(id);}
 
     @PostMapping ("/addApplocation")
-    int addApplocation(@RequestBody RoommatesBo roommatesBo){return rentService.addApplication(roommatesBo);}
+    int addApplocation(@RequestBody RoommatesBo roommatesBo){
+        System.out.printf("id--------"+roommatesBo.getUserId());
+        System.out.println("house_id--------"+ roommatesBo.getHouseId());
+        return rentService.addApplication(roommatesBo);}
 
     //通过申请
     @PostMapping("/admitApplication/{id}")
@@ -63,6 +66,10 @@ public class RentController {
     int refuseApplication(@PathVariable int id){
         return rentService.refuseApplication(id);
     }
+
+
+
+
 
     @PostMapping("/changeRentState/{id}")
     int changeRentState(@PathVariable int id){return rentService.changeState(id);}

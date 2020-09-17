@@ -1,12 +1,10 @@
 package com.rental.demo.Service;
 
 import com.rental.demo.Repository.dao.RentDao;
+import com.rental.demo.Repository.dao.RoommatesDao;
 import com.rental.demo.Repository.dao.SellDao;
 import com.rental.demo.Repository.dao.UserDao;
-import com.rental.demo.Repository.entity.Rent;
-import com.rental.demo.Repository.entity.Sell;
-import com.rental.demo.Repository.entity.Session;
-import com.rental.demo.Repository.entity.User;
+import com.rental.demo.Repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +23,13 @@ public class UserService {
     @Autowired
     private RentService rentService;
     @Autowired
+    private UserService userService;
+    @Autowired
     private SellDao sellDao;
     @Autowired
     private SellService sellService;
+    @Autowired
+    private  RoommatesDao roommatesDao;
 
     /**
      * mao changed 2020-09-12
@@ -150,6 +152,22 @@ public class UserService {
         }
         result.put("rent",rentResult);
         result.put("sell",sellResult);
+        return result;
+    }
+
+
+
+    public HashMap<String,Set> getUserInfomation(int houseId){
+        HashMap<String,Set> result = new HashMap<>();
+        List<Roommates> lr = roommatesDao.queryById(houseId);
+        Iterator<Roommates> ir = lr.iterator();
+        HashSet roomResult  = new HashSet();
+        while(ir.hasNext()) {
+//            roomResult.add(rentService.getRentByIdHost(ir.next().getId()));
+            roomResult.add(userService.getUserById(ir.next().getUserId()));
+        }
+
+        result.put("roommates",roomResult);
         return result;
     }
 
