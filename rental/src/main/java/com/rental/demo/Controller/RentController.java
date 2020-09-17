@@ -1,6 +1,7 @@
 package com.rental.demo.Controller;
 
 import com.rental.demo.Repository.entity.Rent;
+import com.rental.demo.Repository.entity.Roommates;
 import com.rental.demo.Service.RentBo;
 import com.rental.demo.Service.RentService;
 import com.rental.demo.Service.RoommatesBo;
@@ -53,8 +54,15 @@ public class RentController {
     @PostMapping ("/addApplocation")
     int addApplocation(@RequestBody RoommatesBo roommatesBo){return rentService.addApplication(roommatesBo);}
 
+    //通过申请
     @PostMapping("/admitApplication/{id}")
     int admitApplication(@PathVariable int id){return rentService.admitApplication(id);}
+
+    //拒绝申请
+    @PostMapping("/refuseApplication/{id}")
+    int refuseApplication(@PathVariable int id){
+        return rentService.refuseApplication(id);
+    }
 
     @PostMapping("/changeRentState/{id}")
     int changeRentState(@PathVariable int id){return rentService.changeState(id);}
@@ -63,5 +71,6 @@ public class RentController {
     public List<Set<RentBo>> getAllRent(){
         return  rentService.getRentALL();
     }
+
 
 }

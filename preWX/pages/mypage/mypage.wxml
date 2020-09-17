@@ -50,7 +50,7 @@
               <image class="myhouse" src='../../icons/mypage/myhouse.png'></image> 
                <view id="intro">房源</view>    
                </view>
-                <view class="icons1">
+                <view bindtap="goAudit" class="icons1">
               <image class="apply" src="../../icons/mypage/apply.png"></image>
                <view id="intro">审核</view>    
                </view>

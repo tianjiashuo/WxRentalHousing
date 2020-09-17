@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Set;
+
 @Repository("RoommatesDao")
 public class RoommatesDao {
     @Autowired
@@ -33,4 +36,17 @@ public class RoommatesDao {
         String sql = "UPDATE roommates_info set state=1 WHERE id=? ";
         return jdbcTemplate.update(sql,id);
     }
+    //房东拒绝
+    public int refuseApplication(int id){
+        String sql = "UPDATE roommates_info set state=-1 WHERE id=? ";
+        return jdbcTemplate.update(sql,id);
+    }
+
+    //根据房源id查询所有待审核申请
+    public List<Roommates> queryByHouseId(int houseId) {
+        String sql = "SELECT * FROM roommates_info WHERE house_id = ? AND state=0";
+        List<Roommates> roommates = jdbcTemplate.query(sql, new RoommatesRowMapper(), houseId);
+        return roommates;
+    }
+
 }
