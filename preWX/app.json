@@ -1,7 +1,8 @@
 {
   "pages": [
-
     "pages/mypage/mypage",
+    "pages/audit/audit",
+    
     "pages/renthouse/renthouse",
     "pages/buyhouse/buyhouse",
     "pages/editmyinfo/editmyinfo",
@@ -14,8 +15,8 @@
     "pages/logs/logs",
     "pages/login/login",
     "pages/collection/collection",
-    "pages/houses/houses",
-    "pages/audit/audit"
+    "pages/houses/houses"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",

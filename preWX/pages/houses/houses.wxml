@@ -32,7 +32,7 @@
           <button disabled="true" bindtap="btnTap" id="{{item.id}}">下架该房源</button>
           </block> 
            <block wx:else>
-              <button bindtap="btnTapRent" id="{{item.id}}">下架该房源</button>
+              <button style="width: 100%;" bindtap="btnTapRent" id="{{item.id}}">下架该房源</button>
            </block>
         </view>
       </view>
@@ -67,17 +67,14 @@
 
         <view>
         <block wx:if="{{item.state===-1}}">
-          <button disabled="true" bindtap="btnTap" id="{{item.id}}">下架该房源</button>
+          <button disabled="true" class="delete" bindtap="btnTap" id="{{item.id}}">下架该房源</button>
           </block> 
            <block wx:else>
-              <button bindtap="btnTapSell" id="{{item.id}}">下架该房源</button>
-           </block>        </view>
+              <button style="width: 100%;" bindtap="btnTapSell" id="{{item.id}}">下架该房源</button>
+           </block>        
+           </view>
 
       </view>
     </block>
   </view>
 </view>
-
-
-
-

@@ -42,11 +42,18 @@ public class CollectService {
             Collection collection = iter.next();
             //出租房屋
             if(collection.getHouseType()==0){
-                result.add(rentService.getRentById(collection.getHouseId()));
+                RentBo rentBo = rentService.getRentByIdHost(collection.getHouseId());
+                if(rentBo.getState()==1){
+                    result.add(rentBo);
+                }
             }
             //出售房屋
             else if(collection.getHouseType()==1){
-                result.add(sellService.getSellById(collection.getHouseId()));
+                SellBo sellBo = sellService.getSellById(collection.getHouseId());
+                if(sellBo.getState()==1){
+                    result.add(rentService.getRentByIdHost(collection.getHouseId()));
+                }
+                result.add(sellBo);
             }
         }
         return result;

@@ -20,6 +20,10 @@ public class RentService {
     private ImageDao imageDao;
     @Autowired
     private RoommatesDao roommatesDao;
+    @Autowired
+    private UserDao userDao;
+    @Autowired
+    private RentService rentService;
 
     private static final String ILLEGAL_STATE  ="-1";
     private static final String URENT_STATE  ="1";
@@ -69,7 +73,7 @@ public class RentService {
         }
 
     }
-
+    //增加了state属性
     public RentBo getRentByIdHost(int id){
         try{
             Rent rent = rentDao.queryById(id);
@@ -121,6 +125,37 @@ public class RentService {
     public int admitApplication(int id){
         return roommatesDao.admitApplication(id);
     }
+
+    //房东拒绝租房申请
+    public int refuseApplication(int id){
+        return roommatesDao.refuseApplication(id);
+    }
+    //房东查看申请信息
+    public ArrayList<Map<String,Object>> queryByHostId(String hostId){
+        ArrayList<Map<String,Object>> result = new ArrayList<>();
+        //获得该用户发布的所有出租房源
+        List<Rent> lrent = rentDao.queryByHostId(hostId);
+        Iterator<Rent> ir = lrent.iterator();
+        //获得这些房源所涉及到的所有申请
+        List<Roommates> lroom = new ArrayList<>();
+        while(ir.hasNext()) {
+            lroom.addAll(roommatesDao.queryByHouseId(ir.next().getId()));
+        }
+        Iterator<Roommates> ir1 = lroom.iterator();
+        while(ir1.hasNext()) {
+            HashMap hm = new HashMap();
+            Roommates roommates = ir1.next();
+            hm.put("audit",roommates);
+            //获取该申请的房屋信息
+            hm.put("house",rentService.getRentById(roommates.getHouseId()));
+            //获取该申请的用户信息
+            hm.put("user",userDao.queryUserById(roommates.getUserId()));
+            result.add(hm);
+        }
+        return result;
+
+    }
+
 
     //租满了
     public int changeState(int id){

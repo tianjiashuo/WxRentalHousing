@@ -1,9 +1,7 @@
 package com.rental.demo.Controller;
 
-import com.rental.demo.Service.AesService;
-import com.rental.demo.Service.CheckIdNumber;
-import com.rental.demo.Service.UserBo;
-import com.rental.demo.Service.UserService;
+import com.rental.demo.Repository.entity.Roommates;
+import com.rental.demo.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +14,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RentService rentService;
 
 
     @GetMapping("/userInfo/{id}")
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PostMapping("/user/login")
-    public Map userLogin(@RequestBody Map<String,String> json)  {
+    public Map userLogin(@RequestBody Map<String,String> json){
         return userService.userLogin(json);
     }
     @PostMapping("/user/getPhone")
@@ -55,8 +55,15 @@ public class UserController {
         return userService.getPhone(json);
     }
 
+    //获取某人发布的所有房源
     @GetMapping("/getUserHouse/{id}")
     public Map<String,Set> getUserHouse(@PathVariable String id){
         return userService.getUserHouse(id);
+    }
+
+    //房东查看自己房源的申请
+    @PostMapping("/getAuditByHostId/{hostId}")
+    public List<Map<String,Object>> queryAuditByHostId(@PathVariable String hostId){
+        return rentService.queryByHostId(hostId);
     }
 }
