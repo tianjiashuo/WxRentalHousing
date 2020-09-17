@@ -12,10 +12,8 @@ App({
       head:'',
       nickName:'',
       phone:'',
-      gender:'',
-    },
-   
-    
+      gender:''
+    }  
   },
 
 })

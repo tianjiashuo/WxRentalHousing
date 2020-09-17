@@ -27,4 +27,11 @@ public class ImageDao {
         List<Image> images= jdbcTemplate.query(sql, new ImageRowMapper(),houseId,houseType);
         return images;
     }
+
+    //增加房源图片
+    public int insertImg(int house_id,String imgUrl,int house_type){
+        String sql="INSERT INTO image (house_id,image_url,house_type) VALUES (?,?,?)";
+        int flag = jdbcTemplate.update(sql,house_id,imgUrl,house_type);
+        return flag;
+    }
 }

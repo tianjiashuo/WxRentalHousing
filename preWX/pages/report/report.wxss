@@ -1,0 +1,20 @@
+/* pages/report/report.wxss */
+.report {
+  position: absolute;
+  top: 30rpx;
+  width: 90%;
+  height: 300rpx;
+  left: 5%;
+  border-radius: 6rpx;
+  background-color: #eef1f7;
+  border: 1px solid #6695da;
+}
+.reportbutton {
+  padding: 8px 24px;
+  line-height: 1.41176471;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 17px;
+  color: rgb(15, 29, 66);
+  background-color: #eef1f7;
+}

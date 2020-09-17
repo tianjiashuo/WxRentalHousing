@@ -31,7 +31,10 @@ public class RentController {
     }
 
     @PostMapping("/insertRentHouse")
-    public int insertRentHouse(@RequestBody Rent rent){
+    public int insertRentHouse(@RequestBody Map<String,Object> rent){
+        for(Map.Entry<String,Object>entry:rent.entrySet()){
+            System.out.println(entry.getKey()+","+entry.getValue());
+        }
         return rentService.insertRentHouse(rent);
     }
 

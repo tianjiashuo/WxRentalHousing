@@ -28,7 +28,11 @@ public class SellController {
     }
 
     @PostMapping("/insertSellHouse")
-    public int insertSellHouse(@RequestBody Sell sell){
+    public int insertSellHouse(@RequestBody Map<String,Object> sell){
+        for(Map.Entry<String,Object>entry:sell.entrySet()){
+            System.out.println(entry.getKey()+","+entry.getValue());
+        }
+
         return sellService.insertSellHouse(sell);
     }
 

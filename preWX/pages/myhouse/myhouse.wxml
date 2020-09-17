@@ -12,61 +12,61 @@
  </view>
   
   <form bindsubmit="dopost">
-    <view>
+    <view class="formview">
       <label>房屋描述</label>
       <input name="title" value="{{title }}" placeholder=" 房屋标题" />
     </view>
-    <view>
+    <view class="formview">
       <label>房屋地址</label>
       <input name="address" value="{{ address }}" placeholder=" 地址" />
     </view>
-    <view>
+    <view class="formview">
       <label>房屋户型</label>
       <input name="type" value="{{type}}" placeholder=" * 室 * 厅" />
     </view>
-    <view>
+    <view class="formview">
       <label>房屋方向</label>
       <input name="orientation" value="{{orientation}}" placeholder=" * * 朝 向" />
     </view>
-    <view>
+    <view class="formview">
       <label>房屋楼层</label>
       <input name="floor" value="{{floor}}" placeholder=" * * 层" />
     </view>
-    <view>
+    <view class="formview">
       <label>有无电梯</label>
-      <switch name="is_elevator "></switch>
+      <switch name="is_elevator "  color="#92b5a9"></switch>
     </view>
-    <view>
+    <view class="formview">
       <label>房屋面积</label>
       <input name="area" value="{{area}}" placeholder=" 房屋面积" />
     </view>
 
-    <view wx:if="{{wether_rent_sell==0}}">
+    <view wx:if="{{wether_rent_sell==0}}" class="formview">
       <label>允许宠物</label>
-      <switch name="rentinfo.is_pet"></switch>
+      <switch name="rentinfo.is_pet"  color="#92b5a9"></switch>
     </view>
-    <view wx:if="{{wether_rent_sell==0}}">
+    <view wx:if="{{wether_rent_sell==0}}" class="formview">
       <label>最短租期</label>
       <input name="shortest_lease" value="{{rentinfo.shortest_lease}}" placeholder="最短租期" />
       <text>月</text>
     </view>
-    <view wx:if="{{wether_rent_sell==0}}">
+    <view wx:if="{{wether_rent_sell==0}}" class="formview">
       <label>家具描述</label>
       <input name="furniture" value="{{ rentinfo.furniture}}" placeholder=" 精装/简装/寝具等信息"></input>
     </view>
-    <view wx:if="{{wether_rent_sell==0}}">
+    <view wx:if="{{wether_rent_sell==0}}" class="formview">
       <label>允许合租</label>
-      <switch name="form"></switch>
+      <switch name="form"  color="#92b5a9"></switch>
     </view>
-    <view wx:if="{{wether_rent_sell==1}}">
+    <view wx:if="{{wether_rent_sell==1}}" class="formview">
       <label>有无产权</label>
-      <switch name= " property"></switch>
+      <switch name= "property"  color="#92b5a9"></switch>
     </view>
-    <view wx:if="{{wether_rent_sell==1}}">
+    <view wx:if="{{wether_rent_sell==1}}" class="formview">
       <label>有无装修</label>
-      <switch name= " is_renovation"></switch>
+      <switch name= " is_renovation"  color="#92b5a9"></switch>
     </view>
-    <view>
+    <view class="formview">
       <label>预估价格</label>
       <input name="price" value="{{ rentinfo.is_price}}" placeholder=" 预估价格" />
     </view>
@@ -75,20 +75,28 @@
       请添加房屋图片
       <text>(不少于一张)</text>
     </view>
-    <view class="uppic" bind:tap="upfile">
-      <input maxlength="{{ 500 }}" value="{{ userinfo.card_img }}" name="card_img" type="text" hidden="{{ true }}" />
-      <text class="iconfont icon-jiahao"></text>
-    </view>
-    <view class="imgbox">
-      <block wx:for="{{ userinfo.img_list }}" wx:key="imgList">
-        <image src="{{ item }}" />
+
+    <view class="images_box" id="picplace">
+      <block wx:key="imgbox" wx:for="{{imgbox}}">
+        <view class='img-box'>
+          <image class='img' src='{{item}}'></image>
+          <view class='img-delect' data-deindex='{{index}}' bindtap='imgDelete1'>
+            <image class='img' src='/icons/delete.png'></image>   
+          </view>
+        </view>
       </block>
-    </view>
+      <view class='img-box' bindtap='addPic1' wx:if="{{imgbox.length<9}}">
+        <image class='img' src='/icons/add.png'></image>   
+      </view>
+  </view>
+
     <view class="sendbtn">
       提交信息
-      <button type="primary" form-type="submit">提交信息</button>
+    <button type="primary" form-type="submit">提交信息</button>
     </view>
-  </form>
+  </form> 
+
+   
 
  
 
