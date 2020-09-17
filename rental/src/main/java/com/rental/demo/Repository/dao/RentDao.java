@@ -85,7 +85,7 @@ public class RentDao {
         return jdbcTemplate.update(sql,id);
     }
 
-
+    //获取某用户所有出租房源
     public List<Rent> queryByHostId(String hostId){
         String sql = "SELECT * FROM rent WHERE host_id=?";
         List<Rent> ans = jdbcTemplate.query(sql , new RentRowMapper(),hostId);

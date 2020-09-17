@@ -1,2 +1,40 @@
-<!--pages/audit/audit.wxml-->
-<text>pages/audit/audit.wxml</text>
+<view class="autumn">
+    <view id="pics">
+      <image id = "pic" mosde="scaleToFill" src='../../icons/mypage/auditHead.png'></image>
+    </view>
+    <block wx:if="{{auditNum===0}}">
+    <view id="message">
+    您没有待处理的申请呦
+    </view>
+</block>
+<!-- <block wx:else> -->
+  <view class="house">
+    <block wx:for="{{audits}}">
+      <view class="auditHouse" >
+        <view bindtap='goNewsDetail' id="houseInfo" data-newsid='{{item.house.id}}'>
+          <image id="image" mode="aspectFill" src="{{item.house.imageUrl}}"></image>
+          <view class="address">{{item.house.address}}</view>
+          <view bindtap='goNewsDetail' data-newsid='{{item.id}}'>
+            <view class="type">{{item.house.title}} </view>
+          </view>
+        </view>
+        <view id="userInfo">
+          <image id="head" mode="widthFix" src="{{item.user.head}}"></image>
+          <view id="name" class="address">{{item.user.nickname}}</view>
+          <view id="phone" class="type1">{{item.user.phone}} </view>
+          <view id="gender" class="type1">{{item.user.gender}}</view>
+        </view>
+        <view id="buttons" style="flex-direction:row;">
+          <button class="pass" id="{{item.audit.id}}" bindtap="btnTapPass">通过</button>
+          <button class="refuse" id="{{item.audit.id}}" bindtap="btnTapRefuse">拒绝</button>
+        </view>
+      </view>
+      
+    </block>
+  </view>
+  <!-- </block> -->
+</view>
+
+
+
+

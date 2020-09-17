@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -17,8 +18,14 @@ public class CollectionController {
 
 
     @PostMapping("/addCollection")
-    public void addCollection(@RequestBody Collection collection){
-        collectService.addCollection(collection.getUserId(),collection.getHouseId(),collection.getHouseType());
+//    public void addCollection(@RequestBody Collection collection){
+//        collectService.addCollection(collection.getUserId(),collection.getHouseId(),collection.getHouseType());
+//    }
+    public int addCollection(@RequestBody Map<String,String> collection){
+        for(Map.Entry<String,String>entry:collection.entrySet()){
+            System.out.println(entry.getKey()+","+entry.getValue());
+        }
+        return collectService.insertSellHouse(collection);
     }
 
     @DeleteMapping("/cancelCollection/{id}")

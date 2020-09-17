@@ -27,22 +27,22 @@ Page({
   },
   
 
-  showMask: function() {//显示文本框
-    this.setData({
-      show: true
-    })
-  },
+  // showMask: function() {//显示文本框
+  //   this.setData({
+  //     show: true
+  //   })
+  // },
 
-  sub: function() {//提交工作内容
-    wx.showToast({
-      title: '提交成功',
-      duration: 1000
-    })
+  // sub: function() {//提交工作内容
+  //   wx.showToast({
+  //     title: '提交成功',
+  //     duration: 1000
+  //   })
     
-    this.setData({
-      show: false
-    })
-  },
+  //   this.setData({
+  //     show: false
+  //   })
+  // },
 
 
   /**
@@ -50,6 +50,10 @@ Page({
    */
   onLoad: function (options) {
     var hId = options.id
+    wx.setStorage({
+      data: hId,
+      key: 'houseId',
+    })
     let that = this;
     wx.request({
       url: 'http://47.94.170.167:8080/sellAllInfo/'+options.id,
@@ -94,17 +98,9 @@ Page({
         })
       }
     })
-
-    // wx.getStorage({
-    //   key: '1',
-    //   success: function(res) {
-    //       console.log(res.data)
-    //       this.hostId = res.data
-    //   }
-    // })
-
   },
 
+  //收藏功能
   toCollect () {
     var bol = this.data.isCollect; // 获取状态
     this.setData({
@@ -118,28 +114,38 @@ Page({
             wx.request({
               url: 'http://localhost:8080/addCollection',
               data:{
-                "userId":1,
-                "houseId":res.data,
-                "houseType":1
+                "user_id":1,
+                "house_id":res.data,
+                "house_type":1
               },
               method:"POST",
               header: {
                 'Content-Type': 'application/json'
               },
               success:function(res){
-                console.log(res.data)
+                //console.log(res.data)
+                wx.setStorage({
+                  data: res.data,
+                  key: 'collectionid',
+                })
               }
             })
           }
           else{
-            wx.request({
-              url: 'http://localhost:8080/cancelCollection/'+id,
-              method:"DELETE",
-              header: {
-                'Content-Type': 'application/json'
-              },
+            wx.getStorage({
+              key: 'collectionid',
               success:function(res){
-                console.log("删除成功"+res.data)
+                //console.log(res.data)
+                wx.request({
+                  url: 'http://localhost:8080/cancelCollection/'+res.data,
+                  method:"DELETE",
+                  header: {
+                    'Content-Type': 'application/json'
+                  },
+                  success:function(res){
+                    console.log("删除成功"+res.data)
+                  }
+                })
               }
             })
           }
@@ -147,23 +153,14 @@ Page({
     })
     },
 
-    isReport () {
-      var bol = this.data.isReport; // 获取状态
-      this.setData({
-      isReport:!bol // 改变状态
-      })
-      wx.getStorage({
-        key: '1',
-        success: function(res) {
-            console.log(res.data)
-            this.setData({
-              //注意到模态框的取消按钮也是绑定的这个函数，
-              //所以这里直接取反hiddenmodalput，也是没有毛病
-              isReport: !this.data.isReport
-            })
-        }
-      })
-      },
+    goNewsDetail:function(event)
+    {
+     wx.navigateTo({
+       url: '/pages/report/report'
+     })
+    },
+
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -176,7 +173,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+        wx.getStorage({
+          key: 'houseId',
+          success:function(res){
+            var houseId = res.data
+            wx.getStorage({
+              key: 'report',
+              success:function(res){
+                var content = res.data
+                wx.request({
+                  url: 'http://localhost:8080/addReport',
+                  data:{
+                    "user_id":1,
+                    "house_id":houseId,
+                    "content":content,
+                    "house_type":1
+                  },
+                  method:"POST",
+                  header: {
+                    'Content-Type': 'application/json'
+                  },
+                  success:function(res){
+                    console.log("haha"+res.data)
+                  }
+                })
+              }
+            })
+          }
+        })
+    
   },
 
   /**

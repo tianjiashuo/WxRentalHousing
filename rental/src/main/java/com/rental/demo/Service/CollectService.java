@@ -26,9 +26,9 @@ public class CollectService {
 
 
 
-    public void addCollection(String userId,int houseId,int houseType){
-        collectionDao.addCollection(userId,houseId,houseType);
-    }
+//    public void addCollection(String userId,int houseId,int houseType){
+//        collectionDao.addCollection(userId,houseId,houseType);
+//    }
 
 
     public void cancelCollection(int id){
@@ -48,11 +48,18 @@ public class CollectService {
             Collection collection = iter.next();
             //出租房屋
             if(collection.getHouseType()==0){
-                result.add(rentService.getRentById(collection.getHouseId()));
+                RentBo rentBo = rentService.getRentByIdHost(collection.getHouseId());
+                if(rentBo.getState()==1){
+                    result.add(rentBo);
+                }
             }
             //出售房屋
             else if(collection.getHouseType()==1){
-                result.add(sellService.getSellById(collection.getHouseId()));
+                SellBo sellBo = sellService.getSellById(collection.getHouseId());
+                if(sellBo.getState()==1){
+                    result.add(rentService.getRentByIdHost(collection.getHouseId()));
+                }
+                result.add(sellBo);
             }
         }
         return result;
@@ -113,4 +120,19 @@ public class CollectService {
 //        }
 //        return ids;
 //    }
+
+    public int insertSellHouse(Map<String,String> sell) {
+
+        List keys = new ArrayList<String>();
+        List values = new ArrayList<String>();
+        //处理其他数据values 均为String
+        for (Map.Entry<String, String> Entry : sell.entrySet()) {
+            keys.add(Entry.getKey());
+            String flag = Entry.getValue();
+            values.add(flag);
+        }
+        //获得house_id主键
+        int collectionId = collectionDao.addCollection(keys,values);
+        return collectionId;
+}
 }

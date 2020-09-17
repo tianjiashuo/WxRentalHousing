@@ -5,9 +5,14 @@ import com.rental.demo.Repository.mappers.CollectionRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.awt.*;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,15 +25,22 @@ public class CollectionDao {
      * @author tian
      * @return
      */
-    public void addCollection(String userId,int houseId,int houseType){
-        String sql = "INSERT INTO collection (user_id,house_id,house_type) VALUES(?, ? ,?)";
-        jdbcTemplate.update(sql,userId,houseId,houseType);
-    }
-
-//    public int getCollectionId(String userId,int houseId,int houseType){
-//        String sql = "SELECT id FROM collection WHERE user_id=? and house_id = ? and house_type=?";
-//        Integer collectionId = jdbcTemplate.queryForObject(sql,new Integer[],userId,houseId,houseType);
+//    public void addCollection(String userId,int houseId,int houseType){
+//        String sql = "INSERT INTO collection (user_id,house_id,house_type) VALUES(?, ? ,?)";
+//        jdbcTemplate.update(sql,userId,houseId,houseType);
 //    }
+
+    public int addCollection(List keys,List values){
+        String sql = "INSERT INTO collection (" +String.join(",",keys) + ") VALUES ('"+ String.join("','",values)+"')";
+        System.out.println(sql+"--collections");
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        PreparedStatementCreator preparedStatementCreator = con -> {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            return ps;
+        };
+        jdbcTemplate.update(preparedStatementCreator, keyHolder);
+        return  keyHolder.getKey().intValue();
+    }
 
     /***
      * 取消收藏

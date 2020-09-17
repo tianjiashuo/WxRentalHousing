@@ -17,22 +17,10 @@
       <block wx:if="{{isCollect == true}}">
         <image src = '/icons/coll.png'></image>
       </block>
-      </view>
-
-     <!-- <view class='icon2' bindtap='showMask' >
+      </view> 
+<navigator url='../report/report'><view class='icon2' >
         <image src='/icons/report.png'></image>
-      </view>
-<view class="mask" wx:if="{{show}}">
-  <view>
-    <textarea class="txt" maxlength="-1" placeholder='请输入今日工作内容'></textarea>
-    <button class="sub-btn" bindtap='sub'>提交</button>
-  </view>
-</view>-->
-
-      
-      <view class='icon2' >
-        <image src='/icons/report.png'></image>
-      </view>
+      </view></navigator>
     </view>
     <view class='font'>
       <view class='fontbox'>

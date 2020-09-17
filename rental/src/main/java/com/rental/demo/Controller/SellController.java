@@ -32,7 +32,6 @@ public class SellController {
         for(Map.Entry<String,Object>entry:sell.entrySet()){
             System.out.println(entry.getKey()+","+entry.getValue());
         }
-
         return sellService.insertSellHouse(sell);
     }
 

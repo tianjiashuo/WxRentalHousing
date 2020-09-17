@@ -20,6 +20,7 @@ Page({
     if(typeof(openId) != 'undefined'){
       wx.request({
         url:'http://47.94.170.167:8080/getCollection/'+openId,
+        // url:'http://localhost:8080/getCollection/3',
         header: { "content-type": "application/json" },
         method: 'POST',
         dataType: 'json',
