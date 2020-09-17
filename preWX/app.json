@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/report/report",
     "pages/renthouse/renthouse",
+    "pages/report/report",
     "pages/myhouse/myhouse",
     "pages/mypage/mypage",
     "pages/buyhouse/buyhouse",
