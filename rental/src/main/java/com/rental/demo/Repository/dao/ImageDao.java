@@ -15,20 +15,27 @@ public class ImageDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    //查询某个房源的第一张图片
+    /**
+     *查询某个房源的第一张图片
+     */
     public String getFirstImageById(int houseId, int houseType){
             String sql = "SELECT * FROM image WHERE house_id = ? AND house_type=? LIMIT 1";
             String image= jdbcTemplate.queryForObject(sql, new ImageRowMapper(),houseId,houseType).getImageUrl();
             return image;
     }
-        //查询所有图片
+
+    /***
+     *查询所有图片
+     */
     public List<Image> getAllImageById(int houseId, int houseType){
         String sql = "SELECT * FROM image WHERE house_id = ? AND house_type=?";
         List<Image> images= jdbcTemplate.query(sql, new ImageRowMapper(),houseId,houseType);
         return images;
     }
 
-    //增加房源图片
+    /***
+     *增加房源图片
+     */
     public int insertImg(int house_id,String imgUrl,int house_type){
         String sql="INSERT INTO image (house_id,image_url,house_type) VALUES (?,?,?)";
         int flag = jdbcTemplate.update(sql,house_id,imgUrl,house_type);

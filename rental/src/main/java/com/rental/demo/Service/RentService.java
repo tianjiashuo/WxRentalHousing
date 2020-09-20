@@ -61,7 +61,9 @@ public class RentService {
        return ans;
     }
 
-    //获取某个房源的首页展示信息
+    /***
+     * 获取某个房源的首页展示信息
+     */
     public RentBo getRentById(int id){
         try{
             Rent rent = rentDao.queryById(id);
@@ -73,9 +75,13 @@ public class RentService {
             System.out.println(e.toString());
             return  null;
         }
-
     }
-    //增加了state属性
+
+    /**
+     * 获取首页展示出租房信息
+     * @param id
+     * @return
+     */
     public RentBo getRentByIdHost(int id){
         try{
             Rent rent = rentDao.queryById(id);
@@ -154,22 +160,32 @@ public class RentService {
         return rentId;
     }
 
-    //提交租房申请
+    /***
+     * 提交租房申请
+     */
     public int addApplication(RoommatesBo roommatesBo){
         return roommatesDao.addApplication(roommatesBo);
     }
 
 
-    //房东通过租房申请
+    /**
+     * 房东通过租房申请
+     */
     public int admitApplication(int id){
         return roommatesDao.admitApplication(id);
     }
 
-    //房东拒绝租房申请
+    /**
+     * 房东拒绝租房申请
+     */
+
     public int refuseApplication(int id){
         return roommatesDao.refuseApplication(id);
     }
-    //房东查看申请信息
+    /***
+     * 房东查看申请信息
+     */
+
     public ArrayList<Map<String,Object>> queryByHostId(String hostId){
         ArrayList<Map<String,Object>> result = new ArrayList<>();
         //获得该用户发布的所有出租房源
@@ -196,12 +212,16 @@ public class RentService {
     }
 
 
-    //租满了
+    /**
+     * 修改出租房源状态为下架
+     */
     public int changeState(int id){
         return rentDao.changeState(id);
     }
 
-    //获取合租信息
+    /**
+     *  获取合租信息
+     */
     public List<Roommates> getRoommatesById(int id){
         try{
             List list =  roommatesDao.queryById(id);

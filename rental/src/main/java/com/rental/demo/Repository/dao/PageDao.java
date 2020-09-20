@@ -15,6 +15,10 @@ public class PageDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * 获取轮播图数据
+     * @return
+     */
     public List<Swiper>getSwiper(){
         String sql = "SELECT * FROM index_page_swiper";
         List<Swiper> resultList= jdbcTemplate.query(sql,new SwiperRowMapper());

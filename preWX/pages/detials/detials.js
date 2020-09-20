@@ -1,8 +1,6 @@
 // pages/details/detials.js
+const app = getApp();
 Page({
- 
-  
-
   /**
    * 页面的初始数据
    */
@@ -22,7 +20,8 @@ Page({
     isPet: false,
     isForm: false,
     isState: false,
-    isCollect:null
+    isCollect:null,
+   
   },
 
 
@@ -33,9 +32,8 @@ Page({
     let that = this;
     //console.log(options.id);
     var hId = options.id
-
     wx.request({
-      url: 'http://localhost:8080/getHouseRoommates/'+hId,
+      url: 'http://47.94.170.167:8080/getHouseRoommates/'+hId,
       method:"GET",
       header: {
         'Content-Type': 'application/json'
@@ -52,7 +50,6 @@ Page({
         console.log("house failed")
       }
     })
-
     wx.setStorage({
       data: hId,
       key: 'renthouseId',
@@ -79,10 +76,10 @@ Page({
          data:res.data.rentInfo,
          isForm:res.data.rentInfo.isForm
         })
-        wx.setStorage({
-          key:"1",
-          data:res.data.rentInfo.id
-        })
+        // wx.setStorage({
+        //   key:"1",
+        //   data:res.data.rentInfo.id
+        // })
         wx.request({
           url: 'http://47.94.170.167:8080/userInfo/'+res.data.rentInfo.hostId,
           method:'GET',
@@ -102,10 +99,9 @@ Page({
         })
       }
     })
-
     wx.request({
       
-      url: 'http://localhost:8080/uerInfo/'+hostId,
+      url: 'http://47.94.170.167:8080/uerInfo/'+hostId,
       method:'GET',
       header: {
         'Content-Type': 'application/json'
@@ -133,7 +129,7 @@ Page({
     isCollect:!bol // 改变状态
     })
     wx.getStorage({
-      key: '1',
+      key: "renthouseId",
       success: function(res) {
           console.log(res.data)
           console.log(!bol)
@@ -145,7 +141,7 @@ Page({
           })
           if(!bol == true){
             wx.request({
-              url: 'http://localhost:8080/addCollection',
+              url: 'http://47.94.170.167:8080/addCollection',
               data:{
                 "user_id":1,
                 "house_id":res.data,
@@ -166,7 +162,7 @@ Page({
               success:function(res){
                 //console.log(res.data)
                 wx.request({
-                  url: 'http://localhost:8080/cancelCollection/'+res.data,
+                  url: 'http://47.94.170.167:8080/cancelCollection/'+res.data,
                   method:"DELETE",
                   header: {
                     'Content-Type': 'application/json'
@@ -195,27 +191,36 @@ Page({
   },
 
   save:function(){
+    if(app.globalData.hasUserInfo){
     wx.getStorage({
-      key: '1',
+      key: 'renthouseId',
       success:function(res){
-        //console.log(res.data)
+        console.log("rentHOUSEId===========",res.data)
         var houseId = res.data
         wx.request({
-          url: 'http://localhost:8080/addApplocation',
+          url: 'http://47.94.170.167:8080/addApplocation',
           data:{
             "houseId":houseId,
-            "userId":'1'
+            "userId":wx.getStorageSync('openId')
           },
           method:"POST",
           header: {
             'Content-Type': 'application/json'
           },
           success:function(res){
-            console.log("app"+res.data)
+            console.log("app"+res.data);
+            wx.showToast({
+              title: '申请成功',
+            })
           }
         })
       }
-    })
+    })}else{
+       wx.showToast({
+         icon:"none",
+         title: '请先登陆',
+       })
+    }
   },
 
   /**
@@ -232,9 +237,9 @@ Page({
           success:function(res){
             var content = res.data
             wx.request({
-              url: 'http://localhost:8080/addReport',
+              url: 'http://47.94.170.167:8080/addReport',
               data:{
-                "user_id":1,
+                "user_id":wx.getStorageSync('openId'),
                 "house_id":houseId,
                 "content":content,
                 "house_type":0

@@ -5,7 +5,6 @@ import com.rental.demo.Repository.entity.Rent;
 public class RentBo {
 
     private int id;
-   // private int host_id;
     private int area;
     private int price;
     private String address;

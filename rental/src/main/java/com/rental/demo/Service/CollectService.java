@@ -31,6 +31,10 @@ public class CollectService {
 //    }
 
 
+    /***
+     * 取消收藏
+     * @param id
+     */
     public void cancelCollection(int id){
         collectionDao.cancelCollection(id);
     }
@@ -85,7 +89,6 @@ public class CollectService {
     /***
      * 收藏信息更改后变换状态
      */
-
     public String collectInfoChanged(int houseId,int houseType){
         //拿到提示的所有用户的id;
         System.out.println(houseId+"====="+houseType);
@@ -97,9 +100,11 @@ public class CollectService {
             String s = it.next();
             System.out.println("userId--------"+ s );
             UserBo u = userService.getUserById(s);
-            String p = "+86"+u.getPhone();
-            System.out.println("telephone++++++"+p);
-            phones.add(p);
+            if(u.getPhone()!=null){
+                String p = "+86"+u.getPhone();
+                System.out.println("telephone++++++"+p);
+                phones.add(p);
+            }
         }
        Map<String,Object> sms = new HashMap<>();
         sms.put("smsType","news");
@@ -129,8 +134,12 @@ public class CollectService {
 //        return ids;
 //    }
 
-    public int insertSellHouse(Map<String,String> sell) {
-
+    /***
+     * 增加收藏
+     * @param sell
+     * @return
+     */
+    public int insertSCollectHouse(Map<String,String> sell) {
         List keys = new ArrayList<String>();
         List values = new ArrayList<String>();
         //处理其他数据values 均为String

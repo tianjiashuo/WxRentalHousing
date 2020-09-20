@@ -3,7 +3,6 @@ package com.rental.demo.Controller;
 
 public class UserVo {
     private String id;
-//    private String head;
     private String nickname;
     private String introduction;
     private String phone;

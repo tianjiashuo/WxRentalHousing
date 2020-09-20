@@ -25,11 +25,6 @@ public class CollectionDao {
      * @author tian
      * @return
      */
-//    public void addCollection(String userId,int houseId,int houseType){
-//        String sql = "INSERT INTO collection (user_id,house_id,house_type) VALUES(?, ? ,?)";
-//        jdbcTemplate.update(sql,userId,houseId,houseType);
-//    }
-
     public int addCollection(List keys,List values){
         String sql = "INSERT INTO collection (" +String.join(",",keys) + ") VALUES ('"+ String.join("','",values)+"')";
         System.out.println(sql+"--collections");
@@ -61,6 +56,13 @@ public class CollectionDao {
         List<Collection> lc= jdbcTemplate.query(sql, new CollectionRowMapper(),userId);
         return lc;
     }
+
+    /***
+     * 获取租房/售房收藏信息
+     * @param houseId
+     * @param houseType
+     * @return
+     */
     public List<Collection> getAllUsersId(int houseId,int houseType){
         String sql = "SELECT * FROM collection WHERE house_id = ? AND house_type = ?";
         List<Collection> ids = jdbcTemplate.query(sql,new CollectionRowMapper(),houseId,houseType);

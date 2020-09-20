@@ -32,6 +32,7 @@ public class UserService {
     private  RoommatesDao roommatesDao;
 
     /**
+     * 获取用户展示信息
      * mao changed 2020-09-12
      * @param id
      * @return
@@ -48,18 +49,40 @@ public class UserService {
         return null;
     }
 
+    /***
+     * 第一次使用微信登陆的用户（注册）
+     * @param user
+     * @return
+     */
     public int initUserInfo(UserBo user) {
         return userDao.insertUserInfo(user);
     }
 
+    /**
+     * 编辑用户信息
+     * @param id
+     * @param userBo
+     * @return
+     */
     public int editUserInfo(String id,UserBo userBo){
         return userDao.editUserInfo(id,userBo);
     }
 
+    /***
+     * 检查用户实名信息
+     * @param userId
+     * @return
+     */
     public boolean checkUserRealName(String userId){
         return userDao.checkUserRealName(userId);
     }
 
+    /***
+     * 增加用户实名信息
+     * @param id
+     * @param userBo
+     * @return
+     */
     public int insertUserRealName(String id,UserBo userBo){
         return userDao.insertUserRealName(id,userBo);
     }
@@ -115,6 +138,7 @@ public class UserService {
     }
 
     /**
+     * 获取用户手机号
      * mao 2020-9-12
      * @param reqinfo
      * @return
@@ -135,7 +159,9 @@ public class UserService {
        return map;
     }
 
-    //获取某人发布的所有房源
+    /***
+     * 获取某人发布的所有房源
+     */
     public HashMap<String,Set> getUserHouse(String hostId){
         HashMap<String,Set> result = new HashMap<>();
         List<Rent> lr = rentDao.queryByHostId(hostId);
@@ -156,14 +182,17 @@ public class UserService {
     }
 
 
-
+    /***
+     * 获取租客信息
+     * @param houseId
+     * @return
+     */
     public HashMap<String,Set> getUserInfomation(int houseId){
         HashMap<String,Set> result = new HashMap<>();
         List<Roommates> lr = roommatesDao.queryById(houseId);
         Iterator<Roommates> ir = lr.iterator();
         HashSet roomResult  = new HashSet();
         while(ir.hasNext()) {
-//            roomResult.add(rentService.getRentByIdHost(ir.next().getId()));
             roomResult.add(userService.getUserById(ir.next().getUserId()));
         }
 

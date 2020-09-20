@@ -18,6 +18,13 @@ public class AesService {
     private String appSecret = "831163400081c584967d45afc443eae3";
 
 
+    /**
+     * 解密用户信息
+     * @param encryptedData
+     * @param iv
+     * @param code
+     * @return
+     */
     public Map decodeUserInfo(String encryptedData, String iv, String code) {
         Map map = new HashMap();
         //登录凭证不能为空
@@ -77,6 +84,13 @@ public class AesService {
         return map;
     }
 
+    /***
+     * 解密获得微信用户手机号
+     * @param encryptedData
+     * @param iv
+     * @param key
+     * @return
+     */
     public Map decodePhoneNumber(String encryptedData, String iv,String key){
         try{
             String phoneInfo = AesUtil.decrypt(encryptedData,key,iv,"UTF-8");

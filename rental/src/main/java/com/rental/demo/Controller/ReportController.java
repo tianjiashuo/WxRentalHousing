@@ -21,26 +21,37 @@ public class ReportController {
     @Autowired
     RentService rentService;
 
+    /*
+     *增加举报
+     */
     @PostMapping("/addReport")
     public boolean addReport (@RequestBody Report report) {
        return  reportService.addReport(report);
     }
-    //删除房源
+    /*
+     *删除举报的房源信息
+     */
     @PostMapping("/checkReportDelete")
     public boolean checkReportDelete(@RequestBody Report report){
         return reportService.checkReportDelete(report);
     }
-    //不做处理
+    /*
+     * 举报的房源信息不做处理
+     */
     @PostMapping("/checkReportIgnore")
     public boolean checkReportIgnore(@RequestBody Report report){
         return reportService.checkReportIgnore(report);
     }
-    //回复举报
+    /*
+     *回复举报的信息
+     */
   @PostMapping("/addNews/{id}")
     public boolean addNews(@PathVariable int id, @RequestBody String content){
         return reportService.addNews(id,content);
     }
-    //未审核举报
+    /*
+     *获取没有处理的举报
+     */
     @GetMapping("/unDealReport")
     public Map<String,Object> showUndealReport(){
         HashMap hm = new HashMap();
@@ -48,7 +59,9 @@ public class ReportController {
         hm.put("data",reportService.showUnDealReport());
         return hm;
     }
-    //根据id展示某个举报
+    /*
+     *根据id展示某个举报
+     */
     @PostMapping ("/showReport")
     public Report showReport(@RequestBody Map<String,Integer> id){
         return reportService.getAReport(id.get("id"));

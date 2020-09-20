@@ -10,7 +10,11 @@ public class LoginService {
     @Autowired
     private UserDao userDao;
 
-    //登录
+    /***
+     * 管理员登陆
+     * @param user
+     * @return
+     */
     public boolean Login (User user){
         //判断密码是否正确
         System.out.println(user.getId());

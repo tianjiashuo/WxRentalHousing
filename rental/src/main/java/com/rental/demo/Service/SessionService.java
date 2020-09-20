@@ -14,6 +14,7 @@ public class SessionService {
    private SessionDao sessiondao;
 
     /**
+     * 更具用户Id获取Session
      * mao 2020-9-12
      * @param id
      * @return
@@ -29,6 +30,7 @@ public class SessionService {
     }
 
     /**
+     * 增加session信息
      * mao 2020-9-12
      * @param
      * @return
@@ -39,6 +41,7 @@ public class SessionService {
     }
 
     /**
+     * 更新session信息
      * mao 2020-9-12
      * @param
      * @return

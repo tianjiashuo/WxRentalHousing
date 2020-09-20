@@ -12,6 +12,13 @@ import org.apache.commons.httpclient.HttpStatus;//此类需要添加maven依赖�
 
 public class HttpUtil {
 
+    /***
+     * 封装get方法
+     * @param urlPath
+     * @param params
+     * @return
+     * @throws Exception
+     */
     public static String doGet(String urlPath, HashMap<String, Object> params)
             throws Exception {
         StringBuilder sb = new StringBuilder(urlPath);

@@ -86,17 +86,15 @@ public class ReportService {
         System.out.println("举报发送短信"+ smsEes);
         return flag1&&flag2;
     }
-    //不做处理
+    /***
+     *举报信息不做处理
+     */
     public boolean  checkReportIgnore(Report report) {
         boolean flag1 = reportDao.updateReportState(RESOLVE_RESULT,String.valueOf(report.getId()));
         return flag1;
     }
 
-    //发送信息
-    public boolean addNews(int report_id,String content){
-        boolean flag2 = newsService.addNews(getAReport(report_id).getUser_id(),content);
-        return flag2;
-    }
+
 
     /**
      * 查询没有解决的举报

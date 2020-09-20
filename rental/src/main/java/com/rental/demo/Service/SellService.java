@@ -61,6 +61,11 @@ public class SellService {
     }
 
 
+    /***
+     * 更具房屋编号获取详细的售房信息
+     * @param id
+     * @return
+     */
     public SellBo getSellByIdHost(int id) {
         Sell sell = sellDao.queryById(id);
         String image= "https://z1.muscache.cn/im/pictures/83177158/9e5c500b_original.jpg?aki_policy=large";
@@ -83,7 +88,11 @@ public class SellService {
         return map;
     }
 
-    //卖出去了
+    /***
+     * 下架售房信息
+     * @param id
+     * @return
+     */
     public int changeState(int id) {
         return sellDao.changeState(id);
     }
@@ -97,8 +106,10 @@ public class SellService {
         return sellDao.updateSellState(sellId, ILLEGAL_STATE);
     }
 
-    /*
-    加入sell 的逻辑
+    /***
+     * 发布售房信息
+     * @param sell
+     * @return
      */
     public int insertSellHouse(Map<String,Object> sell){
 
@@ -151,6 +162,12 @@ public class SellService {
 
     }
 
+
+    /**
+     * 将详细的首犯信息转变成首页售房信息
+     * @param it0
+     * @return
+     */
     private Set<SellBo> transSellToBo(Iterator it0){
         Set set = new HashSet();
         Iterator<Sell> it = it0;

@@ -25,6 +25,11 @@ public class xiaomageUtil {
         templateIds.put("news","723977");
     }
 
+    /***
+     * 发送短信
+     * @param sms
+     * @return
+     */
     public static String sendSMS(Map<String,Object> sms){
 
         try{

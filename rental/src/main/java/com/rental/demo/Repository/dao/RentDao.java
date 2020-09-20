@@ -66,6 +66,12 @@ public class RentDao {
         return rent;
     }
 
+    /**
+     * 添加租房信息
+     * @param keys
+     * @param values
+     * @return
+     */
     public int insertRentHouse(List keys,List values){
         String sql = "INSERT INTO rent (" +String.join(",",keys) + ") VALUES ('"+ String.join("','",values)+"')";
         System.out.println(sql+"--rent");
@@ -79,13 +85,17 @@ public class RentDao {
 
     }
 
-    //房源状态修改
+    /***
+     * 房源状态修改
+     */
     public int changeState(int id){
         String sql = "UPDATE rent set state=0 WHERE id=? ";
         return jdbcTemplate.update(sql,id);
     }
 
-    //获取某用户所有出租房源
+    /***
+     * 获取某用户所有出租房源
+     */
     public List<Rent> queryByHostId(String hostId){
         String sql = "SELECT * FROM rent WHERE host_id=?";
         List<Rent> ans = jdbcTemplate.query(sql , new RentRowMapper(),hostId);

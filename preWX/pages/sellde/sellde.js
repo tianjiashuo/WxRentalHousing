@@ -112,9 +112,9 @@ Page({
           console.log(res.data)
           if(!bol == true){
             wx.request({
-              url: 'http://localhost:8080/addCollection',
+              url: 'http://47.94.170.167:8080/addCollection',
               data:{
-                "user_id":1,
+                "user_id":wx.getStorageSync('openId'),
                 "house_id":res.data,
                 "house_type":1
               },
@@ -137,7 +137,7 @@ Page({
               success:function(res){
                 //console.log(res.data)
                 wx.request({
-                  url: 'http://localhost:8080/cancelCollection/'+res.data,
+                  url: 'http://47.94.170.167:8080/cancelCollection/'+res.data,
                   method:"DELETE",
                   header: {
                     'Content-Type': 'application/json'
@@ -183,9 +183,9 @@ Page({
               success:function(res){
                 var content = res.data
                 wx.request({
-                  url: 'http://localhost:8080/addReport',
+                  url: 'http://47.94.170.167:8080/addReport',
                   data:{
-                    "user_id":1,
+                    "user_id":wx.getStorage("openId"),
                     "house_id":houseId,
                     "content":content,
                     "house_type":1

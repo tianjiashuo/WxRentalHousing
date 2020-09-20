@@ -12,7 +12,7 @@ import java.security.*;
 import java.security.spec.InvalidParameterSpecException;
 public class AesUtil {
     static {
-        //BouncyCastle是一个开源的加解密解决方案，主页在http://www.bouncycastle.org/
+        //BoDuncyCastle是一个开源的加解密解决方案，主页在http://www.bouncycastle.org/
         Security.addProvider(new BouncyCastleProvider());
     }
     /**

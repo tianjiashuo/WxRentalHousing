@@ -10,6 +10,10 @@ public class QiniuService {
     private String secretKey = "kPKO5jMqd8VlOfJ-Tm3nv9Ob3HMJGDyYZixhEXSr";
     private String bucket = "rentalhousing";
 
+    /**
+     * 获得上传文件的token
+     * @return
+     */
     public String getUpToken(){
         Auth auth = Auth.create(accessKey, secretKey);
         String upToken = auth.uploadToken(bucket);

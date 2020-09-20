@@ -61,7 +61,7 @@ Page({
           console.log("id=" + e.currentTarget.id);
           wx.request({
             // url: 'http://localhost:8080/refuseApplication/'+e.currentTarget.id,
-            url: 'http://47.94.170.167:8080/refuseApplication'+e.currentTarget.id,
+            url: 'http://47.94.170.167:8080/refuseApplication/'+e.currentTarget.id,
             header: { "content-type": "application/json" },
             method: 'POST',
             dataType: 'json',
@@ -95,7 +95,7 @@ Page({
 
           wx.request({
             // url: 'http://localhost:8080/admitApplication/'+e.currentTarget.id,
-            url: 'http://47.94.170.167:8080/admitApplication'+e.currentTarget.id,
+            url: 'http://47.94.170.167:8080/admitApplication/'+e.currentTarget.id,
             header: { "content-type": "application/json" },
             method: 'POST',
             dataType: 'json',
@@ -151,11 +151,11 @@ Page({
    */
   onPullDownRefresh: function () {
     var that = this;
-    // var openId=wx.getStorageSync('openId');
-    // if(typeof(openId) != 'undefined'){
+     var openId=wx.getStorageSync('openId');
+     if(typeof(openId) != 'undefined'){
       wx.request({
-        // url:'http://47.94.170.167:8080/getAuditByHostId/'+openId,
-        url:'http://localhost:8080/getAuditByHostId/3',
+         url:'http://47.94.170.167:8080/getAuditByHostId/'+openId,
+        //url:'http://localhost:8080/getAuditByHostId/3',
         header: { "content-type": "application/json" },
         method: 'POST',
         dataType: 'json',
@@ -178,7 +178,7 @@ Page({
           console.log('fail')
         },
       })
-    // } 
+     } 
   },
 
   /**

@@ -47,7 +47,7 @@
     <block wx:for="{{sell}}">
       <view class="pichouse"  data-newsid='{{item.id}}'>
 
-      <view id="infos" bindtap="goNewsDetail">
+      <view id="infos" bindtap="goNewsDetail" data-newsid='{{item.id}}'>
        <image id="image" mode="aspectFill" src="{{item.imageUrl}}"></image>
         <block wx:if="{{item.state===-1}}">
        <image id="off" src="../../icons/mypage/off.png"></image>

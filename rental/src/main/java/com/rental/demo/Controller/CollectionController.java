@@ -17,28 +17,42 @@ public class CollectionController {
     private CollectService collectService;
 
 
+    /***
+     * 增加收藏信息
+     * @param collection
+     * @return
+     */
     @PostMapping("/addCollection")
-//    public void addCollection(@RequestBody Collection collection){
-//        collectService.addCollection(collection.getUserId(),collection.getHouseId(),collection.getHouseType());
-//    }
     public int addCollection(@RequestBody Map<String,String> collection){
         for(Map.Entry<String,String>entry:collection.entrySet()){
             System.out.println(entry.getKey()+","+entry.getValue());
         }
-        return collectService.insertSellHouse(collection);
+        return collectService.insertSCollectHouse(collection);
     }
 
+    /***
+     * 取消收藏信息
+     * @param id
+     */
     @DeleteMapping("/cancelCollection/{id}")
     public void cancelCollection(@PathVariable int id){
         collectService.cancelCollection(id);
     }
 
+    /***
+     *
+     * 获取某个用户的收藏信息
+     * @param id
+     * @return
+     */
     @PostMapping("/getCollection/{id}")
     public HashSet getCollection(@PathVariable String id){
         return collectService.getConnectionByUserId(id);
     }
 
-    //根据房屋id获得收藏了该房屋的所有用户id
+    /***
+     * 根据房屋id获得收藏了该房屋的所有用户id
+     */
     @PostMapping("/collectionChanged")
     public String collectionChanged(@RequestBody Map<String,Integer> res){
 

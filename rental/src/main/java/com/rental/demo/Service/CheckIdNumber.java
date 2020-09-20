@@ -1,7 +1,13 @@
 package com.rental.demo.Service;
 
 public class CheckIdNumber {
-        public static boolean isIDNumber(String IDNumber) {
+
+    /***
+     * 检查用户身份证号的合理性
+     * @param IDNumber
+     * @return
+     */
+    public static boolean isIDNumber(String IDNumber) {
             if (IDNumber == null || "".equals(IDNumber)) {
                 return false;
             }
